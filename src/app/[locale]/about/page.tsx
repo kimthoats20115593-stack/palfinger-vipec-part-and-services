@@ -33,14 +33,14 @@ export default async function AboutPage({
       <section className="py-16">
         <Container className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="rounded-xl border border-steel-100 p-8">
-            <Target className="h-8 w-8 text-orange-600" aria-hidden="true" />
+            <Target className="h-8 w-8 text-red-600" aria-hidden="true" />
             <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900">
               {t("missionTitle")}
             </h2>
             <p className="text-sm leading-relaxed text-steel-700">{t("missionDesc")}</p>
           </div>
           <div className="rounded-xl border border-steel-100 p-8">
-            <Eye className="h-8 w-8 text-orange-600" aria-hidden="true" />
+            <Eye className="h-8 w-8 text-red-600" aria-hidden="true" />
             <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900">
               {t("visionTitle")}
             </h2>
@@ -59,7 +59,7 @@ export default async function AboutPage({
               {capabilities.map((cap) => (
                 <li key={cap} className="flex items-start gap-3">
                   <CheckCircle2
-                    className="mt-0.5 h-5 w-5 shrink-0 text-orange-600"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
                     aria-hidden="true"
                   />
                   <span className="text-sm leading-relaxed text-steel-700">{cap}</span>
@@ -73,7 +73,7 @@ export default async function AboutPage({
 
       <section className="py-16">
         <Container className="flex flex-col items-center gap-6 text-center">
-          <Users2 className="h-10 w-10 text-orange-600" aria-hidden="true" />
+          <Users2 className="h-10 w-10 text-red-600" aria-hidden="true" />
           <h2 className="text-2xl font-bold text-navy-900">{t("teamTitle")}</h2>
           <p className="max-w-2xl text-sm leading-relaxed text-steel-700">
             {t("teamDesc")}

@@ -69,7 +69,7 @@ export default async function PartDetailPage({
           </div>
 
           <div>
-            <span className="mb-2 inline-block text-xs font-bold uppercase tracking-wide text-orange-600">
+            <span className="mb-2 inline-block text-xs font-bold uppercase tracking-wide text-red-600">
               {categoryName}
             </span>
             <h1 className="mb-4 text-3xl font-bold text-navy-900">{name}</h1>

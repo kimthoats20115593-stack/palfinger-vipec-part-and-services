@@ -30,14 +30,14 @@ export function PartCard({ part }: { part: PartCardData }) {
         <PartIcon variant={iconVariant} className="h-16 w-16 text-navy-800" />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <span className="mb-1 text-[11px] font-bold uppercase tracking-wide text-orange-600">
+        <span className="mb-1 text-[11px] font-bold uppercase tracking-wide text-red-600">
           {categoryName}
         </span>
         <h3 className="mb-1 text-base font-bold text-navy-900">{name}</h3>
         <p className="mb-3 text-xs text-steel-500">
           {t("sku")}: {part.sku} · {part.craneModel}
         </p>
-        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-orange-600">
+        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-red-600">
           {t("requestQuote")}
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
         </span>

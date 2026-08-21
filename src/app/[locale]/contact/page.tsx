@@ -36,31 +36,31 @@ export default async function ContactPage({
             <h2 className="mb-6 text-lg font-bold text-navy-900">{t("officeTitle")}</h2>
             <ul className="mb-8 space-y-4 text-sm text-steel-700">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-orange-600" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
                 {address}
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0 text-orange-600" aria-hidden="true" />
-                <a href={`tel:${siteConfig.hotlineHref}`} className="hover:text-orange-600">
+                <Phone className="h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
+                <a href={`tel:${siteConfig.hotlineHref}`} className="hover:text-red-600">
                   {siteConfig.hotline}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 shrink-0 text-orange-600" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-orange-600">
+                <Mail className="h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-red-600">
                   {siteConfig.email}
                 </a>
               </li>
             </ul>
 
             <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-navy-900">
-              <Clock className="h-5 w-5 text-orange-600" aria-hidden="true" />
+              <Clock className="h-5 w-5 text-red-600" aria-hidden="true" />
               {t("hoursTitle")}
             </h2>
             <ul className="mb-8 space-y-2 text-sm text-steel-700">
               <li>{t("hoursWeekday")}</li>
               <li>{t("hoursSaturday")}</li>
-              <li className="font-semibold text-orange-600">{t("hoursEmergency")}</li>
+              <li className="font-semibold text-red-600">{t("hoursEmergency")}</li>
             </ul>
 
             <div className="overflow-hidden rounded-xl border border-steel-100">

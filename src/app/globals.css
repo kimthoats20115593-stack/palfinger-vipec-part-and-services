@@ -7,10 +7,15 @@
   --color-navy-700: #1a4680;
   --color-navy-600: #2c5aa0;
 
-  --color-orange-600: #e05a00;
-  --color-orange-500: #ff6a00;
-  --color-orange-400: #ff8a33;
-  --color-orange-50: #fff3ea;
+  --color-red-600: #b81523;
+  --color-red-500: #d81e2c;
+  --color-red-400: #e35c66;
+  --color-red-50: #fdecee;
+
+  --color-yellow-500: #ffc629;
+  --color-yellow-400: #ffd75e;
+  --color-yellow-600: #e6a800;
+  --color-yellow-100: #fff3d1;
 
   --color-steel-950: #14181d;
   --color-steel-900: #1c2229;
@@ -38,10 +43,15 @@
   --color-navy-700: var(--color-navy-700);
   --color-navy-600: var(--color-navy-600);
 
-  --color-orange-600: var(--color-orange-600);
-  --color-orange-500: var(--color-orange-500);
-  --color-orange-400: var(--color-orange-400);
-  --color-orange-50: var(--color-orange-50);
+  --color-red-600: var(--color-red-600);
+  --color-red-500: var(--color-red-500);
+  --color-red-400: var(--color-red-400);
+  --color-red-50: var(--color-red-50);
+
+  --color-yellow-500: var(--color-yellow-500);
+  --color-yellow-400: var(--color-yellow-400);
+  --color-yellow-600: var(--color-yellow-600);
+  --color-yellow-100: var(--color-yellow-100);
 
   --color-steel-950: var(--color-steel-950);
   --color-steel-900: var(--color-steel-900);
@@ -76,6 +86,6 @@ h1, h2, h3, h4, .font-display {
 }
 
 ::selection {
-  background: var(--color-orange-500);
+  background: var(--color-red-500);
   color: white;
 }

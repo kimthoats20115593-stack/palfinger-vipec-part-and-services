@@ -31,7 +31,7 @@ export function Header() {
         <Container className="flex h-9 items-center justify-end gap-6 text-xs">
           <a
             href={`tel:${siteConfig.hotlineHref}`}
-            className="flex items-center gap-1.5 font-semibold text-white hover:text-orange-400"
+            className="flex items-center gap-1.5 font-semibold text-white hover:text-red-400"
           >
             <Phone className="h-3.5 w-3.5" aria-hidden="true" />
             {t("hotline")}: {siteConfig.hotline}
@@ -56,8 +56,8 @@ export function Header() {
                 className={clsx(
                   "rounded-md px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-900",
                   active
-                    ? "text-orange-600"
-                    : "text-navy-900 hover:text-orange-600"
+                    ? "text-red-600"
+                    : "text-navy-900 hover:text-red-600"
                 )}
               >
                 {link.label}

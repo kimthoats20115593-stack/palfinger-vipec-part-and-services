@@ -33,7 +33,7 @@ export default async function AdminLoginPage({
     <div className="flex min-h-screen items-center justify-center px-4">
       <div className="w-full max-w-sm rounded-2xl border border-steel-200 bg-white p-8 shadow-sm">
         <div className="mb-6 flex flex-col items-center text-center">
-          <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-orange-500 text-white">
+          <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-white">
             <ShieldCheck className="h-6 w-6" aria-hidden="true" />
           </span>
           <h1 className="text-lg font-bold text-navy-900">Đăng nhập quản trị</h1>
@@ -79,7 +79,7 @@ export default async function AdminLoginPage({
 
           <button
             type="submit"
-            className="min-h-11 w-full rounded-md bg-orange-500 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+            className="min-h-11 w-full rounded-md bg-red-500 text-sm font-semibold text-white transition-colors hover:bg-red-600"
           >
             Đăng nhập
           </button>

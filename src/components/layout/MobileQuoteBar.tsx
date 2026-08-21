@@ -19,7 +19,7 @@ export function MobileQuoteBar() {
       </a>
       <Link
         href="/quote"
-        className="flex min-h-14 items-center justify-center gap-2 bg-orange-500 text-sm font-semibold text-white"
+        className="flex min-h-14 items-center justify-center gap-2 bg-red-500 text-sm font-semibold text-white"
       >
         <FileText className="h-4 w-4" aria-hidden="true" />
         {t("quote")}

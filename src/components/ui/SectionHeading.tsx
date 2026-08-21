@@ -24,7 +24,7 @@ export function SectionHeading({
         <p
           className={clsx(
             "mb-3 text-xs font-bold uppercase tracking-[0.2em]",
-            light ? "text-orange-400" : "text-orange-600"
+            light ? "text-yellow-400" : "text-red-600"
           )}
         >
           {eyebrow}

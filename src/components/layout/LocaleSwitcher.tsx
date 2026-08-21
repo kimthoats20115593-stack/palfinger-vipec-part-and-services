@@ -30,7 +30,7 @@ export function LocaleSwitcher({ light = false }: { light?: boolean }) {
             className={clsx(
               "min-h-8 rounded-full px-3 py-1.5 uppercase tracking-wide transition-colors",
               active
-                ? "bg-orange-500 text-white"
+                ? "bg-red-500 text-white"
                 : light
                 ? "text-steel-200 hover:text-white"
                 : "text-steel-600 hover:text-navy-900"

@@ -33,10 +33,10 @@ export function NewsCover({
         <line x1="0" y1="120" x2="400" y2="120" />
         <line x1="0" y1="180" x2="400" y2="180" />
       </g>
-      <circle cx="330" cy="60" r="70" fill="#ff6a00" opacity="0.15" />
-      <g transform="translate(150,90)" fill="none" stroke="#ff8a33" strokeWidth="5" strokeLinecap="round">
+      <circle cx="330" cy="60" r="70" fill="#ffc629" opacity="0.15" />
+      <g transform="translate(150,90)" fill="none" stroke="#e35c66" strokeWidth="5" strokeLinecap="round">
         <path d="M10 60 L10 20 L60 20" />
-        <circle cx="10" cy="12" r="8" fill="#ff8a33" stroke="none" />
+        <circle cx="10" cy="12" r="8" fill="#e35c66" stroke="none" />
         <path d="M60 20 L90 45" />
         <circle cx="90" cy="45" r="6" fill="#ffffff" stroke="none" />
       </g>

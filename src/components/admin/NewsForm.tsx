@@ -105,14 +105,14 @@ export function NewsForm({
           type="checkbox"
           name="published"
           defaultChecked={defaultValues?.published ?? true}
-          className="h-5 w-5 rounded border-steel-300 text-orange-500 focus:ring-orange-500"
+          className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
         />
         Đăng công khai trên website
       </label>
 
       <button
         type="submit"
-        className="min-h-11 rounded-md bg-orange-500 px-8 text-sm font-semibold text-white hover:bg-orange-600"
+        className="min-h-11 rounded-md bg-red-500 px-8 text-sm font-semibold text-white hover:bg-red-600"
       >
         {submitLabel}
       </button>

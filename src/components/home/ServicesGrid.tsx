@@ -13,7 +13,7 @@ export function ServiceCard({
 
   return (
     <div className="group rounded-xl border border-steel-100 bg-white p-6 transition-shadow hover:shadow-lg hover:shadow-navy-900/5">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-navy-900 text-orange-400 transition-colors group-hover:bg-orange-500 group-hover:text-white">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-navy-900 text-red-400 transition-colors group-hover:bg-red-500 group-hover:text-white">
         <Icon className="h-6 w-6" aria-hidden="true" />
       </div>
       <h3 className="mb-2 text-lg font-bold text-navy-900">{t(service.titleKey)}</h3>

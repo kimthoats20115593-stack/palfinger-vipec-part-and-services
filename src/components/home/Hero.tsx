@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative overflow-hidden bg-navy-900">
       <Container className="grid grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-orange-400">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-yellow-400">
             <ShieldCheck className="h-4 w-4" aria-hidden="true" />
             {t("heroEyebrow")}
           </p>
@@ -36,7 +36,7 @@ export function Hero() {
             </ButtonLink>
           </div>
           <div className="mt-8 flex items-center gap-2 text-xs font-semibold text-steel-300">
-            <Clock className="h-4 w-4 text-orange-400" aria-hidden="true" />
+            <Clock className="h-4 w-4 text-yellow-400" aria-hidden="true" />
             {t("statResponse")}: 24h
           </div>
         </div>

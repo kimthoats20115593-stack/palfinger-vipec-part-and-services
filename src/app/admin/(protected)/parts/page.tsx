@@ -16,7 +16,7 @@ export default async function AdminPartsPage() {
         <h1 className="text-2xl font-bold text-navy-900">Phụ tùng</h1>
         <Link
           href="/admin/parts/new"
-          className="inline-flex min-h-11 items-center gap-2 rounded-md bg-orange-500 px-5 text-sm font-semibold text-white hover:bg-orange-600"
+          className="inline-flex min-h-11 items-center gap-2 rounded-md bg-red-500 px-5 text-sm font-semibold text-white hover:bg-red-600"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
           Thêm phụ tùng
@@ -44,7 +44,7 @@ export default async function AdminPartsPage() {
                 <td className="px-5 py-3 text-steel-600">{part.craneModel}</td>
                 <td className="px-5 py-3">
                   {part.featured && (
-                    <Star className="h-4 w-4 fill-orange-500 text-orange-500" aria-label="Nổi bật" />
+                    <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" aria-label="Nổi bật" />
                   )}
                 </td>
                 <td className="px-5 py-3">

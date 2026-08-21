@@ -63,8 +63,8 @@ export function InquiryForm({
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-orange-200 bg-orange-50 p-8 text-center">
-        <CheckCircle2 className="h-10 w-10 text-orange-600" aria-hidden="true" />
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-8 text-center">
+        <CheckCircle2 className="h-10 w-10 text-green-600" aria-hidden="true" />
         <h3 className="text-lg font-bold text-navy-900">{t("formSuccessTitle")}</h3>
         <p className="text-sm text-steel-700">{t("formSuccessDesc")}</p>
       </div>
@@ -148,7 +148,7 @@ export function InquiryForm({
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-orange-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-orange-600 disabled:opacity-60 sm:w-auto"
+        className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-md bg-red-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-red-600 disabled:opacity-60 sm:w-auto"
       >
         {status === "submitting" && (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

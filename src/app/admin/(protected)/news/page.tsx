@@ -13,7 +13,7 @@ export default async function AdminNewsPage() {
         <h1 className="text-2xl font-bold text-navy-900">Tin tức</h1>
         <Link
           href="/admin/news/new"
-          className="inline-flex min-h-11 items-center gap-2 rounded-md bg-orange-500 px-5 text-sm font-semibold text-white hover:bg-orange-600"
+          className="inline-flex min-h-11 items-center gap-2 rounded-md bg-red-500 px-5 text-sm font-semibold text-white hover:bg-red-600"
         >
           <Plus className="h-4 w-4" aria-hidden="true" />
           Viết bài mới

@@ -45,7 +45,7 @@ export default async function ServicesPage({
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((step, i) => (
               <div key={step} className="relative rounded-xl border border-navy-700 bg-navy-900 p-6">
-                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-orange-500 font-display text-sm font-bold text-white">
+                <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 font-display text-sm font-bold text-white">
                   {i + 1}
                 </span>
                 <p className="text-sm font-semibold text-white">{step}</p>

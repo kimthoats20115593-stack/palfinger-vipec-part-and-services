@@ -36,7 +36,7 @@ export function NewsCard({ post, seed = 0 }: { post: NewsCardData; seed?: number
         <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-steel-700">
           {excerpt}
         </p>
-        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-orange-600">
+        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-red-600">
           {t("readMore")}
           <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
         </span>

@@ -27,7 +27,7 @@ export function CraneHero({ className }: { className?: string }) {
 
       <g transform="translate(70,230)">
         <rect x="0" y="70" width="360" height="70" rx="6" fill="#e6e9ec" />
-        <rect x="0" y="70" width="360" height="14" fill="#ff6a00" />
+        <rect x="0" y="70" width="360" height="14" fill="#d81e2c" />
         <rect x="18" y="18" width="120" height="60" rx="6" fill="#cdd3d9" />
         <rect x="34" y="30" width="40" height="30" rx="3" fill="#0b2545" />
 
@@ -39,9 +39,9 @@ export function CraneHero({ className }: { className?: string }) {
         <g transform="translate(170,70)">
           <rect x="-14" y="-150" width="28" height="150" rx="6" fill="#a6afb8" />
           <g transform="rotate(-35)">
-            <rect x="0" y="-16" width="150" height="24" rx="6" fill="#ff6a00" />
+            <rect x="0" y="-16" width="150" height="24" rx="6" fill="#d81e2c" />
             <g transform="translate(150,0) rotate(55)">
-              <rect x="0" y="-11" width="110" height="18" rx="5" fill="#ff8a33" />
+              <rect x="0" y="-11" width="110" height="18" rx="5" fill="#ffc629" />
               <circle cx="110" cy="-2" r="10" fill="#0b2545" />
             </g>
           </g>

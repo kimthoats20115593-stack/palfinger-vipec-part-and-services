@@ -22,7 +22,7 @@ export function WhyUs() {
             const Icon = item.icon;
             return (
               <div key={item.titleKey} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-orange-50 text-orange-600">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-red-600">
                   <Icon className="h-7 w-7" aria-hidden="true" />
                 </div>
                 <h3 className="mb-2 text-base font-bold text-navy-900">
