@@ -48,10 +48,12 @@ Khuyến nghị: bắt đầu với gói **Cloud/Business Hosting có Node.js**,
 phí/khả năng quản lý, đủ đáp ứng một website doanh nghiệp vừa. Nếu sau này lượng truy cập lớn, có
 thể nâng cấp lên VPS.
 
-### Đăng ký tên miền
+### Tên miền
 
-Nếu chưa có tên miền, đăng ký tại Hostinger hoặc nhà cung cấp khác (ví dụ `palfingervipec.com` hoặc
-`palfingervipec.vn`), sau đó trỏ DNS về Hostinger theo hướng dẫn trong hPanel (mục Domains).
+Website đang cấu hình sẵn cho tên miền `vipec-vp.vn` (theo email liên hệ công ty). Nếu tên miền
+này đã có ở nhà cung cấp khác, vào phần quản lý DNS của tên miền và trỏ về Hostinger theo hướng dẫn
+trong hPanel (mục Domains). Nếu muốn dùng tên miền khác, nhớ cập nhật lại `NEXTAUTH_URL` trong `.env`
+và các thông tin domain trong `src/lib/site.ts` cho khớp.
 
 ---
 
@@ -117,7 +119,7 @@ với quy mô một website doanh nghiệp. Điều quan trọng:
 
 ## Phần 4 — Sau khi triển khai
 
-- [ ] Đổi mật khẩu tài khoản quản trị mặc định (`admin@palfingervipec.com`) ngay lập tức
+- [ ] Đổi mật khẩu tài khoản quản trị mặc định (`admin@vipec-vp.vn`) ngay lập tức
 - [ ] Cập nhật thông tin liên hệ thật trong `src/lib/site.ts` (số điện thoại, địa chỉ, bản đồ)
 - [ ] Thay logo/favicon chính thức
 - [ ] Nhập phụ tùng và tin tức thật qua `/admin`, xóa dữ liệu mẫu

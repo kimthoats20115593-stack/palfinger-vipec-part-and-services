@@ -83,7 +83,7 @@ export function Footer() {
       <div className="border-t border-navy-800">
         <Container className="flex flex-col gap-2 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} {siteConfig.name}. {t("footer.rights")}
+            © {new Date().getFullYear()} {siteConfig.legalName}. {t("footer.rights")}
           </p>
           <p className="text-steel-500">{t("footer.disclaimer")}</p>
         </Container>
