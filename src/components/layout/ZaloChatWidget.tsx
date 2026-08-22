@@ -16,7 +16,7 @@ export function ZaloChatWidget() {
   return (
     <div className="fixed bottom-20 right-4 z-40 lg:bottom-6 lg:right-6">
       {open && (
-        <div className="absolute bottom-full right-0 mb-3 w-72 overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-xl dark:border-navy-700 dark:bg-navy-900 sm:w-80">
+        <div className="absolute bottom-full right-0 mb-3 w-80 overflow-hidden rounded-2xl border border-steel-200 bg-white shadow-xl dark:border-navy-700 dark:bg-navy-900 sm:w-96">
           <div className="flex items-start justify-between gap-2 bg-navy-950 px-4 py-3.5">
             <div>
               <p className="font-display text-sm font-semibold text-white">{t("title")}</p>
@@ -59,7 +59,7 @@ export function ZaloChatWidget() {
                   alt="Mã QR Zalo PALFINGER VIPEC"
                   width={315}
                   height={480}
-                  className="h-36 w-auto rounded-lg"
+                  className="h-64 w-auto rounded-lg"
                 />
                 <span className="text-center text-[11px] leading-snug text-steel-500 dark:text-steel-300">
                   {t("zaloScanHint")}
