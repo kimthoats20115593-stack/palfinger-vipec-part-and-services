@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Target, Eye, Users2, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
-import { CraneHero } from "@/components/illustrations/CraneHero";
+import { CraneShowcase } from "@/components/illustrations/CraneShowcase";
 
 export async function generateMetadata({
   params,
@@ -67,7 +67,12 @@ export default async function AboutPage({
               ))}
             </ul>
           </div>
-          <CraneHero className="w-full rounded-2xl" />
+          <CraneShowcase
+            src="https://vipec-vp.vn/wp-content/uploads/2025/10/2-4.png"
+            alt={t("showcaseImageAlt")}
+            priority
+            className="w-full shadow-xl shadow-navy-900/10 dark:shadow-black/30"
+          />
         </Container>
       </section>
 
