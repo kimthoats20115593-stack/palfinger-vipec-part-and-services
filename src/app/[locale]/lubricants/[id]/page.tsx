@@ -1,13 +1,13 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { ChevronLeft, Droplet } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { localize } from "@/lib/localize";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { InquiryForm } from "@/components/forms/InquiryForm";
+import { ProductImage } from "@/components/ui/ProductImage";
 
 export const dynamic = "force-dynamic";
 
@@ -65,17 +65,16 @@ export default async function LubricantDetailPage({
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div className="flex aspect-square items-center justify-center rounded-2xl bg-steel-50 dark:bg-navy-900">
-            {lubricant.image ? (
-              <Image
-                src={lubricant.image}
-                alt={name}
-                width={400}
-                height={400}
-                className="h-full w-full object-contain p-8"
-              />
-            ) : (
-              <Droplet className="h-32 w-32 text-navy-800 dark:text-steel-300" aria-hidden="true" />
-            )}
+            <ProductImage
+              src={lubricant.image}
+              alt={name}
+              width={400}
+              height={400}
+              imageClassName="h-full w-full object-contain p-8"
+              fallbackIcon={
+                <Droplet className="h-32 w-32 text-navy-800 dark:text-steel-300" aria-hidden="true" />
+              }
+            />
           </div>
 
           <div>
