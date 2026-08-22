@@ -46,7 +46,7 @@ export function Header() {
       <Container className="flex h-18 items-center justify-between gap-4 py-3">
         <Logo />
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
+        <nav className="hidden items-center xl:flex" aria-label="Main">
           {links.map((link) => {
             const active = pathname === link.href;
             return (
@@ -55,7 +55,7 @@ export function Header() {
                 href={link.href}
                 aria-current={active ? "page" : undefined}
                 className={clsx(
-                  "rounded-md px-3 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-900 dark:focus-visible:outline-white",
+                  "whitespace-nowrap rounded-md px-2.5 py-2 text-sm font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-900 dark:focus-visible:outline-white",
                   active
                     ? "text-red-600"
                     : "text-navy-900 hover:text-red-600 dark:text-white dark:hover:text-red-400"
@@ -67,15 +67,15 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <ThemeToggle />
           <LocaleSwitcher />
-          <ButtonLink href="/quote" variant="primary">
+          <ButtonLink href="/quote" variant="primary" className="whitespace-nowrap">
             {t("quote")}
           </ButtonLink>
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex items-center gap-1 xl:hidden">
           <ThemeToggle />
           <button
             type="button"
@@ -90,7 +90,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div className="border-t border-steel-100 bg-white dark:border-navy-800 dark:bg-navy-950 lg:hidden">
+        <div className="border-t border-steel-100 bg-white dark:border-navy-800 dark:bg-navy-950 xl:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {links.map((link) => (
               <Link

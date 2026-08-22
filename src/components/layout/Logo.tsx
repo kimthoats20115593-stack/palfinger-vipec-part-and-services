@@ -6,7 +6,10 @@ export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
-      className="group flex flex-nowrap items-center gap-x-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 sm:gap-x-3"
+      className={clsx(
+        "group flex items-center gap-x-1.5 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 sm:gap-x-3",
+        light ? "flex-wrap gap-y-1.5" : "flex-nowrap"
+      )}
       aria-label="PALFINGER VIPEC — Trang chủ"
     >
       <span
@@ -21,7 +24,7 @@ export function Logo({ light = false }: { light?: boolean }) {
           width={2400}
           height={458}
           priority
-          className={clsx("w-auto shrink-0", light ? "h-5" : "h-5 sm:h-7")}
+          className="h-5 w-auto shrink-0 sm:h-7"
         />
       </span>
       <span
@@ -37,7 +40,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         width={2562}
         height={549}
         priority
-        className={clsx("w-auto shrink-0", light ? "h-6" : "h-7 sm:h-9")}
+        className="h-7 w-auto shrink-0 sm:h-9"
       />
     </Link>
   );
