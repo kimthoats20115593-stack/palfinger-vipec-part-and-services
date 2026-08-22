@@ -30,6 +30,10 @@ type PartDefaults = {
   featured?: boolean;
   categoryId?: string;
   specs?: Spec[] | null;
+  price?: number | null;
+  status?: string | null;
+  unit?: string | null;
+  stockQty?: number | null;
 };
 
 export function PartForm({
@@ -155,6 +159,54 @@ export function PartForm({
             />
             Hiển thị nổi bật trên trang chủ
           </label>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-4">
+        <div>
+          <label htmlFor="price" className={labelClasses}>Giá (đã gồm VAT, VNĐ)</label>
+          <input
+            id="price"
+            name="price"
+            type="number"
+            min={0}
+            step={1000}
+            defaultValue={defaultValues?.price ?? ""}
+            placeholder="VD: 2409000"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="status" className={labelClasses}>Tình trạng</label>
+          <input
+            id="status"
+            name="status"
+            defaultValue={defaultValues?.status ?? ""}
+            placeholder="VD: Mới"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="unit" className={labelClasses}>Đơn vị</label>
+          <input
+            id="unit"
+            name="unit"
+            defaultValue={defaultValues?.unit ?? ""}
+            placeholder="VD: Cái, Bộ, Xô"
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="stockQty" className={labelClasses}>Số lượng tồn</label>
+          <input
+            id="stockQty"
+            name="stockQty"
+            type="number"
+            min={0}
+            defaultValue={defaultValues?.stockQty ?? ""}
+            placeholder="VD: 35"
+            className={inputClasses}
+          />
         </div>
       </div>
 

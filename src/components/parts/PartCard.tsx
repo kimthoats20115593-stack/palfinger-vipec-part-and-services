@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { localize } from "@/lib/localize";
+import { formatVnd } from "@/lib/format";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
 import { CompareCheckbox } from "@/components/parts/CompareCheckbox";
 
@@ -13,6 +14,10 @@ type PartCardData = {
   image: string;
   craneModel?: { nameVi: string; nameEn: string } | null;
   category: { nameVi: string; nameEn: string };
+  price?: number | null;
+  status?: string | null;
+  unit?: string | null;
+  stockQty?: number | null;
 };
 
 export function PartCard({ part }: { part: PartCardData }) {
@@ -24,6 +29,8 @@ export function PartCard({ part }: { part: PartCardData }) {
     ? localize(locale, part.craneModel.nameVi, part.craneModel.nameEn)
     : t("universalModel");
   const iconVariant = (part.image || "gear") as PartIconVariant;
+  const hasStockInfo = part.stockQty !== null && part.stockQty !== undefined;
+  const inStock = hasStockInfo && (part.stockQty as number) > 0;
 
   return (
     <Link
@@ -34,13 +41,46 @@ export function PartCard({ part }: { part: PartCardData }) {
         <PartIcon variant={iconVariant} className="h-16 w-16 text-navy-800 dark:text-steel-300" />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <span className="mb-1 text-[11px] font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
-          {categoryName}
-        </span>
+        <div className="mb-1 flex items-center justify-between gap-2">
+          <span className="text-[11px] font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
+            {categoryName}
+          </span>
+          {part.status && (
+            <span className="shrink-0 rounded-full border border-steel-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-steel-600 dark:border-navy-700 dark:text-steel-300">
+              {part.status}
+            </span>
+          )}
+        </div>
         <h3 className="mb-1 text-base font-bold text-navy-900 dark:text-white">{name}</h3>
         <p className="mb-3 text-xs text-steel-500 dark:text-steel-400">
           {t("sku")}: {part.sku} · {craneModelName}
         </p>
+
+        {(part.price || hasStockInfo) && (
+          <div className="mb-3 flex items-center justify-between gap-2">
+            {part.price ? (
+              <span className="font-display text-base font-bold text-navy-900 dark:text-white">
+                {formatVnd(part.price, locale)}
+              </span>
+            ) : (
+              <span />
+            )}
+            {hasStockInfo && (
+              <span
+                className={
+                  inStock
+                    ? "text-xs font-semibold text-green-700 dark:text-green-400"
+                    : "text-xs font-semibold text-red-600 dark:text-red-400"
+                }
+              >
+                {inStock
+                  ? `${t("inStock")}${part.unit ? ` · ${part.stockQty} ${part.unit}` : ` (${part.stockQty})`}`
+                  : t("outOfStock")}
+              </span>
+            )}
+          </div>
+        )}
+
         <div className="mt-auto flex items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-red-600">
             {t("requestQuote")}

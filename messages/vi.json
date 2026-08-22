@@ -114,7 +114,9 @@
     "compareEmpty": "Chưa có phụ tùng nào được chọn để so sánh. Quay lại catalog và bấm \"So sánh\" trên các phụ tùng bạn muốn xem.",
     "compareBackToCatalog": "Quay lại catalog",
     "compareSpecColumn": "Thông số",
-    "compareNoSpecs": "Chưa có dữ liệu thông số cho các phụ tùng đã chọn."
+    "compareNoSpecs": "Chưa có dữ liệu thông số cho các phụ tùng đã chọn.",
+    "inStock": "Còn hàng",
+    "outOfStock": "Hết hàng"
   },
   "lubricants": {
     "eyebrow": "Dầu, nhớt, mỡ",

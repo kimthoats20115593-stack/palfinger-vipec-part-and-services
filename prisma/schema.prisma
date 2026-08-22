@@ -49,6 +49,12 @@ model Part {
   descriptionEn String
   image         String
   specs         Json?
+  price         Int?
+  status        String?
+  unit          String?
+  stockQty      Int?
+  sizeText      String?
+  weightText    String?
   featured      Boolean     @default(false)
   category      Category    @relation(fields: [categoryId], references: [id])
   categoryId    String

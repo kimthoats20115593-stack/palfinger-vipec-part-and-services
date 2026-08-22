@@ -45,6 +45,10 @@ async function main() {
       categorySlug: "he-thong-thuy-luc",
       image: "cylinder",
       featured: true,
+      price: 18_500_000,
+      status: "Mới",
+      unit: "Cái",
+      stockQty: 4,
       descriptionVi:
         "Xy lanh thủy lực chính hãng dùng cho cơ cấu nâng cần cẩu gập, chịu áp lực cao, gioăng phớt đạt chuẩn chống rò rỉ. Lắp đặt trực tiếp, không cần gia công thêm.",
       descriptionEn:
@@ -63,6 +67,10 @@ async function main() {
       categorySlug: "van-dieu-khien",
       image: "valve",
       featured: true,
+      price: 12_300_000,
+      status: "Mới",
+      unit: "Cái",
+      stockQty: 6,
       descriptionVi:
         "Van điều khiển tỷ lệ cho phép vận hành cần cẩu mượt mà, chính xác, tích hợp cảm biến áp suất bảo vệ quá tải.",
       descriptionEn:
@@ -81,6 +89,10 @@ async function main() {
       categorySlug: "moc-cau-cap",
       image: "hook",
       featured: true,
+      price: 3_200_000,
+      status: "Mới",
+      unit: "Cái",
+      stockQty: 15,
       descriptionVi:
         "Móc cẩu thép hợp kim rèn nguyên khối, có khóa an toàn, đạt chứng nhận tải trọng theo tiêu chuẩn ngành.",
       descriptionEn:
@@ -93,6 +105,10 @@ async function main() {
       categorySlug: "moc-cau-cap",
       image: "cable",
       featured: false,
+      price: 4_800_000,
+      status: "Mới",
+      unit: "Cuộn",
+      stockQty: 8,
       descriptionVi:
         "Cáp thép bện 6 tao lõi thép, độ bền kéo cao, phù hợp môi trường vận hành khắc nghiệt ngoài trời.",
       descriptionEn:
@@ -105,6 +121,10 @@ async function main() {
       categorySlug: "ket-cau-can-cau",
       image: "boom",
       featured: true,
+      price: 45_000_000,
+      status: "Mới",
+      unit: "Bộ",
+      stockQty: 2,
       descriptionVi:
         "Đoạn cần trung gian bằng thép cường độ cao, đúng kích thước nguyên bản, đảm bảo lắp ráp khớp hoàn toàn với hệ thống cần chính.",
       descriptionEn:
@@ -117,6 +137,10 @@ async function main() {
       categorySlug: "bom-mo-to",
       image: "pump",
       featured: false,
+      price: 9_600_000,
+      status: "Mới",
+      unit: "Cái",
+      stockQty: 0,
       descriptionVi:
         "Bơm thủy lực bánh răng công suất ổn định, tiếng ồn thấp, tuổi thọ cao trong điều kiện vận hành liên tục.",
       descriptionEn:
@@ -129,6 +153,10 @@ async function main() {
       categorySlug: "he-thong-dieu-khien",
       image: "control",
       featured: false,
+      price: 6_750_000,
+      status: "Mới",
+      unit: "Bộ",
+      stockQty: 5,
       descriptionVi:
         "Bộ điều khiển từ xa không dây, chống nước, thao tác trực quan, tăng độ an toàn khi vận hành ở khoảng cách xa.",
       descriptionEn:
@@ -141,6 +169,10 @@ async function main() {
       categorySlug: "ket-cau-can-cau",
       image: "gear",
       featured: false,
+      price: 5_400_000,
+      status: "Mới",
+      unit: "Bộ",
+      stockQty: 3,
       descriptionVi:
         "Bộ bánh răng xoay mâm cẩu chính hãng, gia công chính xác, đảm bảo vòng quay êm ái và ổn định.",
       descriptionEn:

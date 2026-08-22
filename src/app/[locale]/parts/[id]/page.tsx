@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ChevronLeft } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { localize } from "@/lib/localize";
+import { formatVnd } from "@/lib/format";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
@@ -80,10 +81,41 @@ export default async function PartDetailPage({
           </div>
 
           <div>
-            <span className="mb-2 inline-block text-xs font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
-              {categoryName}
-            </span>
-            <h1 className="mb-4 text-3xl font-bold text-navy-900 dark:text-white">{name}</h1>
+            <div className="mb-2 flex items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wide text-red-600 dark:text-red-400">
+                {categoryName}
+              </span>
+              {part.status && (
+                <span className="rounded-full border border-steel-200 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-steel-600 dark:border-navy-700 dark:text-steel-300">
+                  {part.status}
+                </span>
+              )}
+            </div>
+            <h1 className="mb-3 text-3xl font-bold text-navy-900 dark:text-white">{name}</h1>
+
+            {(part.price || part.stockQty !== null) && (
+              <div className="mb-4 flex items-center gap-4">
+                {part.price && (
+                  <span className="font-display text-2xl font-bold text-navy-900 dark:text-white">
+                    {formatVnd(part.price, locale)}
+                  </span>
+                )}
+                {part.stockQty !== null && (
+                  <span
+                    className={
+                      part.stockQty > 0
+                        ? "text-sm font-semibold text-green-700 dark:text-green-400"
+                        : "text-sm font-semibold text-red-600 dark:text-red-400"
+                    }
+                  >
+                    {part.stockQty > 0
+                      ? `${t("inStock")}${part.unit ? ` · ${part.stockQty} ${part.unit}` : ` (${part.stockQty})`}`
+                      : t("outOfStock")}
+                  </span>
+                )}
+              </div>
+            )}
+
             <dl className="mb-6 grid grid-cols-2 gap-4 rounded-lg border border-steel-100 bg-steel-50 p-5 text-sm dark:border-navy-800 dark:bg-navy-900">
               <div>
                 <dt className="font-semibold text-steel-500 dark:text-steel-400">{t("sku")}</dt>

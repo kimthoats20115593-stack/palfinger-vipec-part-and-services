@@ -19,6 +19,10 @@ type Part = {
   craneModelId: string | null;
   craneModel: { nameVi: string; nameEn: string } | null;
   category: { nameVi: string; nameEn: string };
+  price: number | null;
+  status: string | null;
+  unit: string | null;
+  stockQty: number | null;
 };
 
 export function PartsExplorer({

@@ -21,6 +21,12 @@ function nullableStr(formData: FormData, key: string): string | null {
   const value = str(formData, key);
   return value || null;
 }
+function nullableInt(formData: FormData, key: string): number | null {
+  const value = str(formData, key);
+  if (!value) return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? Math.round(n) : null;
+}
 
 function specsFromForm(formData: FormData): { label: string; value: string }[] | undefined {
   const labels = formData.getAll("specLabel").map(String);
@@ -48,6 +54,10 @@ export async function createPart(formData: FormData) {
       featured: bool(formData, "featured"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData),
+      price: nullableInt(formData, "price"),
+      status: nullableStr(formData, "status"),
+      unit: nullableStr(formData, "unit"),
+      stockQty: nullableInt(formData, "stockQty"),
     },
   });
 
@@ -72,6 +82,10 @@ export async function updatePart(id: string, formData: FormData) {
       featured: bool(formData, "featured"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData) ?? [],
+      price: nullableInt(formData, "price"),
+      status: nullableStr(formData, "status"),
+      unit: nullableStr(formData, "unit"),
+      stockQty: nullableInt(formData, "stockQty"),
     },
   });
 

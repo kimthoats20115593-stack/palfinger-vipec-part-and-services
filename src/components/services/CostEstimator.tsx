@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { Logo } from "@/components/layout/Logo";
 import { siteConfig } from "@/lib/site";
+import { formatVnd } from "@/lib/format";
 
 const RATES = {
   fuelLitersPerKmOneWay: 0.1,
@@ -27,13 +28,6 @@ const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900 dark:text
 function num(value: string, fallback = 0): number {
   const n = Number(value);
   return Number.isFinite(n) && n >= 0 ? n : fallback;
-}
-
-function formatVnd(value: number, locale: string): string {
-  const formatted = new Intl.NumberFormat(locale === "vi" ? "vi-VN" : "en-US", {
-    maximumFractionDigits: 0,
-  }).format(Math.round(value));
-  return `${formatted} VNĐ`;
 }
 
 export function CostEstimator() {

@@ -114,7 +114,9 @@
     "compareEmpty": "No parts selected for comparison yet. Go back to the catalog and click \"Compare\" on the parts you want to see.",
     "compareBackToCatalog": "Back to catalog",
     "compareSpecColumn": "Specification",
-    "compareNoSpecs": "No specification data available for the selected parts."
+    "compareNoSpecs": "No specification data available for the selected parts.",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock"
   },
   "lubricants": {
     "eyebrow": "Oils, Lubricants & Grease",
