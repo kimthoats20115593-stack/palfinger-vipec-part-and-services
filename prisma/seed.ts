@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { syncFromVipec } from "../src/lib/vipecSync";
 
 const prisma = new PrismaClient();
 
@@ -41,7 +42,6 @@ async function main() {
       sku: "PV-HC-2201",
       nameVi: "Xy lanh thủy lực nâng cần",
       nameEn: "Main Boom Lift Hydraulic Cylinder",
-      craneModel: "PK 23002 EH",
       categorySlug: "he-thong-thuy-luc",
       image: "cylinder",
       featured: true,
@@ -49,12 +49,17 @@ async function main() {
         "Xy lanh thủy lực chính hãng dùng cho cơ cấu nâng cần cẩu gập, chịu áp lực cao, gioăng phớt đạt chuẩn chống rò rỉ. Lắp đặt trực tiếp, không cần gia công thêm.",
       descriptionEn:
         "Genuine hydraulic cylinder for the main boom lift mechanism, rated for high pressure with leak-proof seals. Direct fit, no additional machining required.",
+      specs: [
+        { label: "Áp suất làm việc", value: "350 bar" },
+        { label: "Đường kính xy lanh", value: "Ø80 mm" },
+        { label: "Hành trình piston", value: "1.200 mm" },
+        { label: "Vật liệu", value: "Thép hợp kim mạ crôm" },
+      ],
     },
     {
       sku: "PV-CV-1187",
       nameVi: "Van điều khiển tỷ lệ đa chức năng",
       nameEn: "Multi-Function Proportional Control Valve",
-      craneModel: "PK 15001",
       categorySlug: "van-dieu-khien",
       image: "valve",
       featured: true,
@@ -62,12 +67,17 @@ async function main() {
         "Van điều khiển tỷ lệ cho phép vận hành cần cẩu mượt mà, chính xác, tích hợp cảm biến áp suất bảo vệ quá tải.",
       descriptionEn:
         "Proportional control valve enabling smooth, precise crane operation, with an integrated pressure sensor for overload protection.",
+      specs: [
+        { label: "Áp suất làm việc", value: "320 bar" },
+        { label: "Số kênh điều khiển", value: "8" },
+        { label: "Điện áp vận hành", value: "24V DC" },
+        { label: "Vật liệu", value: "Thân gang, van thép không gỉ" },
+      ],
     },
     {
       sku: "PV-HK-0542",
       nameVi: "Móc cẩu chịu tải tiêu chuẩn",
       nameEn: "Standard Load-Rated Crane Hook",
-      craneModel: "Đa dòng / Universal",
       categorySlug: "moc-cau-cap",
       image: "hook",
       featured: true,
@@ -80,7 +90,6 @@ async function main() {
       sku: "PV-WR-0876",
       nameVi: "Cáp thép cẩu 6 tao",
       nameEn: "6-Strand Wire Rope",
-      craneModel: "Đa dòng / Universal",
       categorySlug: "moc-cau-cap",
       image: "cable",
       featured: false,
@@ -93,7 +102,6 @@ async function main() {
       sku: "PV-BM-3320",
       nameVi: "Đoạn cần gập trung gian",
       nameEn: "Intermediate Boom Extension Section",
-      craneModel: "PK 33002",
       categorySlug: "ket-cau-can-cau",
       image: "boom",
       featured: true,
@@ -106,7 +114,6 @@ async function main() {
       sku: "PV-PM-4410",
       nameVi: "Bơm thủy lực bánh răng",
       nameEn: "Gear-Type Hydraulic Pump",
-      craneModel: "PK 23002 EH",
       categorySlug: "bom-mo-to",
       image: "pump",
       featured: false,
@@ -119,7 +126,6 @@ async function main() {
       sku: "PV-CT-5501",
       nameVi: "Bảng điều khiển từ xa",
       nameEn: "Radio Remote Control Panel",
-      craneModel: "Đa dòng / Universal",
       categorySlug: "he-thong-dieu-khien",
       image: "control",
       featured: false,
@@ -132,7 +138,6 @@ async function main() {
       sku: "PV-GR-6620",
       nameVi: "Bộ bánh răng xoay mâm cẩu",
       nameEn: "Slewing Ring Gear Set",
-      craneModel: "PK 33002",
       categorySlug: "ket-cau-can-cau",
       image: "gear",
       featured: false,
@@ -219,6 +224,13 @@ async function main() {
       },
     });
   }
+
+  // ----- Đồng bộ model cẩu + dầu nhớt mỡ thật từ vipec-vp.vn -----
+  const syncSummary = await syncFromVipec();
+  console.log(
+    `Đồng bộ VIPEC: +${syncSummary.craneModels.created} model cẩu, +${syncSummary.lubricants.created} dầu nhớt mỡ` +
+      (syncSummary.errors.length ? ` (lỗi: ${syncSummary.errors.join("; ")})` : "")
+  );
 
   console.log("Seed hoàn tất.");
   console.log(`Đăng nhập admin: ${adminEmail} / ${adminPassword}`);

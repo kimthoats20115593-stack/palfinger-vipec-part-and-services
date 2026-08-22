@@ -5,7 +5,10 @@ import { createPart } from "@/lib/admin-actions";
 import { PartForm } from "@/components/admin/PartForm";
 
 export default async function NewPartPage() {
-  const categories = await prisma.category.findMany({ orderBy: { order: "asc" } });
+  const [categories, craneModels] = await Promise.all([
+    prisma.category.findMany({ orderBy: { order: "asc" } }),
+    prisma.craneModel.findMany({ orderBy: { order: "asc" } }),
+  ]);
 
   return (
     <div>
@@ -18,7 +21,12 @@ export default async function NewPartPage() {
       </Link>
       <h1 className="mb-8 text-2xl font-bold text-navy-900">Thêm phụ tùng mới</h1>
       <div className="max-w-3xl rounded-xl border border-steel-200 bg-white p-6 sm:p-8">
-        <PartForm action={createPart} categories={categories} submitLabel="Tạo phụ tùng" />
+        <PartForm
+          action={createPart}
+          categories={categories}
+          craneModels={craneModels}
+          submitLabel="Tạo phụ tùng"
+        />
       </div>
     </div>
   );

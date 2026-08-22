@@ -1,3 +1,5 @@
+import { SpecsEditor } from "@/components/admin/SpecsEditor";
+
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
 const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900";
@@ -14,27 +16,32 @@ const iconOptions = [
 ];
 
 type Category = { id: string; nameVi: string };
+type CraneModel = { id: string; nameVi: string };
+type Spec = { label: string; value: string };
 
 type PartDefaults = {
   sku?: string;
   nameVi?: string;
   nameEn?: string;
-  craneModel?: string;
+  craneModelId?: string | null;
   descriptionVi?: string;
   descriptionEn?: string;
   image?: string;
   featured?: boolean;
   categoryId?: string;
+  specs?: Spec[] | null;
 };
 
 export function PartForm({
   action,
   categories,
+  craneModels,
   defaultValues,
   submitLabel,
 }: {
   action: (formData: FormData) => Promise<void>;
   categories: Category[];
+  craneModels: CraneModel[];
   defaultValues?: PartDefaults;
   submitLabel: string;
 }) {
@@ -46,14 +53,20 @@ export function PartForm({
           <input id="sku" name="sku" required defaultValue={defaultValues?.sku} className={inputClasses} />
         </div>
         <div>
-          <label htmlFor="craneModel" className={labelClasses}>Dòng cẩu tương thích *</label>
-          <input
-            id="craneModel"
-            name="craneModel"
-            required
-            defaultValue={defaultValues?.craneModel}
+          <label htmlFor="craneModelId" className={labelClasses}>Model cẩu tương thích</label>
+          <select
+            id="craneModelId"
+            name="craneModelId"
+            defaultValue={defaultValues?.craneModelId ?? ""}
             className={inputClasses}
-          />
+          >
+            <option value="">Đa dòng / Universal</option>
+            {craneModels.map((cm) => (
+              <option key={cm.id} value={cm.id}>
+                {cm.nameVi}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
 
@@ -144,6 +157,8 @@ export function PartForm({
           </label>
         </div>
       </div>
+
+      <SpecsEditor defaultValue={defaultValues?.specs ?? undefined} />
 
       <button
         type="submit"

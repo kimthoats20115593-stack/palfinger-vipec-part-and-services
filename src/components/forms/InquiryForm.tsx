@@ -14,10 +14,12 @@ const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900 dark:text
 export function InquiryForm({
   type,
   partId,
+  lubricantId,
   partLabel,
 }: {
   type: InquiryType;
   partId?: string;
+  lubricantId?: string;
   partLabel?: string;
 }) {
   const t = useTranslations("quote");
@@ -37,6 +39,7 @@ export function InquiryForm({
       email: String(data.get("email") || ""),
       company: String(data.get("company") || ""),
       partId: partId || "",
+      lubricantId: lubricantId || "",
       message: String(data.get("message") || ""),
     };
 

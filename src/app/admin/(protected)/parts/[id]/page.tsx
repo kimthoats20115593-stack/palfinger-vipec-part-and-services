@@ -11,14 +11,18 @@ export default async function EditPartPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const [part, categories] = await Promise.all([
+  const [part, categories, craneModels] = await Promise.all([
     prisma.part.findUnique({ where: { id } }),
     prisma.category.findMany({ orderBy: { order: "asc" } }),
+    prisma.craneModel.findMany({ orderBy: { order: "asc" } }),
   ]);
 
   if (!part) notFound();
 
   const action = updatePart.bind(null, id);
+  const specs = Array.isArray(part.specs)
+    ? (part.specs as unknown as { label: string; value: string }[])
+    : null;
 
   return (
     <div>
@@ -34,7 +38,8 @@ export default async function EditPartPage({
         <PartForm
           action={action}
           categories={categories}
-          defaultValues={part}
+          craneModels={craneModels}
+          defaultValues={{ ...part, specs }}
           submitLabel="Lưu thay đổi"
         />
       </div>

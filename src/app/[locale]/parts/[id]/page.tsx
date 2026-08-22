@@ -13,7 +13,10 @@ import { InquiryForm } from "@/components/forms/InquiryForm";
 export const dynamic = "force-dynamic";
 
 async function getPart(id: string) {
-  return prisma.part.findUnique({ where: { id }, include: { category: true } });
+  return prisma.part.findUnique({
+    where: { id },
+    include: { category: true, craneModel: true },
+  });
 }
 
 export async function generateMetadata({
@@ -44,10 +47,16 @@ export default async function PartDetailPage({
   const name = localize(locale, part.nameVi, part.nameEn);
   const description = localize(locale, part.descriptionVi, part.descriptionEn);
   const categoryName = localize(locale, part.category.nameVi, part.category.nameEn);
+  const craneModelName = part.craneModel
+    ? localize(locale, part.craneModel.nameVi, part.craneModel.nameEn)
+    : t("universalModel");
+  const specs = Array.isArray(part.specs)
+    ? (part.specs as unknown as { label: string; value: string }[])
+    : [];
 
   const related = await prisma.part.findMany({
     where: { categoryId: part.categoryId, id: { not: part.id } },
-    include: { category: true },
+    include: { category: true, craneModel: true },
     take: 3,
   });
 
@@ -82,10 +91,28 @@ export default async function PartDetailPage({
               </div>
               <div>
                 <dt className="font-semibold text-steel-500 dark:text-steel-400">{t("craneModel")}</dt>
-                <dd className="text-navy-900 dark:text-white">{part.craneModel}</dd>
+                <dd className="text-navy-900 dark:text-white">{craneModelName}</dd>
               </div>
             </dl>
             <p className="mb-8 text-sm leading-relaxed text-steel-700 dark:text-steel-300">{description}</p>
+
+            {specs.length > 0 && (
+              <div className="mb-8 overflow-hidden rounded-lg border border-steel-100 dark:border-navy-800">
+                <h2 className="border-b border-steel-100 bg-steel-50 px-4 py-2.5 text-sm font-bold text-navy-900 dark:border-navy-800 dark:bg-navy-900 dark:text-white">
+                  {t("specsTitle")}
+                </h2>
+                <dl className="divide-y divide-steel-100 dark:divide-navy-800">
+                  {specs.map((spec) => (
+                    <div key={spec.label} className="flex justify-between gap-4 px-4 py-2.5 text-sm">
+                      <dt className="text-steel-600 dark:text-steel-400">{spec.label}</dt>
+                      <dd className="text-right font-semibold text-navy-900 dark:text-white">
+                        {spec.value}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
 
             <div className="rounded-xl border border-steel-100 bg-white p-6 dark:border-navy-800 dark:bg-navy-900">
               <h2 className="mb-4 text-base font-bold text-navy-900 dark:text-white">

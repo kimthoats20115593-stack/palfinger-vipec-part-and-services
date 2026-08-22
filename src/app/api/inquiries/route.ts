@@ -10,6 +10,7 @@ const inquirySchema = z.object({
   email: z.string().trim().email().max(160),
   company: z.string().trim().max(160).optional().or(z.literal("")),
   partId: z.string().trim().max(60).optional().or(z.literal("")),
+  lubricantId: z.string().trim().max(60).optional().or(z.literal("")),
   message: z.string().trim().min(5).max(2000),
 });
 
@@ -21,12 +22,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_input" }, { status: 400 });
   }
 
-  const { type, name, phone, email, company, partId, message } = parsed.data;
+  const { type, name, phone, email, company, partId, lubricantId, message } = parsed.data;
 
-  let part = null;
-  if (partId) {
-    part = await prisma.part.findUnique({ where: { id: partId } });
-  }
+  const [part, lubricant] = await Promise.all([
+    partId ? prisma.part.findUnique({ where: { id: partId } }) : null,
+    lubricantId ? prisma.lubricant.findUnique({ where: { id: lubricantId } }) : null,
+  ]);
 
   const inquiry = await prisma.inquiry.create({
     data: {
@@ -37,10 +38,17 @@ export async function POST(request: NextRequest) {
       company: company || null,
       message,
       partId: part?.id ?? null,
+      lubricantId: lubricant?.id ?? null,
     },
   });
 
   try {
+    const partLabel = part
+      ? `${part.nameVi} (${part.sku})`
+      : lubricant
+        ? lubricant.nameVi
+        : null;
+
     await sendInquiryNotification({
       type,
       name,
@@ -48,7 +56,7 @@ export async function POST(request: NextRequest) {
       email,
       company,
       message,
-      partLabel: part ? `${part.nameVi} (${part.sku})` : null,
+      partLabel,
     });
   } catch {
     // Email delivery is best-effort; the inquiry is already saved in the database.

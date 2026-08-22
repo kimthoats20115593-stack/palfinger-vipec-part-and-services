@@ -6,7 +6,7 @@ const typeLabels = { QUOTE: "Báo giá", CONTACT: "Liên hệ" };
 
 export default async function AdminInquiriesPage() {
   const inquiries = await prisma.inquiry.findMany({
-    include: { part: true },
+    include: { part: true, lubricant: true },
     orderBy: { createdAt: "desc" },
   });
 
@@ -47,6 +47,12 @@ export default async function AdminInquiriesPage() {
                 <span className="font-semibold text-navy-900">
                   {inquiry.part.nameVi} ({inquiry.part.sku})
                 </span>
+              </p>
+            )}
+            {inquiry.lubricant && (
+              <p className="mb-2 text-xs text-steel-500">
+                Sản phẩm quan tâm:{" "}
+                <span className="font-semibold text-navy-900">{inquiry.lubricant.nameVi}</span>
               </p>
             )}
             <p className="whitespace-pre-line rounded-md bg-steel-50 p-3 text-sm text-steel-700">

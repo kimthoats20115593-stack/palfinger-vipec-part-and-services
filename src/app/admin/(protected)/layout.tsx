@@ -3,6 +3,8 @@ import { auth, signOut } from "@/lib/auth";
 import {
   LayoutDashboard,
   Wrench,
+  Truck,
+  Droplet,
   Newspaper,
   Inbox,
   LogOut,
@@ -12,7 +14,9 @@ import Link from "next/link";
 
 const navItems = [
   { href: "/admin", label: "Tổng quan", icon: LayoutDashboard },
+  { href: "/admin/crane-models", label: "Model cẩu", icon: Truck },
   { href: "/admin/parts", label: "Phụ tùng", icon: Wrench },
+  { href: "/admin/lubricants", label: "Dầu nhớt mỡ", icon: Droplet },
   { href: "/admin/news", label: "Tin tức", icon: Newspaper },
   { href: "/admin/inquiries", label: "Yêu cầu liên hệ", icon: Inbox },
 ];

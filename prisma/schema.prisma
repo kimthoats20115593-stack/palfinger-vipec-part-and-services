@@ -24,21 +24,66 @@ model Category {
   parts  Part[]
 }
 
+model CraneModel {
+  id         String   @id @default(cuid())
+  externalId Int?     @unique
+  slug       String   @unique
+  nameVi     String
+  nameEn     String
+  tonnage    String?
+  image      String?
+  sourceUrl  String?
+  order      Int      @default(0)
+  parts      Part[]
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
 model Part {
-  id             String   @id @default(cuid())
-  sku            String   @unique
-  nameVi         String
-  nameEn         String
-  craneModel     String
-  descriptionVi  String
-  descriptionEn  String
-  image          String
-  featured       Boolean  @default(false)
-  category       Category @relation(fields: [categoryId], references: [id])
-  categoryId     String
-  inquiries      Inquiry[]
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id            String      @id @default(cuid())
+  externalId    Int?        @unique
+  sku           String      @unique
+  nameVi        String
+  nameEn        String
+  descriptionVi String
+  descriptionEn String
+  image         String
+  specs         Json?
+  featured      Boolean     @default(false)
+  category      Category    @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  craneModel    CraneModel? @relation(fields: [craneModelId], references: [id])
+  craneModelId  String?
+  inquiries     Inquiry[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+enum LubricantType {
+  ENGINE_OIL
+  HYDRAULIC_OIL
+  GEAR_OIL
+  GREASE
+  OTHER
+}
+
+model Lubricant {
+  id            String        @id @default(cuid())
+  externalId    Int?          @unique
+  slug          String        @unique
+  nameVi        String
+  nameEn        String
+  brand         String?
+  type          LubricantType @default(OTHER)
+  packaging     String?
+  image         String?
+  sourceUrl     String?
+  featured      Boolean       @default(false)
+  descriptionVi String
+  descriptionEn String
+  inquiries     Inquiry[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
 
 model NewsPost {
@@ -69,15 +114,17 @@ enum InquiryStatus {
 }
 
 model Inquiry {
-  id        String        @id @default(cuid())
-  type      InquiryType
-  name      String
-  phone     String
-  email     String
-  company   String?
-  message   String
-  status    InquiryStatus @default(NEW)
-  part      Part?         @relation(fields: [partId], references: [id])
-  partId    String?
-  createdAt DateTime      @default(now())
+  id          String        @id @default(cuid())
+  type        InquiryType
+  name        String
+  phone       String
+  email       String
+  company     String?
+  message     String
+  status      InquiryStatus @default(NEW)
+  part        Part?         @relation(fields: [partId], references: [id])
+  partId      String?
+  lubricant   Lubricant?    @relation(fields: [lubricantId], references: [id])
+  lubricantId String?
+  createdAt   DateTime      @default(now())
 }

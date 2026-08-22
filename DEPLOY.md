@@ -108,11 +108,34 @@ Chỉ cần `git push` code mới lên GitHub, sau đó vào trang **Triển kha
 
 ---
 
+## Phần 3c — Tự động đồng bộ model cẩu & dầu nhớt mỡ từ vipec-vp.vn
+
+Website tự lấy dữ liệu **model cẩu gập** và **dầu nhớt mỡ** thật từ vipec-vp.vn (qua API công khai
+của WooCommerce) — chỉ tạo mới, không ghi đè nội dung bạn đã tự chỉnh qua `/admin`. Có 2 cách chạy:
+
+1. **Thủ công** — vào `/admin` (trang Tổng quan), bấm **"Đồng bộ ngay"** trong khối "Đồng bộ dữ liệu
+   VIPEC" bất cứ khi nào muốn cập nhật.
+2. **Tự động định kỳ** — thiết lập **Cron Job** trên Hostinger:
+   1. hPanel → **Advanced → Cron Jobs** (hoặc mục tương đương trong "Nâng cao").
+   2. Tạo cron job mới, chọn tần suất (ví dụ: mỗi ngày lúc 3:00 sáng).
+   3. Lệnh chạy:
+      ```bash
+      curl -X POST -H "x-sync-token: GIA_TRI_SYNC_SECRET" https://ten-mien-cua-ban.com/api/admin/sync-vipec
+      ```
+   4. Thay `GIA_TRI_SYNC_SECRET` bằng đúng giá trị biến môi trường `SYNC_SECRET` đã đặt ở Phần 3
+      (nếu chưa có, thêm biến này vào **Biến môi trường** với giá trị bất kỳ đủ dài/khó đoán, ví dụ
+      tạo bằng `openssl rand -base64 32`).
+
+---
+
 ## Phần 4 — Sau khi triển khai
 
 - [ ] Đổi mật khẩu tài khoản quản trị mặc định (`admin@vipec-vp.vn`) ngay lập tức
 - [ ] Cập nhật thông tin liên hệ thật trong `src/lib/site.ts` (số điện thoại, địa chỉ, bản đồ)
 - [ ] Thay logo/favicon chính thức
-- [ ] Nhập phụ tùng và tin tức thật qua `/admin`, xóa dữ liệu mẫu
+- [ ] Bấm "Đồng bộ ngay" trong `/admin` để lấy model cẩu + dầu nhớt mỡ thật từ vipec-vp.vn
+- [ ] Nhập phụ tùng và tin tức thật qua `/admin` (phụ tùng cẩu gập cụ thể chưa có trên vipec-vp.vn
+      nên vẫn cần nhập tay, gắn đúng model cẩu tương ứng)
+- [ ] (Tùy chọn) Thiết lập Cron Job tự động đồng bộ định kỳ — xem Phần 3c
 - [ ] Kiểm tra gửi thử form "Yêu cầu báo giá" để xác nhận email thông báo hoạt động
 - [ ] Kiểm tra website trên điện thoại thật (không chỉ trên trình duyệt máy tính)
