@@ -31,7 +31,7 @@ export default async function QuotePage({
       <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
       <section className="py-16">
         <Container className="mx-auto max-w-2xl">
-          <div className="rounded-2xl border border-steel-100 bg-white p-6 shadow-sm sm:p-10">
+          <div className="rounded-2xl border border-steel-100 bg-white p-6 shadow-sm dark:border-navy-800 dark:bg-navy-900 sm:p-10">
             <InquiryForm type="QUOTE" partId={sp.partId} partLabel={sp.part} />
           </div>
         </Container>

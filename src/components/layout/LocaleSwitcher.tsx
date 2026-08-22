@@ -14,7 +14,7 @@ export function LocaleSwitcher({ light = false }: { light?: boolean }) {
     <div
       className={clsx(
         "inline-flex items-center rounded-full border p-0.5 text-xs font-bold",
-        light ? "border-white/20" : "border-steel-300"
+        light ? "border-white/20" : "border-steel-300 dark:border-navy-700"
       )}
       role="group"
       aria-label="Language"
@@ -33,7 +33,7 @@ export function LocaleSwitcher({ light = false }: { light?: boolean }) {
                 ? "bg-red-500 text-white"
                 : light
                 ? "text-steel-200 hover:text-white"
-                : "text-steel-600 hover:text-navy-900"
+                : "text-steel-600 hover:text-navy-900 dark:text-steel-300 dark:hover:text-white"
             )}
           >
             {loc}

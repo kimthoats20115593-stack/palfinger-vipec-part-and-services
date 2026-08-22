@@ -59,8 +59,19 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${oswald.variable}`}>
-      <body className="flex min-h-screen flex-col antialiased">
+    <html
+      lang={locale}
+      className={`${inter.variable} ${oswald.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body className="flex min-h-screen flex-col antialiased" suppressHydrationWarning>
         <NextIntlClientProvider>
           <a
             href="#main-content"

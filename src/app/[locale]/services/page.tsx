@@ -57,7 +57,7 @@ export default async function ServicesPage({
 
       <section className="py-16">
         <Container className="flex flex-col items-center gap-6 text-center">
-          <h2 className="text-2xl font-bold text-navy-900">{t("ctaTitle")}</h2>
+          <h2 className="text-2xl font-bold text-navy-900 dark:text-white">{t("ctaTitle")}</h2>
           <ButtonLink href="/quote" variant="primary">
             {t("ctaButton")}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />

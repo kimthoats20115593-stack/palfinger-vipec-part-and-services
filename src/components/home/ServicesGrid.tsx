@@ -12,12 +12,12 @@ export function ServiceCard({
   const Icon = service.icon;
 
   return (
-    <div className="group rounded-xl border border-steel-100 bg-white p-6 transition-shadow hover:shadow-lg hover:shadow-navy-900/5">
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-navy-900 text-red-400 transition-colors group-hover:bg-red-500 group-hover:text-white">
+    <div className="group rounded-xl border border-steel-100 bg-white p-6 transition-shadow hover:shadow-lg hover:shadow-navy-900/5 dark:border-navy-800 dark:bg-navy-900">
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-navy-900 text-red-400 transition-colors group-hover:bg-red-500 group-hover:text-white dark:bg-navy-950">
         <Icon className="h-6 w-6" aria-hidden="true" />
       </div>
-      <h3 className="mb-2 text-lg font-bold text-navy-900">{t(service.titleKey)}</h3>
-      <p className="text-sm leading-relaxed text-steel-700">{t(service.descKey)}</p>
+      <h3 className="mb-2 text-lg font-bold text-navy-900 dark:text-white">{t(service.titleKey)}</h3>
+      <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t(service.descKey)}</p>
     </div>
   );
 }

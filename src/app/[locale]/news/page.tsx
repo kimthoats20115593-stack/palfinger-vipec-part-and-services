@@ -37,7 +37,7 @@ export default async function NewsPage({
       <section className="py-16">
         <Container>
           {posts.length === 0 ? (
-            <p className="text-center text-sm text-steel-600">—</p>
+            <p className="text-center text-sm text-steel-600 dark:text-steel-400">—</p>
           ) : (
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post, i) => (

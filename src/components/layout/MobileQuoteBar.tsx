@@ -9,10 +9,10 @@ export function MobileQuoteBar() {
   const t = useTranslations("nav");
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-steel-200 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.06)] lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 border-t border-steel-200 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.06)] dark:border-navy-800 dark:bg-navy-950 lg:hidden">
       <a
         href={`tel:${siteConfig.hotlineHref}`}
-        className="flex min-h-14 items-center justify-center gap-2 border-r border-steel-200 text-sm font-semibold text-navy-900"
+        className="flex min-h-14 items-center justify-center gap-2 border-r border-steel-200 text-sm font-semibold text-navy-900 dark:border-navy-800 dark:text-white"
       >
         <Phone className="h-4 w-4" aria-hidden="true" />
         {t("hotline")}

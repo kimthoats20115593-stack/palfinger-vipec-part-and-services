@@ -33,7 +33,7 @@ export function SectionHeading({
       <h2
         className={clsx(
           "text-3xl font-bold leading-tight tracking-tight sm:text-4xl",
-          light ? "text-white" : "text-navy-900"
+          light ? "text-white" : "text-navy-900 dark:text-white"
         )}
       >
         {title}
@@ -42,7 +42,7 @@ export function SectionHeading({
         <p
           className={clsx(
             "mt-4 text-base leading-relaxed",
-            light ? "text-steel-200" : "text-steel-700"
+            light ? "text-steel-200" : "text-steel-700 dark:text-steel-300"
           )}
         >
           {subtitle}

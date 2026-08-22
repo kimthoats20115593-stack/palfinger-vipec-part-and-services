@@ -8,7 +8,7 @@ export function ServicesPreview() {
   const t = useTranslations("home");
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-20 dark:bg-navy-950">
       <Container>
         <SectionHeading
           title={t("servicesTitle")}

@@ -14,7 +14,7 @@ export function WhyUs() {
   const t = useTranslations("home");
 
   return (
-    <section className="bg-steel-50 py-20">
+    <section className="bg-steel-50 py-20 dark:bg-navy-900">
       <Container>
         <SectionHeading title={t("whyTitle")} align="center" />
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -22,13 +22,13 @@ export function WhyUs() {
             const Icon = item.icon;
             return (
               <div key={item.titleKey} className="text-center">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-red-600">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400">
                   <Icon className="h-7 w-7" aria-hidden="true" />
                 </div>
-                <h3 className="mb-2 text-base font-bold text-navy-900">
+                <h3 className="mb-2 text-base font-bold text-navy-900 dark:text-white">
                   {t(item.titleKey)}
                 </h3>
-                <p className="text-sm leading-relaxed text-steel-700">
+                <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">
                   {t(item.descKey)}
                 </p>
               </div>

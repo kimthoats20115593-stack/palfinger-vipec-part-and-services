@@ -8,9 +8,9 @@ const variantClasses: Record<Variant, string> = {
   primary:
     "bg-red-500 text-white hover:bg-red-600 focus-visible:outline-red-600",
   secondary:
-    "bg-navy-900 text-white hover:bg-navy-800 focus-visible:outline-navy-900",
+    "bg-navy-900 text-white hover:bg-navy-800 focus-visible:outline-navy-900 dark:focus-visible:outline-white",
   ghost:
-    "bg-transparent text-navy-900 border border-steel-300 hover:bg-steel-50 focus-visible:outline-navy-900",
+    "bg-transparent text-navy-900 border border-steel-300 hover:bg-steel-50 focus-visible:outline-navy-900 dark:focus-visible:outline-white dark:text-white dark:border-navy-700 dark:hover:bg-navy-900",
 };
 
 const baseClasses =

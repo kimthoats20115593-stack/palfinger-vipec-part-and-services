@@ -62,7 +62,7 @@ export function PartsExplorer({
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={t("searchPlaceholder")}
-            className="min-h-11 w-full rounded-md border border-steel-200 bg-white py-3 pl-11 pr-4 text-sm text-steel-900 placeholder:text-steel-400 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900"
+            className="min-h-11 w-full rounded-md border border-steel-200 bg-white py-3 pl-11 pr-4 text-sm text-steel-900 placeholder:text-steel-400 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900 dark:border-navy-700 dark:bg-navy-900 dark:text-white dark:focus:border-white"
           />
         </div>
         <label htmlFor="parts-category" className="sr-only">
@@ -72,7 +72,7 @@ export function PartsExplorer({
           id="parts-category"
           value={categoryId}
           onChange={(e) => setCategoryId(e.target.value)}
-          className="min-h-11 rounded-md border border-steel-200 bg-white px-4 text-sm font-medium text-steel-900 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900 sm:w-64"
+          className="min-h-11 rounded-md border border-steel-200 bg-white px-4 text-sm font-medium text-steel-900 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900 dark:border-navy-700 dark:bg-navy-900 dark:text-white dark:focus:border-white sm:w-64"
         >
           <option value="all">{t("allCategories")}</option>
           {categories.map((cat) => (
@@ -84,7 +84,7 @@ export function PartsExplorer({
       </div>
 
       {filtered.length === 0 ? (
-        <p className="rounded-lg border border-dashed border-steel-300 p-10 text-center text-sm text-steel-600">
+        <p className="rounded-lg border border-dashed border-steel-300 p-10 text-center text-sm text-steel-600 dark:border-navy-700 dark:text-steel-300">
           {t("noResults")}
         </p>
       ) : (

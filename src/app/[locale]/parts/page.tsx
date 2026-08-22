@@ -42,10 +42,10 @@ export default async function PartsPage({
         </Container>
       </section>
 
-      <section className="border-t border-steel-100 bg-steel-50 py-16">
+      <section className="border-t border-steel-100 bg-steel-50 py-16 dark:border-navy-800 dark:bg-navy-900">
         <Container className="flex flex-col items-center gap-4 text-center">
-          <h2 className="text-xl font-bold text-navy-900">{t("notListedTitle")}</h2>
-          <p className="max-w-xl text-sm leading-relaxed text-steel-700">
+          <h2 className="text-xl font-bold text-navy-900 dark:text-white">{t("notListedTitle")}</h2>
+          <p className="max-w-xl text-sm leading-relaxed text-steel-700 dark:text-steel-300">
             {t("notListedDesc")}
           </p>
           <ButtonLink href="/quote" variant="primary">

@@ -8,8 +8,8 @@ type InquiryType = "QUOTE" | "CONTACT";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const inputClasses =
-  "min-h-11 w-full rounded-md border border-steel-200 bg-white px-4 py-2.5 text-sm text-steel-900 placeholder:text-steel-400 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
-const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900";
+  "min-h-11 w-full rounded-md border border-steel-200 bg-white px-4 py-2.5 text-sm text-steel-900 placeholder:text-steel-400 focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900 dark:border-navy-700 dark:bg-navy-900 dark:text-white dark:focus:border-white";
+const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900 dark:text-white";
 
 export function InquiryForm({
   type,
@@ -63,10 +63,10 @@ export function InquiryForm({
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-8 text-center">
-        <CheckCircle2 className="h-10 w-10 text-green-600" aria-hidden="true" />
-        <h3 className="text-lg font-bold text-navy-900">{t("formSuccessTitle")}</h3>
-        <p className="text-sm text-steel-700">{t("formSuccessDesc")}</p>
+      <div className="flex flex-col items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-8 text-center dark:border-green-500/20 dark:bg-green-500/10">
+        <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" aria-hidden="true" />
+        <h3 className="text-lg font-bold text-navy-900 dark:text-white">{t("formSuccessTitle")}</h3>
+        <p className="text-sm text-steel-700 dark:text-steel-300">{t("formSuccessDesc")}</p>
       </div>
     );
   }
@@ -74,8 +74,8 @@ export function InquiryForm({
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       {partLabel && (
-        <div className="rounded-md bg-steel-50 px-4 py-3 text-sm text-steel-700">
-          <span className="font-semibold text-navy-900">{t("formPart")}: </span>
+        <div className="rounded-md bg-steel-50 px-4 py-3 text-sm text-steel-700 dark:bg-navy-900 dark:text-steel-300">
+          <span className="font-semibold text-navy-900 dark:text-white">{t("formPart")}: </span>
           {partLabel}
         </div>
       )}
@@ -139,7 +139,7 @@ export function InquiryForm({
       </div>
 
       {status === "error" && (
-        <div className="flex items-start gap-2.5 rounded-md bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="flex items-start gap-2.5 rounded-md bg-red-50 px-4 py-3 text-sm text-red-700 dark:bg-red-500/10 dark:text-red-300">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           <span>{errorMsg || t("formErrorDesc")}</span>
         </div>

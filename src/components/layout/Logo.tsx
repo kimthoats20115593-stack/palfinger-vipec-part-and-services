@@ -11,7 +11,7 @@ export function Logo({ light = false }: { light?: boolean }) {
     >
       <span
         className={clsx(
-          "flex shrink-0 items-center rounded-md",
+          "flex shrink-0 items-center rounded-md dark:bg-white dark:px-2 dark:py-1",
           light && "bg-white px-2 py-1"
         )}
       >
@@ -25,7 +25,10 @@ export function Logo({ light = false }: { light?: boolean }) {
         />
       </span>
       <span
-        className={clsx("h-5 w-px shrink-0", light ? "bg-white/25" : "bg-steel-300")}
+        className={clsx(
+          "h-5 w-px shrink-0",
+          light ? "bg-white/25" : "bg-steel-300 dark:bg-white/25"
+        )}
         aria-hidden="true"
       />
       <Image
@@ -34,7 +37,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         width={2562}
         height={549}
         priority
-        className={clsx("w-auto shrink-0", light ? "h-5" : "h-6 sm:h-7")}
+        className={clsx("w-auto shrink-0", light ? "h-6" : "h-7 sm:h-8")}
       />
     </Link>
   );

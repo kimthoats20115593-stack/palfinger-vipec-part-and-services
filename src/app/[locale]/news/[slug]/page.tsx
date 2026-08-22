@@ -53,7 +53,7 @@ export default async function NewsDetailPage({
       <Container className="mx-auto max-w-3xl">
         <Link
           href="/news"
-          className="mb-8 inline-flex items-center gap-1.5 text-sm font-semibold text-steel-600 hover:text-navy-900"
+          className="mb-8 inline-flex items-center gap-1.5 text-sm font-semibold text-steel-600 hover:text-navy-900 dark:text-steel-300 dark:hover:text-white"
         >
           <ChevronLeft className="h-4 w-4" aria-hidden="true" />
           {t("backToNews")}
@@ -61,12 +61,12 @@ export default async function NewsDetailPage({
 
         <NewsCover seed={0} className="mb-8 aspect-[16/7] w-full rounded-xl" />
 
-        <p className="mb-2 text-sm font-semibold text-steel-500">
+        <p className="mb-2 text-sm font-semibold text-steel-500 dark:text-steel-400">
           {t("publishedOn")} {date}
         </p>
-        <h1 className="mb-8 text-3xl font-bold text-navy-900 sm:text-4xl">{title}</h1>
+        <h1 className="mb-8 text-3xl font-bold text-navy-900 dark:text-white sm:text-4xl">{title}</h1>
 
-        <div className="space-y-5 text-base leading-relaxed text-steel-700">
+        <div className="space-y-5 text-base leading-relaxed text-steel-700 dark:text-steel-300">
           {paragraphs.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

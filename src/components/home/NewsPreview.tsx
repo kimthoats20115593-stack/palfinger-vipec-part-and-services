@@ -16,7 +16,7 @@ export async function NewsPreview() {
   if (posts.length === 0) return null;
 
   return (
-    <section className="bg-steel-50 py-20">
+    <section className="bg-steel-50 py-20 dark:bg-navy-900">
       <Container>
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading title={t("newsTitle")} />

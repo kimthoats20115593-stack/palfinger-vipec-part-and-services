@@ -17,7 +17,7 @@ export async function PartsShowcase() {
   if (parts.length === 0) return null;
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-20 dark:bg-navy-950">
       <Container>
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading title={t("partsTitle")} subtitle={t("partsSubtitle")} />

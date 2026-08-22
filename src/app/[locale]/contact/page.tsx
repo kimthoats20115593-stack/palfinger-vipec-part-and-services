@@ -33,37 +33,37 @@ export default async function ContactPage({
       <section className="py-16">
         <Container className="grid grid-cols-1 gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <h2 className="mb-6 text-lg font-bold text-navy-900">{t("officeTitle")}</h2>
-            <ul className="mb-8 space-y-4 text-sm text-steel-700">
+            <h2 className="mb-6 text-lg font-bold text-navy-900 dark:text-white">{t("officeTitle")}</h2>
+            <ul className="mb-8 space-y-4 text-sm text-steel-700 dark:text-steel-300">
               <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true" />
                 {address}
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
-                <a href={`tel:${siteConfig.hotlineHref}`} className="hover:text-red-600">
+                <Phone className="h-5 w-5 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true" />
+                <a href={`tel:${siteConfig.hotlineHref}`} className="hover:text-red-600 dark:hover:text-red-400">
                   {siteConfig.hotline}
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 shrink-0 text-red-600" aria-hidden="true" />
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-red-600">
+                <Mail className="h-5 w-5 shrink-0 text-red-600 dark:text-red-400" aria-hidden="true" />
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-red-600 dark:hover:text-red-400">
                   {siteConfig.email}
                 </a>
               </li>
             </ul>
 
-            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-navy-900">
-              <Clock className="h-5 w-5 text-red-600" aria-hidden="true" />
+            <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-navy-900 dark:text-white">
+              <Clock className="h-5 w-5 text-red-600 dark:text-red-400" aria-hidden="true" />
               {t("hoursTitle")}
             </h2>
-            <ul className="mb-8 space-y-2 text-sm text-steel-700">
+            <ul className="mb-8 space-y-2 text-sm text-steel-700 dark:text-steel-300">
               <li>{t("hoursWeekday")}</li>
               <li>{t("hoursSaturday")}</li>
-              <li className="font-semibold text-red-600">{t("hoursEmergency")}</li>
+              <li className="font-semibold text-red-600 dark:text-red-400">{t("hoursEmergency")}</li>
             </ul>
 
-            <div className="overflow-hidden rounded-xl border border-steel-100">
+            <div className="overflow-hidden rounded-xl border border-steel-100 dark:border-navy-800">
               <iframe
                 src={siteConfig.mapEmbedUrl}
                 title="Bản đồ văn phòng PALFINGER VIPEC"
@@ -76,8 +76,8 @@ export default async function ContactPage({
           </div>
 
           <div className="lg:col-span-3">
-            <div className="rounded-2xl border border-steel-100 bg-white p-6 shadow-sm sm:p-10">
-              <h2 className="mb-6 text-lg font-bold text-navy-900">{t("formTitle")}</h2>
+            <div className="rounded-2xl border border-steel-100 bg-white p-6 shadow-sm dark:border-navy-800 dark:bg-navy-900 sm:p-10">
+              <h2 className="mb-6 text-lg font-bold text-navy-900 dark:text-white">{t("formTitle")}</h2>
               <InquiryForm type="CONTACT" />
             </div>
           </div>

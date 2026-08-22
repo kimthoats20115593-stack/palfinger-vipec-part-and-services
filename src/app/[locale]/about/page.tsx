@@ -32,37 +32,37 @@ export default async function AboutPage({
 
       <section className="py-16">
         <Container className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <div className="rounded-xl border border-steel-100 p-8">
-            <Target className="h-8 w-8 text-red-600" aria-hidden="true" />
-            <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900">
+          <div className="rounded-xl border border-steel-100 p-8 dark:border-navy-800">
+            <Target className="h-8 w-8 text-red-600 dark:text-red-400" aria-hidden="true" />
+            <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900 dark:text-white">
               {t("missionTitle")}
             </h2>
-            <p className="text-sm leading-relaxed text-steel-700">{t("missionDesc")}</p>
+            <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t("missionDesc")}</p>
           </div>
-          <div className="rounded-xl border border-steel-100 p-8">
-            <Eye className="h-8 w-8 text-red-600" aria-hidden="true" />
-            <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900">
+          <div className="rounded-xl border border-steel-100 p-8 dark:border-navy-800">
+            <Eye className="h-8 w-8 text-red-600 dark:text-red-400" aria-hidden="true" />
+            <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900 dark:text-white">
               {t("visionTitle")}
             </h2>
-            <p className="text-sm leading-relaxed text-steel-700">{t("visionDesc")}</p>
+            <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t("visionDesc")}</p>
           </div>
         </Container>
       </section>
 
-      <section className="bg-steel-50 py-16">
+      <section className="bg-steel-50 py-16 dark:bg-navy-900">
         <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="mb-6 text-2xl font-bold text-navy-900">
+            <h2 className="mb-6 text-2xl font-bold text-navy-900 dark:text-white">
               {t("capabilitiesTitle")}
             </h2>
             <ul className="space-y-4">
               {capabilities.map((cap) => (
                 <li key={cap} className="flex items-start gap-3">
                   <CheckCircle2
-                    className="mt-0.5 h-5 w-5 shrink-0 text-red-600"
+                    className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400"
                     aria-hidden="true"
                   />
-                  <span className="text-sm leading-relaxed text-steel-700">{cap}</span>
+                  <span className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{cap}</span>
                 </li>
               ))}
             </ul>
@@ -73,21 +73,21 @@ export default async function AboutPage({
 
       <section className="py-16">
         <Container className="flex flex-col items-center gap-6 text-center">
-          <Users2 className="h-10 w-10 text-red-600" aria-hidden="true" />
-          <h2 className="text-2xl font-bold text-navy-900">{t("teamTitle")}</h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-steel-700">
+          <Users2 className="h-10 w-10 text-red-600 dark:text-red-400" aria-hidden="true" />
+          <h2 className="text-2xl font-bold text-navy-900 dark:text-white">{t("teamTitle")}</h2>
+          <p className="max-w-2xl text-sm leading-relaxed text-steel-700 dark:text-steel-300">
             {t("teamDesc")}
           </p>
         </Container>
       </section>
 
-      <section className="border-t border-steel-100 bg-steel-50 py-10">
+      <section className="border-t border-steel-100 bg-steel-50 py-10 dark:border-navy-800 dark:bg-navy-900">
         <Container>
-          <div className="mx-auto max-w-2xl rounded-lg border border-steel-200 bg-white p-6 text-center">
-            <p className="mb-1 text-xs font-bold uppercase tracking-wide text-steel-500">
+          <div className="mx-auto max-w-2xl rounded-lg border border-steel-200 bg-white p-6 text-center dark:border-navy-700 dark:bg-navy-950">
+            <p className="mb-1 text-xs font-bold uppercase tracking-wide text-steel-500 dark:text-steel-400">
               {t("noteTitle")}
             </p>
-            <p className="text-sm text-steel-600">{t("noteDesc")}</p>
+            <p className="text-sm text-steel-600 dark:text-steel-300">{t("noteDesc")}</p>
           </div>
         </Container>
       </section>
