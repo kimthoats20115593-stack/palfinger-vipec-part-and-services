@@ -183,5 +183,15 @@
     "learnMore": "Learn more",
     "viewAll": "View all",
     "sampleContentNotice": "Sample content — will be replaced with real business information."
+  },
+  "chatWidget": {
+    "toggleOpen": "Open chat",
+    "toggleClose": "Close chat",
+    "title": "Chat with PALFINGER VIPEC",
+    "subtitle": "Pick a channel to message us — our team replies as soon as possible.",
+    "zaloTitle": "Chat on Zalo",
+    "zaloSubtitle": "Message us directly on Zalo",
+    "formTitle": "Send a request on the website",
+    "formSubtitle": "Fill in your details and we will get back to you"
   }
 }

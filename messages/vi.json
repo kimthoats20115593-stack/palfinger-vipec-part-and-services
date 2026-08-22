@@ -183,5 +183,15 @@
     "learnMore": "Tìm hiểu thêm",
     "viewAll": "Xem tất cả",
     "sampleContentNotice": "Nội dung minh họa — sẽ được cập nhật bằng thông tin thực tế của doanh nghiệp."
+  },
+  "chatWidget": {
+    "toggleOpen": "Mở khung chat",
+    "toggleClose": "Đóng khung chat",
+    "title": "Chat với PALFINGER VIPEC",
+    "subtitle": "Chọn kênh bạn muốn nhắn tin, đội ngũ VIPEC sẽ phản hồi sớm nhất.",
+    "zaloTitle": "Chat qua Zalo",
+    "zaloSubtitle": "Nhắn tin trực tiếp qua Zalo",
+    "formTitle": "Gửi yêu cầu qua website",
+    "formSubtitle": "Điền thông tin, VIPEC sẽ liên hệ lại"
   }
 }

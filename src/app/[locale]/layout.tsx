@@ -8,6 +8,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MobileQuoteBar } from "@/components/layout/MobileQuoteBar";
 import { CompareBar } from "@/components/parts/CompareBar";
+import { ZaloChatWidget } from "@/components/layout/ZaloChatWidget";
 import "../globals.css";
 
 const inter = Inter({
@@ -87,6 +88,7 @@ export default async function LocaleLayout({
           <Footer />
           <MobileQuoteBar />
           <CompareBar />
+          <ZaloChatWidget />
         </NextIntlClientProvider>
       </body>
     </html>
