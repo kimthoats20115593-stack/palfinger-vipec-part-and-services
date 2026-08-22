@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Oswald } from "next/font/google";
+import { Nunito } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -11,17 +11,10 @@ import { CompareBar } from "@/components/parts/CompareBar";
 import { ZaloChatWidget } from "@/components/layout/ZaloChatWidget";
 import "../globals.css";
 
-const inter = Inter({
+const nunito = Nunito({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-inter",
+  variable: "--font-nunito",
   display: "swap",
-});
-
-const oswald = Oswald({
-  subsets: ["latin", "vietnamese"],
-  variable: "--font-oswald",
-  display: "swap",
-  weight: ["500", "600", "700"],
 });
 
 export function generateStaticParams() {
@@ -63,7 +56,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${oswald.variable}`}
+      className={nunito.variable}
       suppressHydrationWarning
     >
       <head>

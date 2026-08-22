@@ -31,8 +31,8 @@
   --background: #ffffff;
   --foreground: var(--color-steel-950);
 
-  --font-display: var(--font-oswald), "Arial Narrow", sans-serif;
-  --font-sans: var(--font-inter), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-nunito), "Segoe UI", Arial, sans-serif;
+  --font-sans: var(--font-nunito), Arial, Helvetica, sans-serif;
 }
 
 @theme inline {
