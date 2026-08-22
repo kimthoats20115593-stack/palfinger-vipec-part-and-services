@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 async function main() {
   // ----- Admin account -----
-  const adminEmail = "admin@vipec-vp.vn";
+  const adminEmail = "kimthoats20115593@gmail.com";
   const adminPassword = "PalfingerVipec@2026";
   const passwordHash = await bcrypt.hash(adminPassword, 10);
 

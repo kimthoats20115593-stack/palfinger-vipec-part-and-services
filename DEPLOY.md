@@ -130,7 +130,7 @@ của WooCommerce) — chỉ tạo mới, không ghi đè nội dung bạn đã 
 
 ## Phần 4 — Sau khi triển khai
 
-- [ ] Đổi mật khẩu tài khoản quản trị mặc định (`admin@vipec-vp.vn`) ngay lập tức
+- [ ] Đổi mật khẩu tài khoản quản trị mặc định (`kimthoats20115593@gmail.com`) ngay lập tức
 - [ ] Cập nhật thông tin liên hệ thật trong `src/lib/site.ts` (số điện thoại, địa chỉ, bản đồ)
 - [ ] Thay logo/favicon chính thức
 - [ ] Bấm "Đồng bộ ngay" trong `/admin` để lấy model cẩu + dầu nhớt mỡ thật từ vipec-vp.vn

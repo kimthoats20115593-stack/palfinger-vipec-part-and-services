@@ -33,7 +33,7 @@ Mở [http://localhost:3000](http://localhost:3000) — sẽ tự chuyển đế
 Trang quản trị: [http://localhost:3000/admin/login](http://localhost:3000/admin/login)
 
 **Tài khoản quản trị mặc định (đổi ngay sau khi triển khai thật):**
-- Email: `admin@vipec-vp.vn`
+- Email: `kimthoats20115593@gmail.com`
 - Mật khẩu: `PalfingerVipec@2026`
 
 > Đổi mật khẩu bằng cách sửa trực tiếp trong Prisma Studio (`npm run db:studio`) — hash mật khẩu
