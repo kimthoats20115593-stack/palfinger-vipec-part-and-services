@@ -20,7 +20,7 @@
     "statClients": "Corporate clients served",
     "statResponse": "Technical request response",
     "servicesTitle": "Full-Service Technical Support",
-    "servicesSubtitle": "From scheduled maintenance to on-site emergency repair — our technicians stand behind your fleet.",
+    "servicesSubtitle": "From repairs and scheduled maintenance to parts guidance — our technicians stand behind your fleet.",
     "servicesCta": "View all services",
     "partsTitle": "Featured Parts",
     "partsSubtitle": "A selection of our most requested genuine part numbers.",
@@ -61,7 +61,7 @@
   "services": {
     "eyebrow": "Technical Services",
     "title": "Complete technical solutions for knuckle boom cranes",
-    "subtitle": "We support customers at every stage — from installation and operation to maintenance and emergency response.",
+    "subtitle": "We support our customers with repairs, scheduled maintenance, and genuine replacement parts guidance.",
     "s1Title": "Repair & Troubleshooting",
     "s1Desc": "Diagnosing and resolving hydraulic, electrical control and mechanical structure issues — fast return to operation.",
     "s2Title": "Scheduled Maintenance",

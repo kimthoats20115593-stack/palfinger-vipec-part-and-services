@@ -20,7 +20,7 @@
     "statClients": "Khách hàng doanh nghiệp",
     "statResponse": "Phản hồi yêu cầu kỹ thuật",
     "servicesTitle": "Dịch vụ kỹ thuật trọn gói",
-    "servicesSubtitle": "Từ bảo dưỡng định kỳ đến cứu hộ hiện trường — đội kỹ thuật của chúng tôi đồng hành cùng đội cẩu của bạn.",
+    "servicesSubtitle": "Từ sửa chữa, bảo dưỡng định kỳ đến tư vấn phụ tùng — đội kỹ thuật của chúng tôi đồng hành cùng đội cẩu của bạn.",
     "servicesCta": "Xem tất cả dịch vụ",
     "partsTitle": "Phụ tùng nổi bật",
     "partsSubtitle": "Một số mã phụ tùng chính hãng được đặt hàng nhiều nhất.",
@@ -61,7 +61,7 @@
   "services": {
     "eyebrow": "Dịch vụ kỹ thuật",
     "title": "Giải pháp kỹ thuật toàn diện cho cẩu gập",
-    "subtitle": "Chúng tôi hỗ trợ khách hàng ở mọi giai đoạn — từ lắp đặt, vận hành đến bảo dưỡng và cứu hộ khẩn cấp.",
+    "subtitle": "Chúng tôi đồng hành cùng khách hàng từ sửa chữa, bảo dưỡng đến tư vấn phụ tùng thay thế chính hãng.",
     "s1Title": "Sửa chữa & khắc phục sự cố",
     "s1Desc": "Chẩn đoán và xử lý sự cố thủy lực, điện điều khiển, kết cấu cơ khí — khôi phục vận hành nhanh chóng.",
     "s2Title": "Bảo dưỡng định kỳ",
