@@ -8,7 +8,7 @@ và dịch vụ kỹ thuật sửa chữa/bảo dưỡng cẩu. Xây dựng bằ
 
 - **Next.js 16** (App Router) + **TypeScript** — chạy trên Node.js
 - **Tailwind CSS 4** — hệ thống thiết kế (màu sắc, typography) khai báo tại `src/app/globals.css`
-- **Prisma + SQLite** — cơ sở dữ liệu cho phụ tùng, tin tức, yêu cầu liên hệ, tài khoản quản trị
+- **Prisma + MySQL** — cơ sở dữ liệu cho phụ tùng, tin tức, yêu cầu liên hệ, tài khoản quản trị
 - **NextAuth (Credentials)** — bảo vệ trang `/admin`
 - **next-intl** — song ngữ VI (mặc định) / EN, dùng đường dẫn `/vi/...` và `/en/...`
 - **Nodemailer** — gửi email thông báo khi có yêu cầu liên hệ/báo giá mới (tùy chọn, cấu hình qua `.env`)
@@ -17,7 +17,8 @@ và dịch vụ kỹ thuật sửa chữa/bảo dưỡng cẩu. Xây dựng bằ
 
 ```bash
 npm install
-npx prisma db push      # tạo file database SQLite theo schema
+# Cần một database MySQL đang chạy, khai báo DATABASE_URL trong .env (xem .env.example)
+npx prisma db push      # tạo bảng theo schema
 npx prisma db seed      # tạo dữ liệu mẫu + tài khoản admin
 npm run dev
 ```

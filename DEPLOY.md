@@ -50,70 +50,61 @@ thể nâng cấp lên VPS.
 
 ### Tên miền
 
-Website đang cấu hình sẵn cho tên miền `vipec-vp.vn` (theo email liên hệ công ty). Nếu tên miền
-này đã có ở nhà cung cấp khác, vào phần quản lý DNS của tên miền và trỏ về Hostinger theo hướng dẫn
-trong hPanel (mục Domains). Nếu muốn dùng tên miền khác, nhớ cập nhật lại `NEXTAUTH_URL` trong `.env`
-và các thông tin domain trong `src/lib/site.ts` cho khớp.
+Website đang cấu hình sẵn cho tên miền `vipec-palfingerpart.com`. Nếu muốn dùng tên miền khác, cập
+nhật lại `NEXTAUTH_URL` (biến môi trường) và `domain` trong `src/lib/site.ts` cho khớp.
 
 ---
 
-## Phần 3 — Triển khai ứng dụng Node.js trên Hostinger (qua hPanel)
+## Phần 3 — Triển khai qua tính năng "Web Apps" của Hostinger
 
-1. Đăng nhập **hPanel** → chọn gói hosting → mục **Advanced → Node.js**.
-2. Tạo ứng dụng Node.js mới:
-   - **Node.js version**: chọn bản mới nhất có sẵn (≥ 20.x)
-   - **Application root**: thư mục sẽ chứa code, ví dụ `palfinger-vipec`
-   - **Application URL**: chọn tên miền của bạn
-   - **Application startup file**: `server.js` — dự án đã có sẵn file này ở thư mục gốc, dùng cho
-     đúng các hệ thống Node.js kiểu Passenger (như hPanel) yêu cầu một file khởi động thay vì chạy
-     lệnh `npm run start`
-3. Kết nối mã nguồn — có 2 cách:
-   - **Cách A (khuyến nghị): Git Deployment** — trong hPanel có mục "Git", dán URL GitHub repo và
-     nhánh `main`, Hostinger sẽ tự kéo code về mỗi khi bạn bấm "Deploy" (hoặc tự động khi có commit
-     mới nếu bật webhook).
-   - **Cách B: SSH thủ công** — dùng SSH (hPanel cung cấp thông tin truy cập SSH) để `git clone` repo
-     về thư mục ứng dụng, sau đó `git pull` mỗi khi cập nhật.
-4. Sau khi có code trên server, chạy các lệnh sau qua giao diện Node.js của hPanel hoặc qua SSH,
-   trong đúng thư mục ứng dụng:
+Các gói Hosting Business/Cloud của Hostinger có sẵn tính năng **Trang web → Web Apps** — hỗ trợ
+Next.js trực tiếp, kết nối GitHub, tự build/deploy mỗi khi có code mới, **không cần server.js hay
+thao tác SSH thủ công**. Đây là cách đã được xác nhận hoạt động cho dự án này:
 
-   ```bash
-   npm install
-   npx prisma db push
-   npx prisma db seed        # chỉ chạy 1 lần đầu để có dữ liệu mẫu/tài khoản admin
-   npm run build
+1. hPanel → **Trang web → Web Apps → Bắt đầu**.
+2. Chọn tên miền sẽ chạy website, chọn vị trí server gần người dùng nhất (VD: Singapore).
+3. Ở bước "Triển khai Ứng dụng Web Node.js" → chọn **"Nhập kho lưu trữ Git"** → **"Kết nối với
+   GitHub"** → đăng nhập/ủy quyền → chọn đúng repo đã push ở Phần 1.
+4. Xem lại cấu hình build (Hostinger tự nhận diện đúng Next.js, thường không cần đổi gì):
+   - Framework: **Next.js**, Nhánh: **main**, Thư mục gốc: `./`
+   - Trình quản lý gói: **npm**, Thư mục đầu ra: **.next**
+   - **Lệnh xây dựng**: ô này là dropdown cố định `npm run build`, **không tự gõ lệnh khác được** —
+     mọi tùy chỉnh (build database, dùng Webpack thay Turbopack...) đã được cấu hình sẵn ngay trong
+     `package.json` của repo, cứ để nguyên lựa chọn mặc định.
+5. Mục **Biến môi trường** → bấm "Thêm" → điền:
+   - `DATABASE_URL` — xem Phần 3b bên dưới (cần tạo database MySQL trước)
+   - `NEXTAUTH_SECRET` — chuỗi ngẫu nhiên mạnh (tạo bằng `openssl rand -base64 32`, hoặc nhờ Claude
+     tạo giúp)
+   - `NEXTAUTH_URL` — `https://ten-mien-cua-ban.com`
+   - (Tùy chọn, thêm sau) `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`,
+     `INQUIRY_NOTIFY_TO` — lấy từ email doanh nghiệp tạo trong hPanel (mục Email)
+6. Bấm **Hoàn tất** rồi **Triển khai** — theo dõi tiến trình ở trang "Triển khai", xem log nếu build
+   thất bại.
+7. Vào mục **SSL** (nếu có) hoặc kiểm tra tên miền đã tự có `https://` chưa — Hostinger thường tự
+   cấp SSL miễn phí cho các trang trong Web Apps.
+
+> Lưu ý quan trọng đã xác minh thực tế: **mỗi lần deploy, Hostinger Web Apps tạo một thư mục hoàn
+> toàn mới** (không giữ lại file phát sinh lúc build/chạy trước đó). Vì vậy dự án này **bắt buộc
+> dùng MySQL** (database ngoài, độc lập với thư mục app) — SQLite dạng file **không hoạt động được**
+> trên nền tảng này vì dữ liệu sẽ mất sau mỗi lần deploy lại.
+
+### Phần 3b — Tạo database MySQL
+
+1. hPanel → mục **Cơ sở dữ liệu** (Databases) → tạo database MySQL mới + người dùng (username/mật
+   khẩu riêng cho database, không phải mật khẩu Hostinger của bạn).
+2. Ghi lại 4 thông tin: **host**, **port** (thường là 3306), **tên database**, **username/password**.
+3. Ghép thành chuỗi kết nối theo định dạng:
    ```
-
-5. Tạo file `.env` **trực tiếp trên server** (không đẩy qua Git) với nội dung dựa theo `.env.example`,
-   điền:
-   - `DATABASE_URL="file:./dev.db"`
-   - `NEXTAUTH_SECRET` — tạo chuỗi ngẫu nhiên mạnh, ví dụ chạy `openssl rand -base64 32`
-   - `NEXTAUTH_URL="https://ten-mien-cua-ban.com"`
-   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `INQUIRY_NOTIFY_TO` — lấy từ
-     email doanh nghiệp tạo trong hPanel (mục Emails), dùng để nhận thông báo khi có khách gửi yêu
-     cầu báo giá/liên hệ.
-
-6. Đặt lệnh khởi động ứng dụng là `npm run start` nếu hPanel cho chọn lệnh tùy ý; nếu giao diện chỉ
-   cho chọn một **file** khởi động (kiểu Passenger), chọn `server.js` như đã cấu hình ở bước 2.
-7. Bật ứng dụng (Start/Restart) trong giao diện Node.js của hPanel.
-8. Vào mục **SSL** trong hPanel, bật **SSL miễn phí (Let's Encrypt)** cho tên miền — bắt buộc để
-   website chạy `https://`.
-
-### Lưu ý về cơ sở dữ liệu SQLite
-
-Website dùng SQLite (file `prisma/dev.db`) — đơn giản, không cần dịch vụ database riêng, phù hợp
-với quy mô một website doanh nghiệp. Điều quan trọng:
-
-- **Sao lưu định kỳ** file `prisma/dev.db` (tải về qua File Manager/SFTP), vì đây là nơi lưu toàn
-  bộ phụ tùng, tin tức, yêu cầu khách hàng đã nhập qua trang quản trị.
-- Nếu sau này lượng dữ liệu/truy cập tăng mạnh, có thể chuyển sang MySQL (Hostinger có sẵn) bằng
-  cách đổi `provider` trong `prisma/schema.prisma` và cập nhật `DATABASE_URL`.
+   mysql://<username>:<password>@<host>:<port>/<ten-database>
+   ```
+4. Dán chuỗi này làm giá trị biến môi trường `DATABASE_URL` ở bước 5 (Phần 3) — nếu app đã deploy
+   rồi, vào **Triển khai → Biến môi trường**, sửa `DATABASE_URL`, rồi bấm **Tải triển khai** để build
+   lại (bảng dữ liệu sẽ tự được tạo trong lúc build, không cần chạy lệnh gì thêm trên MySQL).
 
 ### Cập nhật khi có thay đổi code sau này
 
-1. `git push` code mới lên GitHub từ máy bạn.
-2. Trên hPanel (Git Deployment): bấm **Deploy** để kéo code mới nhất.
-3. Qua SSH: `git pull && npm install && npx prisma db push && npm run build`, sau đó **Restart**
-   ứng dụng trong giao diện Node.js.
+Chỉ cần `git push` code mới lên GitHub, sau đó vào trang **Triển khai** trên Hostinger, bấm
+**"Tải triển khai"** để build và deploy lại bản mới nhất.
 
 ---
 
