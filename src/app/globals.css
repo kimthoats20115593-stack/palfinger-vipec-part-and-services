@@ -84,6 +84,14 @@ h1, h2, h3, h4, .font-display {
   font-family: var(--font-display);
 }
 
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

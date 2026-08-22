@@ -6,10 +6,7 @@ export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
-      className={clsx(
-        "group flex items-center gap-x-1.5 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 sm:gap-x-3",
-        light ? "flex-wrap gap-y-1.5" : "flex-nowrap"
-      )}
+      className="group flex flex-nowrap items-center gap-x-1.5 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 sm:gap-x-3"
       aria-label="PALFINGER VIPEC — Trang chủ"
     >
       <span

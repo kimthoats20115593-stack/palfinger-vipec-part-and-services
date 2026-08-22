@@ -14,6 +14,7 @@ function readFromStorage(): string[] {
   }
 }
 
+const EMPTY_IDS: string[] = [];
 let cachedIds: string[] = readFromStorage();
 
 function persist(ids: string[]) {
@@ -34,7 +35,7 @@ export function getSnapshot(): string[] {
 }
 
 export function getServerSnapshot(): string[] {
-  return [];
+  return EMPTY_IDS;
 }
 
 export function toggleCompare(id: string) {
