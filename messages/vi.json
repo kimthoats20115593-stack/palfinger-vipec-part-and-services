@@ -192,6 +192,7 @@
     "zaloTitle": "Chat qua Zalo",
     "zaloSubtitle": "Nhắn tin trực tiếp qua Zalo",
     "formTitle": "Gửi yêu cầu qua website",
-    "formSubtitle": "Điền thông tin, VIPEC sẽ liên hệ lại"
+    "formSubtitle": "Điền thông tin, VIPEC sẽ liên hệ lại",
+    "zaloScanHint": "Quét mã QR để kết bạn Zalo, hoặc bấm để mở Zalo ngay"
   }
 }

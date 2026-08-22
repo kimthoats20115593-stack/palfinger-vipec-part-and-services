@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { MessageCircle, X, FileText, ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -36,20 +37,34 @@ export function ZaloChatWidget() {
               href={zaloHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl border border-steel-200 p-3 transition-colors hover:border-[#0068ff] hover:bg-[#0068ff]/5 dark:border-navy-700 dark:hover:bg-[#0068ff]/10"
+              className="overflow-hidden rounded-xl border border-steel-200 transition-colors hover:border-[#0068ff] dark:border-navy-700"
             >
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0068ff] text-sm font-bold text-white">
-                Zalo
-              </span>
-              <span className="min-w-0 flex-1">
-                <span className="block text-sm font-semibold text-navy-900 dark:text-white">
-                  {t("zaloTitle")}
+              <span className="flex items-center gap-3 bg-[#0068ff]/5 p-3 dark:bg-[#0068ff]/10">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#0068ff] text-sm font-bold text-white">
+                  Zalo
                 </span>
-                <span className="block truncate text-xs text-steel-500 dark:text-steel-300">
-                  {t("zaloSubtitle")}
+                <span className="min-w-0 flex-1">
+                  <span className="block text-sm font-semibold text-navy-900 dark:text-white">
+                    {t("zaloTitle")}
+                  </span>
+                  <span className="block truncate text-xs text-steel-500 dark:text-steel-300">
+                    {t("zaloSubtitle")}
+                  </span>
+                </span>
+                <ChevronRight className="h-4 w-4 shrink-0 text-steel-400" aria-hidden="true" />
+              </span>
+              <span className="flex flex-col items-center gap-1.5 border-t border-steel-200 bg-white p-3 dark:border-navy-700 dark:bg-navy-900">
+                <Image
+                  src="/zalo-qr.jpg"
+                  alt="Mã QR Zalo PALFINGER VIPEC"
+                  width={315}
+                  height={480}
+                  className="h-36 w-auto rounded-lg"
+                />
+                <span className="text-center text-[11px] leading-snug text-steel-500 dark:text-steel-300">
+                  {t("zaloScanHint")}
                 </span>
               </span>
-              <ChevronRight className="h-4 w-4 shrink-0 text-steel-400" aria-hidden="true" />
             </a>
 
             <Link

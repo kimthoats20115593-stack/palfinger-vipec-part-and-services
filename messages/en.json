@@ -192,6 +192,7 @@
     "zaloTitle": "Chat on Zalo",
     "zaloSubtitle": "Message us directly on Zalo",
     "formTitle": "Send a request on the website",
-    "formSubtitle": "Fill in your details and we will get back to you"
+    "formSubtitle": "Fill in your details and we will get back to you",
+    "zaloScanHint": "Scan the QR code to add us on Zalo, or tap to open Zalo"
   }
 }
