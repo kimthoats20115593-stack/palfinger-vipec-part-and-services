@@ -2,6 +2,7 @@ export const siteConfig = {
   name: "PALFINGER VIPEC",
   legalName: "Công ty CP Thiết bị & Xe chuyên dụng VIPEC",
   domain: "vipec-palfingerpart.com",
+  website: "www.vipec-vp.vn",
   hotline: "0934 115 593",
   hotlineHref: "+84934115593",
   email: "vtkthoa@vipec-vp.vn",

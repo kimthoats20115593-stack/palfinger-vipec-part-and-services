@@ -242,6 +242,8 @@
     "pdfSectionB": "B. COST BREAKDOWN (VND)",
     "pdfTotal": "ESTIMATED TOTAL",
     "pdfSignCustomer": "CUSTOMER REPRESENTATIVE",
-    "pdfSignCompany": "VIPEC TECHNICAL SERVICE DEPT."
+    "pdfSignCompany": "VIPEC TECHNICAL SERVICE DEPT.",
+    "pdfSignHint": "(Signature & full name)",
+    "pdfPage": "Page {page}"
   }
 }

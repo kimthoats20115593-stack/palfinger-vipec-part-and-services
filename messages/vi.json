@@ -242,6 +242,8 @@
     "pdfSectionB": "B. CHI TIẾT DỰ TOÁN (VNĐ)",
     "pdfTotal": "TỔNG DỰ TOÁN",
     "pdfSignCustomer": "ĐẠI DIỆN KHÁCH HÀNG",
-    "pdfSignCompany": "PHÒNG DỊCH VỤ KỸ THUẬT VIPEC"
+    "pdfSignCompany": "PHÒNG DỊCH VỤ KỸ THUẬT VIPEC",
+    "pdfSignHint": "(Ký, ghi rõ họ tên)",
+    "pdfPage": "Trang {page}"
   }
 }

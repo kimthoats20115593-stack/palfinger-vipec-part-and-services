@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Download, Loader2 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
+import { Logo } from "@/components/layout/Logo";
 import { siteConfig } from "@/lib/site";
 
 const RATES = {
@@ -325,52 +326,56 @@ export function CostEstimator() {
           className="w-[794px] bg-white p-12 text-[#14181d]"
           style={{ fontFamily: "var(--font-sans)" }}
         >
-          <div className="flex items-start justify-between border-b-2 border-[#071527] pb-4">
-            <div>
-              <h1 className="font-display text-2xl font-bold text-[#071527]">
-                {t("pdfDocTitle")}
-              </h1>
-              <p className="mt-1 text-sm text-[#6b7680]">
-                {t("pdfTicketNo")}: {ticketNo} &nbsp;|&nbsp; {t("pdfDate")}: {issueDate}
-              </p>
-            </div>
-            <div className="text-right text-sm text-[#3a434d]">
-              <p className="font-display text-base font-bold text-[#071527]">
+          <div className="flex items-center justify-between border-b border-[#e6e9ec] pb-5">
+            <Logo />
+            <div className="text-right text-xs text-[#3a434d]">
+              <p className="font-display text-sm font-bold text-[#071527]">
                 {siteConfig.legalName}
               </p>
-              <p>
-                Hotline: {siteConfig.hotline} | {siteConfig.email}
+              <p className="mt-0.5">
+                Hotline: {siteConfig.hotline} &nbsp;|&nbsp; {siteConfig.email}
               </p>
             </div>
           </div>
 
-          <div className="mt-6">
-            <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-[#071527]">
+          <div className="mt-7">
+            <h1 className="font-display text-3xl font-bold text-[#b81523]">
+              {t("pdfDocTitle")}
+            </h1>
+            <p className="mt-1.5 text-xs text-[#6b7680]">
+              {t("pdfTicketNo")}: <span className="font-bold text-[#14181d]">{ticketNo}</span>
+              &nbsp;&nbsp;&nbsp;
+              {t("pdfDate")}: <span className="font-bold text-[#14181d]">{issueDate}</span>
+            </p>
+          </div>
+
+          <div className="mt-7">
+            <div className="bg-[#071527] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
               {t("pdfSectionA")}
-            </h2>
+            </div>
             <table className="w-full text-sm">
               <tbody>
-                <tr>
-                  <td className="w-1/2 py-1 text-[#6b7680]">{t("pdfCustomer")}</td>
-                  <td className="py-1 font-semibold text-[#14181d]">
+                <tr className="border-b border-[#e6e9ec]">
+                  <td className="w-1/2 py-2.5 text-[#6b7680]">{t("pdfCustomer")}</td>
+                  <td className="py-2.5 font-semibold text-[#14181d]">
                     {customerName || t("pdfCustomerFallback")}
                   </td>
                 </tr>
-                <tr>
-                  <td className="py-1 text-[#6b7680]">{t("pdfPhoneLabel")}</td>
-                  <td className="py-1 font-semibold text-[#14181d]">{phone || "—"}</td>
+                <tr className="border-b border-[#e6e9ec]">
+                  <td className="py-2.5 text-[#6b7680]">{t("pdfPhoneLabel")}</td>
+                  <td className="py-2.5 font-semibold text-[#14181d]">{phone || "—"}</td>
+                </tr>
+                <tr className="border-b border-[#e6e9ec]">
+                  <td className="py-2.5 text-[#6b7680]">{t("pdfMachineLabel")}</td>
+                  <td className="py-2.5 font-semibold text-[#14181d]">{machineType || "—"}</td>
+                </tr>
+                <tr className="border-b border-[#e6e9ec]">
+                  <td className="py-2.5 text-[#6b7680]">{t("pdfDescLabel")}</td>
+                  <td className="py-2.5 font-semibold text-[#14181d]">{description || "—"}</td>
                 </tr>
                 <tr>
-                  <td className="py-1 text-[#6b7680]">{t("pdfMachineLabel")}</td>
-                  <td className="py-1 font-semibold text-[#14181d]">{machineType || "—"}</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-[#6b7680]">{t("pdfDescLabel")}</td>
-                  <td className="py-1 font-semibold text-[#14181d]">{description || "—"}</td>
-                </tr>
-                <tr>
-                  <td className="py-1 text-[#6b7680]">{t("pdfFuelPriceLabel")}</td>
-                  <td className="py-1 font-semibold text-[#14181d]">
+                  <td className="py-2.5 text-[#6b7680]">{t("pdfFuelPriceLabel")}</td>
+                  <td className="py-2.5 font-semibold text-[#14181d]">
                     {formatVnd(num(fuelPrice), locale)}/L
                   </td>
                 </tr>
@@ -378,41 +383,55 @@ export function CostEstimator() {
             </table>
           </div>
 
-          <div className="mt-6">
-            <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-[#071527]">
+          <div className="mt-7">
+            <div className="bg-[#071527] px-4 py-2.5 text-xs font-bold uppercase tracking-wide text-white">
               {t("pdfSectionB")}
-            </h2>
+            </div>
             <table className="w-full border-collapse text-sm">
               <tbody>
                 {lines.map((line) => (
                   <tr key={line.label} className="border-b border-[#e6e9ec]">
-                    <td className="py-2 text-[#3a434d]">{line.label}</td>
-                    <td className="py-2 text-right font-semibold text-[#14181d]">
+                    <td className="py-2.5 text-[#3a434d]">{line.label}</td>
+                    <td className="py-2.5 text-right font-semibold text-[#14181d]">
                       {formatVnd(line.value, locale)}
                     </td>
                   </tr>
                 ))}
-                <tr>
-                  <td className="pt-4 text-base font-bold text-[#071527]">{t("pdfTotal")}</td>
-                  <td className="pt-4 text-right text-base font-bold text-[#b81523]">
-                    {formatVnd(estimate.total, locale)}
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
 
-          <p className="mt-8 text-xs leading-relaxed text-[#6b7680]">* {t("note")}</p>
+          <div className="mt-5 flex items-center justify-between rounded-lg bg-[#b81523] px-5 py-4">
+            <span className="text-sm font-bold uppercase tracking-wide text-white">
+              {t("pdfTotal")}
+            </span>
+            <span className="text-xl font-bold text-white">{formatVnd(estimate.total, locale)}</span>
+          </div>
 
-          <div className="mt-16 grid grid-cols-2 gap-6 text-center text-xs font-semibold text-[#14181d]">
+          <p className="mt-6 text-[11px] italic leading-relaxed text-[#6b7680]">* {t("note")}</p>
+
+          <div className="mt-16 grid grid-cols-2 gap-6 text-center text-xs font-bold uppercase tracking-wide text-[#14181d]">
             <div>
               <p>{t("pdfSignCustomer")}</p>
-              <div className="mt-16 border-t border-[#cdd3d9]" />
+              <div className="mt-20 border-t border-[#cdd3d9]" />
+              <p className="mt-2 text-[11px] font-normal normal-case italic text-[#6b7680]">
+                {t("pdfSignHint")}
+              </p>
             </div>
             <div>
               <p>{t("pdfSignCompany")}</p>
-              <div className="mt-16 border-t border-[#cdd3d9]" />
+              <div className="mt-20 border-t border-[#cdd3d9]" />
+              <p className="mt-2 text-[11px] font-normal normal-case italic text-[#6b7680]">
+                {t("pdfSignHint")}
+              </p>
             </div>
+          </div>
+
+          <div className="mt-10 flex items-center justify-between border-t border-[#e6e9ec] pt-4 text-[10px] text-[#6b7680]">
+            <p>
+              {siteConfig.legalName} &nbsp;|&nbsp; {siteConfig.website}
+            </p>
+            <p>{t("pdfPage", { page: 1 })}</p>
           </div>
         </div>
       </div>
