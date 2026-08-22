@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { ServicesGrid } from "@/components/home/ServicesGrid";
+import { CostEstimator } from "@/components/services/CostEstimator";
 import { ButtonLink } from "@/components/ui/Button";
 
 export async function generateMetadata({
@@ -54,6 +55,8 @@ export default async function ServicesPage({
           </div>
         </Container>
       </section>
+
+      <CostEstimator />
 
       <section className="py-16">
         <Container className="flex flex-col items-center gap-6 text-center">
