@@ -8,7 +8,7 @@ export function StatsBar() {
     { value: "3.500+", label: t("statParts") },
     { value: "15+", label: t("statYears") },
     { value: "200+", label: t("statClients") },
-    { value: "24h", label: t("statResponse") },
+    { value: "48h", label: t("statResponse") },
   ];
 
   return (
