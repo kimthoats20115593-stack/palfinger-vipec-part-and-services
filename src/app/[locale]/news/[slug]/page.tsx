@@ -8,6 +8,8 @@ import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { NewsCover } from "@/components/illustrations/NewsCover";
 
+export const dynamic = "force-dynamic";
+
 async function getPost(slug: string) {
   return prisma.newsPost.findUnique({ where: { slug } });
 }

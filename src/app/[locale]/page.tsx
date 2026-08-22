@@ -7,6 +7,8 @@ import { WhyUs } from "@/components/home/WhyUs";
 import { NewsPreview } from "@/components/home/NewsPreview";
 import { CtaBanner } from "@/components/home/CtaBanner";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({
   params,
 }: {

@@ -6,6 +6,8 @@ import { PageHero } from "@/components/ui/PageHero";
 import { PartsExplorer } from "@/components/parts/PartsExplorer";
 import { ButtonLink } from "@/components/ui/Button";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

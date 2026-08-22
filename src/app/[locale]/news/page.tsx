@@ -5,6 +5,8 @@ import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import { NewsCard } from "@/components/news/NewsCard";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

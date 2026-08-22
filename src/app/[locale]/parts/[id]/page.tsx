@@ -10,6 +10,8 @@ import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartI
 import { PartCard } from "@/components/parts/PartCard";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 
+export const dynamic = "force-dynamic";
+
 async function getPart(id: string) {
   return prisma.part.findUnique({ where: { id }, include: { category: true } });
 }
