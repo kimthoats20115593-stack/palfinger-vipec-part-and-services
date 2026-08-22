@@ -29,7 +29,7 @@ async function main() {
   for (const cat of categoriesData) {
     const created = await prisma.category.upsert({
       where: { slug: cat.slug },
-      update: cat,
+      update: {},
       create: cat,
     });
     categories[cat.slug] = created.id;
@@ -147,7 +147,7 @@ async function main() {
     const { categorySlug, ...data } = part;
     await prisma.part.upsert({
       where: { sku: part.sku },
-      update: { ...data, categoryId: categories[categorySlug] },
+      update: {},
       create: { ...data, categoryId: categories[categorySlug] },
     });
   }
@@ -211,7 +211,7 @@ async function main() {
   for (const [i, post] of newsData.entries()) {
     await prisma.newsPost.upsert({
       where: { slug: post.slug },
-      update: post,
+      update: {},
       create: {
         ...post,
         coverImage: "default",

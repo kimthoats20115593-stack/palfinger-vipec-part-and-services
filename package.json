@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "start": "next start",
+    "start": "prisma db push --accept-data-loss --skip-generate && npm run db:seed && next start",
     "lint": "eslint",
     "db:seed": "tsx prisma/seed.ts",
     "db:studio": "prisma studio"
