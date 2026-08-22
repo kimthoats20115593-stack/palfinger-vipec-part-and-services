@@ -6,13 +6,13 @@ export function Logo({ light = false }: { light?: boolean }) {
   return (
     <Link
       href="/"
-      className="group flex flex-wrap items-center gap-x-3 gap-y-1.5 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500"
+      className="group flex flex-nowrap items-center gap-x-2 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-500 sm:gap-x-3"
       aria-label="PALFINGER VIPEC — Trang chủ"
     >
       <span
         className={clsx(
-          "flex shrink-0 items-center rounded-md dark:bg-white dark:px-2 dark:py-1",
-          light && "bg-white px-2 py-1"
+          "flex shrink-0 items-center rounded-md dark:bg-white dark:px-1.5 dark:py-0.5 sm:dark:px-2 sm:dark:py-1",
+          light && "bg-white px-1.5 py-0.5 sm:px-2 sm:py-1"
         )}
       >
         <Image
@@ -21,12 +21,12 @@ export function Logo({ light = false }: { light?: boolean }) {
           width={2400}
           height={458}
           priority
-          className={clsx("w-auto shrink-0", light ? "h-6" : "h-7 sm:h-8")}
+          className={clsx("w-auto shrink-0", light ? "h-5" : "h-5 sm:h-7")}
         />
       </span>
       <span
         className={clsx(
-          "h-5 w-px shrink-0",
+          "h-4 w-px shrink-0 sm:h-5",
           light ? "bg-white/25" : "bg-steel-300 dark:bg-white/25"
         )}
         aria-hidden="true"
@@ -37,7 +37,7 @@ export function Logo({ light = false }: { light?: boolean }) {
         width={2562}
         height={549}
         priority
-        className={clsx("w-auto shrink-0", light ? "h-6" : "h-7 sm:h-8")}
+        className={clsx("w-auto shrink-0", light ? "h-6" : "h-7 sm:h-9")}
       />
     </Link>
   );
