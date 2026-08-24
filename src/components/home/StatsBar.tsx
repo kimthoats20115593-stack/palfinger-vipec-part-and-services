@@ -1,13 +1,13 @@
 import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 
-export function StatsBar() {
+export function StatsBar({ craneModelCount }: { craneModelCount: number }) {
   const t = useTranslations("home");
 
   const stats = [
     { value: "3.500+", label: t("statParts") },
     { value: "15+", label: t("statYears") },
-    { value: "200+", label: t("statClients") },
+    { value: `${craneModelCount}+`, label: t("statCraneModels") },
     { value: "48h", label: t("statResponse") },
   ];
 

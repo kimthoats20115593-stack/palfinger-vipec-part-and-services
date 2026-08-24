@@ -1,4 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
+import { prisma } from "@/lib/prisma";
 import { Hero } from "@/components/home/Hero";
 import { StatsBar } from "@/components/home/StatsBar";
 import { ServicesPreview } from "@/components/home/ServicesPreview";
@@ -17,10 +18,12 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const craneModelCount = await prisma.craneModel.count();
+
   return (
     <>
       <Hero />
-      <StatsBar />
+      <StatsBar craneModelCount={craneModelCount} />
       <ServicesPreview />
       <PartsShowcase />
       <WhyUs />

@@ -17,7 +17,6 @@
     "heroCtaSecondary": "Xem catalog phụ tùng",
     "statParts": "Mã phụ tùng chính hãng",
     "statYears": "Năm kinh nghiệm ngành cẩu",
-    "statClients": "Khách hàng doanh nghiệp",
     "statResponse": "Phản hồi yêu cầu kỹ thuật",
     "servicesTitle": "Dịch vụ kỹ thuật trọn gói",
     "servicesSubtitle": "Từ sửa chữa, bảo dưỡng định kỳ đến tư vấn phụ tùng — đội kỹ thuật của chúng tôi đồng hành cùng đội cẩu của bạn.",
@@ -39,7 +38,8 @@
     "ctaTitle": "Cần báo giá phụ tùng hoặc lịch bảo dưỡng?",
     "ctaSubtitle": "Gửi yêu cầu ngay, đội ngũ kỹ thuật của chúng tôi sẽ phản hồi trong 48 giờ làm việc.",
     "ctaButton": "Gửi yêu cầu ngay",
-    "heroImageAlt": "Xe đầu kéo UD gắn cẩu gập PALFINGER SPK23500C 10 tấn"
+    "heroImageAlt": "Hai xe cẩu gập PALFINGER VIPEC đang nâng hạ hàng hoá tại công trình",
+    "statCraneModels": "Dòng cẩu gập hỗ trợ"
   },
   "about": {
     "eyebrow": "Về chúng tôi",

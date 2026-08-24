@@ -1,8 +1,8 @@
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { ArrowRight, ShieldCheck, Wrench, Clock } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { CraneShowcase } from "@/components/illustrations/CraneShowcase";
 
 export function Hero() {
   const t = useTranslations("home");
@@ -41,12 +41,16 @@ export function Hero() {
           </div>
         </div>
 
-        <CraneShowcase
-          src="https://vipec-vp.vn/wp-content/uploads/2025/10/1-4.png"
-          alt={t("heroImageAlt")}
-          priority
-          className="shadow-2xl shadow-black/30"
-        />
+        <div className="overflow-hidden rounded-2xl shadow-2xl shadow-black/30">
+          <Image
+            src="/hero-crane-loading.jpg"
+            alt={t("heroImageAlt")}
+            width={2482}
+            height={2226}
+            priority
+            className="w-full"
+          />
+        </div>
       </Container>
     </section>
   );

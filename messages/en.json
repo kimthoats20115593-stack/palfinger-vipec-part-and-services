@@ -17,7 +17,6 @@
     "heroCtaSecondary": "Browse Parts Catalog",
     "statParts": "Genuine part numbers",
     "statYears": "Years in the crane industry",
-    "statClients": "Corporate clients served",
     "statResponse": "Technical request response",
     "servicesTitle": "Full-Service Technical Support",
     "servicesSubtitle": "From repairs and scheduled maintenance to parts guidance — our technicians stand behind your fleet.",
@@ -39,7 +38,8 @@
     "ctaTitle": "Need a parts quote or maintenance schedule?",
     "ctaSubtitle": "Send your request now — our technical team responds within 48 business hours.",
     "ctaButton": "Send a Request",
-    "heroImageAlt": "UD tractor unit fitted with a PALFINGER SPK23500C 10-ton knuckle boom crane"
+    "heroImageAlt": "Two PALFINGER VIPEC knuckle boom cranes lifting a crate on a job site",
+    "statCraneModels": "Supported crane models"
   },
   "about": {
     "eyebrow": "About Us",
