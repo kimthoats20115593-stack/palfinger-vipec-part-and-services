@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ChevronLeft, Phone } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { localize } from "@/lib/localize";
 import { formatVnd } from "@/lib/format";
@@ -11,7 +11,7 @@ import { Container } from "@/components/ui/Container";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
 import { PartCard } from "@/components/parts/PartCard";
 import { PartGallery } from "@/components/parts/PartGallery";
-import { InquiryForm } from "@/components/forms/InquiryForm";
+import { PartContactActions } from "@/components/parts/PartContactActions";
 
 export const dynamic = "force-dynamic";
 
@@ -127,23 +127,15 @@ export default async function PartDetailPage({
               </div>
             )}
 
-            <div className="mb-6 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={`tel:${siteConfig.hotlineHref}`}
-                className="inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-md bg-red-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-red-600"
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {t("callToOrder")}
-              </a>
-              <a
-                href={zaloHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md border border-steel-200 px-6 text-sm font-semibold text-navy-900 transition-colors hover:border-[#0068ff] hover:text-[#0068ff] dark:border-navy-700 dark:text-white"
-              >
-                {t("zaloConsult")}
-              </a>
-            </div>
+            <PartContactActions
+              partId={part.id}
+              partLabel={`${name} (${part.sku})`}
+              callLabel={t("callToOrder")}
+              zaloLabel={t("zaloConsult")}
+              zaloHref={zaloHref}
+              modalTitle={t("quoteFormTitle")}
+              modalSubtitle={t("quoteFormSubtitle")}
+            />
 
             <dl className="mb-6 grid grid-cols-2 gap-4 rounded-lg border border-steel-100 bg-steel-50 p-5 text-sm dark:border-navy-800 dark:bg-navy-900">
               <div>
@@ -155,7 +147,7 @@ export default async function PartDetailPage({
                 <dd className="text-navy-900 dark:text-white">{craneModelName}</dd>
               </div>
             </dl>
-            <p className="mb-8 text-sm leading-relaxed text-steel-700 dark:text-steel-300">{description}</p>
+            <p className="mb-6 text-sm leading-relaxed text-steel-700 dark:text-steel-300">{description}</p>
 
             {specs.length > 0 && (
               <div className="mb-8 overflow-hidden rounded-lg border border-steel-100 dark:border-navy-800">
@@ -174,16 +166,6 @@ export default async function PartDetailPage({
                 </dl>
               </div>
             )}
-
-            <div className="rounded-xl border border-steel-100 bg-steel-50/60 p-6 dark:border-navy-800 dark:bg-navy-900/60">
-              <h2 className="mb-1 text-base font-bold text-navy-900 dark:text-white">
-                {t("quoteFormTitle")}
-              </h2>
-              <p className="mb-4 text-xs text-steel-500 dark:text-steel-400">
-                {t("quoteFormSubtitle")}
-              </p>
-              <InquiryForm type="QUOTE" partId={part.id} partLabel={`${name} (${part.sku})`} />
-            </div>
           </div>
         </div>
 

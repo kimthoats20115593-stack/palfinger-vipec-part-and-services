@@ -1,5 +1,6 @@
 import { SpecsEditor } from "@/components/admin/SpecsEditor";
 import { ImagesEditor } from "@/components/admin/ImagesEditor";
+import { AdminFormShell } from "@/components/admin/AdminFormShell";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -54,7 +55,7 @@ export function PartForm({
   submitLabel: string;
 }) {
   return (
-    <form action={action} className="space-y-6">
+    <AdminFormShell action={action} redirectTo="/admin/parts" className="space-y-6">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="sku" className={labelClasses}>Mã SKU *</label>
@@ -257,6 +258,6 @@ export function PartForm({
       >
         {submitLabel}
       </button>
-    </form>
+    </AdminFormShell>
   );
 }

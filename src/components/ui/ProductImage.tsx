@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { toLocalImageUrl } from "@/lib/images";
 
 export function ProductImage({
   src,
@@ -27,7 +28,7 @@ export function ProductImage({
 
   return (
     <Image
-      src={src}
+      src={toLocalImageUrl(src)}
       alt={alt}
       width={width}
       height={height}

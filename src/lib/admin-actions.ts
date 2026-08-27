@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { toLocalImageUrl } from "@/lib/images";
 import { InquiryStatus, LubricantType } from "@prisma/client";
 
 async function requireAdmin() {
@@ -40,7 +41,7 @@ function specsFromForm(formData: FormData): { label: string; value: string }[] |
 function imagesFromForm(formData: FormData): string[] {
   return formData
     .getAll("imageUrl")
-    .map((v) => String(v).trim())
+    .map((v) => toLocalImageUrl(String(v).trim()))
     .filter(Boolean);
 }
 
@@ -81,7 +82,6 @@ export async function createPart(formData: FormData) {
 
   revalidatePath("/admin/parts");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/parts");
 }
 
 export async function updatePart(id: string, formData: FormData) {
@@ -121,7 +121,6 @@ export async function updatePart(id: string, formData: FormData) {
 
   revalidatePath("/admin/parts");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/parts");
 }
 
 export async function deletePart(id: string) {
@@ -153,7 +152,6 @@ export async function createNewsPost(formData: FormData) {
 
   revalidatePath("/admin/news");
   revalidatePath("/[locale]/news", "page");
-  redirect("/admin/news");
 }
 
 export async function updateNewsPost(id: string, formData: FormData) {
@@ -176,7 +174,6 @@ export async function updateNewsPost(id: string, formData: FormData) {
 
   revalidatePath("/admin/news");
   revalidatePath("/[locale]/news", "page");
-  redirect("/admin/news");
 }
 
 export async function deleteNewsPost(id: string) {
@@ -222,7 +219,6 @@ export async function createCraneModel(formData: FormData) {
 
   revalidatePath("/admin/crane-models");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/crane-models");
 }
 
 export async function updateCraneModel(id: string, formData: FormData) {
@@ -242,7 +238,6 @@ export async function updateCraneModel(id: string, formData: FormData) {
 
   revalidatePath("/admin/crane-models");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/crane-models");
 }
 
 export async function deleteCraneModel(id: string) {
@@ -276,7 +271,6 @@ export async function createLubricant(formData: FormData) {
 
   revalidatePath("/admin/lubricants");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/lubricants");
 }
 
 export async function updateLubricant(id: string, formData: FormData) {
@@ -301,7 +295,6 @@ export async function updateLubricant(id: string, formData: FormData) {
 
   revalidatePath("/admin/lubricants");
   revalidatePath("/[locale]/parts", "page");
-  redirect("/admin/lubricants");
 }
 
 export async function deleteLubricant(id: string) {

@@ -3,9 +3,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { toLocalImageUrl } from "@/lib/images";
 
 export function PartGallery({
-  images,
+  images: rawImages,
   alt,
   fallback,
 }: {
@@ -14,6 +15,7 @@ export function PartGallery({
   fallback: React.ReactNode;
 }) {
   const [active, setActive] = useState(0);
+  const images = rawImages.map(toLocalImageUrl);
 
   if (images.length === 0) {
     return (

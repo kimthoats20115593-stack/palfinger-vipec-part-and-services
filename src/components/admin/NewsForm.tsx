@@ -1,3 +1,5 @@
+import { AdminFormShell } from "@/components/admin/AdminFormShell";
+
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
 const labelClasses = "mb-1.5 block text-sm font-semibold text-navy-900";
@@ -23,7 +25,7 @@ export function NewsForm({
   submitLabel: string;
 }) {
   return (
-    <form action={action} className="space-y-6">
+    <AdminFormShell action={action} redirectTo="/admin/news" className="space-y-6">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="titleVi" className={labelClasses}>Tiêu đề (VI) *</label>
@@ -116,6 +118,6 @@ export function NewsForm({
       >
         {submitLabel}
       </button>
-    </form>
+    </AdminFormShell>
   );
 }
