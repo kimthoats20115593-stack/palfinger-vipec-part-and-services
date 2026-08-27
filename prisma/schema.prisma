@@ -60,6 +60,7 @@ model Part {
   sizeText      String?
   weightText    String?
   featured      Boolean     @default(false)
+  published     Boolean     @default(true)
   category      Category    @relation(fields: [categoryId], references: [id])
   categoryId    String
   craneModel    CraneModel? @relation(fields: [craneModelId], references: [id])

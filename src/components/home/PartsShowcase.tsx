@@ -8,7 +8,7 @@ import { PartCard } from "@/components/parts/PartCard";
 export async function PartsShowcase() {
   const t = await getTranslations("home");
   const parts = await prisma.part.findMany({
-    where: { featured: true },
+    where: { featured: true, published: true },
     include: { category: true },
     take: 4,
     orderBy: { createdAt: "desc" },

@@ -79,6 +79,7 @@ export default async function PartsPage({
 async function PartsTabContent() {
   const [parts, categories, craneModels] = await Promise.all([
     prisma.part.findMany({
+      where: { published: true },
       include: { category: true, craneModel: true },
       orderBy: { createdAt: "desc" },
     }),

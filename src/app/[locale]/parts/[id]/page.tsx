@@ -19,8 +19,8 @@ export const dynamic = "force-dynamic";
 const zaloHref = `https://zalo.me/${siteConfig.hotlineHref.replace("+", "")}`;
 
 async function getPart(id: string) {
-  return prisma.part.findUnique({
-    where: { id },
+  return prisma.part.findFirst({
+    where: { id, published: true },
     include: { category: true, craneModel: true, images: { orderBy: { order: "asc" } } },
   });
 }
@@ -64,7 +64,7 @@ export default async function PartDetailPage({
     part.images.length > 0 ? part.images.map((img) => img.url) : part.photoUrl ? [part.photoUrl] : [];
 
   const related = await prisma.part.findMany({
-    where: { categoryId: part.categoryId, id: { not: part.id } },
+    where: { categoryId: part.categoryId, id: { not: part.id }, published: true },
     include: { category: true, craneModel: true },
     take: 3,
   });

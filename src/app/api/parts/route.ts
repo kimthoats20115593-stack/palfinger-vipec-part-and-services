@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   }
 
   const parts = await prisma.part.findMany({
-    where: { id: { in: ids } },
+    where: { id: { in: ids }, published: true },
     include: { category: true, craneModel: true },
   });
 

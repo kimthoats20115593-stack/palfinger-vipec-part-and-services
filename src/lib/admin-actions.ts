@@ -65,6 +65,7 @@ export async function createPart(formData: FormData) {
       image: str(formData, "image") || "gear",
       photoUrl: images[0] ?? null,
       featured: bool(formData, "featured"),
+      published: bool(formData, "published"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData),
       price: nullableInt(formData, "price"),
@@ -103,6 +104,7 @@ export async function updatePart(id: string, formData: FormData) {
       image: str(formData, "image") || "gear",
       photoUrl: images[0] ?? null,
       featured: bool(formData, "featured"),
+      published: bool(formData, "published"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData) ?? [],
       price: nullableInt(formData, "price"),
@@ -129,6 +131,14 @@ export async function deletePart(id: string) {
   await prisma.part.delete({ where: { id } });
   revalidatePath("/admin/parts");
   revalidatePath("/[locale]/parts", "page");
+}
+
+export async function togglePartPublished(id: string, nextPublished: boolean) {
+  await requireAdmin();
+  await prisma.part.update({ where: { id }, data: { published: nextPublished } });
+  revalidatePath("/admin/parts");
+  revalidatePath("/[locale]/parts", "page");
+  revalidatePath("/[locale]", "page");
 }
 
 // ----- News -----

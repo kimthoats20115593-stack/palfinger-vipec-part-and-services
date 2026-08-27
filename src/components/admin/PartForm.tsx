@@ -32,6 +32,7 @@ type PartDefaults = {
   image?: string;
   images?: { url: string }[];
   featured?: boolean;
+  published?: boolean;
   categoryId?: string;
   specs?: Spec[] | null;
   price?: number | null;
@@ -212,6 +213,16 @@ export function PartForm({
           </label>
         </div>
       </div>
+
+      <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
+        <input
+          type="checkbox"
+          name="published"
+          defaultChecked={defaultValues?.published ?? true}
+          className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
+        />
+        Hiển thị công khai trên website (bỏ chọn để ẩn tạm, chỉ admin thấy được)
+      </label>
 
       <ImagesEditor defaultValue={defaultValues?.images?.map((img) => img.url)} />
 

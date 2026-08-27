@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Plus, Pencil, Star } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { deletePart } from "@/lib/admin-actions";
+import { deletePart, togglePartPublished } from "@/lib/admin-actions";
 import { DeleteButton } from "@/components/admin/DeleteButton";
+import { PublishToggleButton } from "@/components/admin/PublishToggleButton";
 
 export default async function AdminPartsPage() {
   const parts = await prisma.part.findMany({
@@ -32,6 +33,7 @@ export default async function AdminPartsPage() {
               <th className="px-5 py-3">Danh mục</th>
               <th className="px-5 py-3">Dòng cẩu</th>
               <th className="px-5 py-3"></th>
+              <th className="px-5 py-3">Hiển thị</th>
               <th className="px-5 py-3 text-right">Thao tác</th>
             </tr>
           </thead>
@@ -50,6 +52,12 @@ export default async function AdminPartsPage() {
                   )}
                 </td>
                 <td className="px-5 py-3">
+                  <PublishToggleButton
+                    published={part.published}
+                    action={togglePartPublished.bind(null, part.id, !part.published)}
+                  />
+                </td>
+                <td className="px-5 py-3">
                   <div className="flex items-center justify-end gap-1">
                     <Link
                       href={`/admin/parts/${part.id}`}
@@ -65,7 +73,7 @@ export default async function AdminPartsPage() {
             ))}
             {parts.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-5 py-10 text-center text-steel-500">
+                <td colSpan={7} className="px-5 py-10 text-center text-steel-500">
                   Chưa có phụ tùng nào.
                 </td>
               </tr>
