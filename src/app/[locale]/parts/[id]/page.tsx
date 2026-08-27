@@ -11,7 +11,7 @@ import { Container } from "@/components/ui/Container";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
 import { PartCard } from "@/components/parts/PartCard";
 import { PartGallery } from "@/components/parts/PartGallery";
-import { PartContactActions } from "@/components/parts/PartContactActions";
+import { ProductContactActions } from "@/components/products/ProductContactActions";
 import { MarkdownContent } from "@/components/ui/MarkdownContent";
 
 export const dynamic = "force-dynamic";
@@ -102,17 +102,15 @@ export default async function PartDetailPage({
                   {part.status}
                 </span>
               )}
-              {part.stockQty !== null && (
-                <span
-                  className={
-                    part.stockQty > 0
-                      ? "rounded-md border-2 border-red-500 px-2.5 py-0.5 text-xs font-bold text-red-600 dark:border-red-400 dark:text-red-400"
-                      : "rounded-md border-2 border-steel-300 px-2.5 py-0.5 text-xs font-bold text-steel-500 dark:border-navy-700 dark:text-steel-400"
-                  }
-                >
-                  {part.stockQty > 0 ? t("inStock") : t("outOfStock")}
-                </span>
-              )}
+              <span
+                className={
+                  part.inStock
+                    ? "rounded-md border-2 border-red-500 px-2.5 py-0.5 text-xs font-bold text-red-600 dark:border-red-400 dark:text-red-400"
+                    : "rounded-md border-2 border-steel-300 px-2.5 py-0.5 text-xs font-bold text-steel-500 dark:border-navy-700 dark:text-steel-400"
+                }
+              >
+                {part.inStock ? t("inStock") : t("outOfStock")}
+              </span>
             </div>
             <h1 className="mb-3 text-3xl font-bold text-navy-900 dark:text-white">{name}</h1>
 
@@ -139,9 +137,9 @@ export default async function PartDetailPage({
               </div>
             )}
 
-            <PartContactActions
+            <ProductContactActions
               partId={part.id}
-              partLabel={`${name} (${part.sku})`}
+              productLabel={`${name} (${part.sku})`}
               callLabel={t("callToOrder")}
               zaloLabel={t("zaloConsult")}
               zaloHref={zaloHref}

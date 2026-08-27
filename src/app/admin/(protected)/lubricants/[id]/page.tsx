@@ -11,7 +11,10 @@ export default async function EditLubricantPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const lubricant = await prisma.lubricant.findUnique({ where: { id } });
+  const lubricant = await prisma.lubricant.findUnique({
+    where: { id },
+    include: { images: { orderBy: { order: "asc" } } },
+  });
   if (!lubricant) notFound();
 
   const action = updateLubricant.bind(null, id);

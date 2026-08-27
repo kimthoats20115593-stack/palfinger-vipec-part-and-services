@@ -57,6 +57,7 @@ model Part {
   status        String?
   unit          String?
   stockQty      Int?
+  inStock       Boolean     @default(true)
   sizeText      String?
   weightText    String?
   featured      Boolean     @default(false)
@@ -90,22 +91,37 @@ enum LubricantType {
 }
 
 model Lubricant {
-  id            String        @id @default(cuid())
-  externalId    Int?          @unique
-  slug          String        @unique
+  id            String          @id @default(cuid())
+  externalId    Int?            @unique
+  slug          String          @unique
   nameVi        String
   nameEn        String
   brand         String?
-  type          LubricantType @default(OTHER)
+  type          LubricantType   @default(OTHER)
   packaging     String?
   image         String?
+  images        LubricantImage[]
   sourceUrl     String?
-  featured      Boolean       @default(false)
-  descriptionVi String        @db.Text
-  descriptionEn String        @db.Text
+  featured      Boolean         @default(false)
+  published     Boolean         @default(true)
+  descriptionVi String          @db.Text
+  descriptionEn String          @db.Text
+  detailVi      String?         @db.Text
+  detailEn      String?         @db.Text
   inquiries     Inquiry[]
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model LubricantImage {
+  id          String    @id @default(cuid())
+  lubricant   Lubricant @relation(fields: [lubricantId], references: [id], onDelete: Cascade)
+  lubricantId String
+  url         String
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+
+  @@index([lubricantId])
 }
 
 model NewsPost {

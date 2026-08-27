@@ -20,6 +20,7 @@ type PartCardData = {
   status?: string | null;
   unit?: string | null;
   stockQty?: number | null;
+  inStock?: boolean;
 };
 
 export function PartCard({ part }: { part: PartCardData }) {
@@ -32,7 +33,7 @@ export function PartCard({ part }: { part: PartCardData }) {
     : t("universalModel");
   const iconVariant = (part.image || "gear") as PartIconVariant;
   const hasStockInfo = part.stockQty !== null && part.stockQty !== undefined;
-  const inStock = hasStockInfo && (part.stockQty as number) > 0;
+  const inStock = part.inStock ?? true;
 
   return (
     <Link

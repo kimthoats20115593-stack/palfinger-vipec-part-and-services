@@ -145,7 +145,13 @@
     "packaging": "Packaging",
     "noResults": "No matching products found.",
     "backToCatalog": "Back to list",
-    "requestQuote": "Request a Quote"
+    "requestQuote": "Request a Quote",
+    "callToOrder": "Contact to Order",
+    "zaloConsult": "Zalo Consultation",
+    "productDetail": "Product Details",
+    "quoteFormTitle": "Or leave your info — we'll call you back",
+    "quoteFormSubtitle": "Don't want to call right now? Fill in the form below and our technical team will reach out with a quote.",
+    "relatedProducts": "Related Products"
   },
   "news": {
     "eyebrow": "News & Insights",

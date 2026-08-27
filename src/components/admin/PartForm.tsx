@@ -39,6 +39,7 @@ type PartDefaults = {
   status?: string | null;
   unit?: string | null;
   stockQty?: number | null;
+  inStock?: boolean;
   detailVi?: string | null;
   detailEn?: string | null;
 };
@@ -261,7 +262,7 @@ export function PartForm({
           />
         </div>
         <div>
-          <label htmlFor="stockQty" className={labelClasses}>Số lượng tồn</label>
+          <label htmlFor="stockQty" className={labelClasses}>Số lượng tồn (không bắt buộc)</label>
           <input
             id="stockQty"
             name="stockQty"
@@ -273,6 +274,17 @@ export function PartForm({
           />
         </div>
       </div>
+
+      <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
+        <input
+          type="checkbox"
+          name="inStock"
+          defaultChecked={defaultValues?.inStock ?? true}
+          className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
+        />
+        Còn hàng (hiện badge &quot;Còn hàng&quot; trên trang chi tiết — không cần nhập số lượng cụ
+        thể ở trên)
+      </label>
 
       <SpecsEditor defaultValue={defaultValues?.specs ?? undefined} />
 

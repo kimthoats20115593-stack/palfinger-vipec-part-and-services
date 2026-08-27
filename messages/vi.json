@@ -145,7 +145,13 @@
     "packaging": "Quy cách đóng gói",
     "noResults": "Không tìm thấy sản phẩm phù hợp.",
     "backToCatalog": "Quay lại danh sách",
-    "requestQuote": "Yêu cầu báo giá"
+    "requestQuote": "Yêu cầu báo giá",
+    "callToOrder": "Liên hệ đặt hàng",
+    "zaloConsult": "Tư vấn Zalo",
+    "productDetail": "Chi tiết sản phẩm",
+    "quoteFormTitle": "Hoặc để lại thông tin — chúng tôi gọi lại",
+    "quoteFormSubtitle": "Không muốn gọi ngay? Điền thông tin bên dưới, đội kỹ thuật sẽ liên hệ tư vấn và báo giá.",
+    "relatedProducts": "Sản phẩm liên quan"
   },
   "news": {
     "eyebrow": "Tin tức & kiến thức",

@@ -4,17 +4,19 @@ import { useEffect, useState } from "react";
 import { Phone, X } from "lucide-react";
 import { InquiryForm } from "@/components/forms/InquiryForm";
 
-export function PartContactActions({
+export function ProductContactActions({
   partId,
-  partLabel,
+  lubricantId,
+  productLabel,
   callLabel,
   zaloLabel,
   zaloHref,
   modalTitle,
   modalSubtitle,
 }: {
-  partId: string;
-  partLabel: string;
+  partId?: string;
+  lubricantId?: string;
+  productLabel: string;
   callLabel: string;
   zaloLabel: string;
   zaloHref: string;
@@ -66,13 +68,16 @@ export function PartContactActions({
           <div
             role="dialog"
             aria-modal="true"
-            aria-labelledby="part-contact-modal-title"
+            aria-labelledby="product-contact-modal-title"
             onClick={(e) => e.stopPropagation()}
             className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-xl bg-white p-6 shadow-2xl dark:bg-navy-900"
           >
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
-                <h2 id="part-contact-modal-title" className="text-base font-bold text-navy-900 dark:text-white">
+                <h2
+                  id="product-contact-modal-title"
+                  className="text-base font-bold text-navy-900 dark:text-white"
+                >
                   {modalTitle}
                 </h2>
                 <p className="mt-1 text-xs text-steel-500 dark:text-steel-400">{modalSubtitle}</p>
@@ -86,7 +91,12 @@ export function PartContactActions({
                 <X className="h-5 w-5" aria-hidden="true" />
               </button>
             </div>
-            <InquiryForm type="QUOTE" partId={partId} partLabel={partLabel} />
+            <InquiryForm
+              type="QUOTE"
+              partId={partId}
+              lubricantId={lubricantId}
+              partLabel={productLabel}
+            />
           </div>
         </div>
       )}

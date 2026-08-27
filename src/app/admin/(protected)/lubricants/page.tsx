@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Plus, Pencil, Star } from "lucide-react";
 import { prisma } from "@/lib/prisma";
-import { deleteLubricant } from "@/lib/admin-actions";
+import { deleteLubricant, toggleLubricantPublished } from "@/lib/admin-actions";
 import { DeleteButton } from "@/components/admin/DeleteButton";
+import { PublishToggleButton } from "@/components/admin/PublishToggleButton";
 
 const typeLabels: Record<string, string> = {
   ENGINE_OIL: "Nhớt động cơ",
@@ -36,6 +37,7 @@ export default async function AdminLubricantsPage() {
               <th className="px-5 py-3">Loại</th>
               <th className="px-5 py-3">Hãng</th>
               <th className="px-5 py-3"></th>
+              <th className="px-5 py-3">Hiển thị</th>
               <th className="px-5 py-3 text-right">Thao tác</th>
             </tr>
           </thead>
@@ -49,6 +51,12 @@ export default async function AdminLubricantsPage() {
                   {lb.featured && (
                     <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" aria-label="Nổi bật" />
                   )}
+                </td>
+                <td className="px-5 py-3">
+                  <PublishToggleButton
+                    published={lb.published}
+                    action={toggleLubricantPublished.bind(null, lb.id, !lb.published)}
+                  />
                 </td>
                 <td className="px-5 py-3">
                   <div className="flex items-center justify-end gap-1">
@@ -66,7 +74,7 @@ export default async function AdminLubricantsPage() {
             ))}
             {lubricants.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-5 py-10 text-center text-steel-500">
+                <td colSpan={6} className="px-5 py-10 text-center text-steel-500">
                   Chưa có sản phẩm nào. Bấm &quot;Đồng bộ dữ liệu VIPEC&quot; ở Tổng quan để lấy dữ liệu thật.
                 </td>
               </tr>

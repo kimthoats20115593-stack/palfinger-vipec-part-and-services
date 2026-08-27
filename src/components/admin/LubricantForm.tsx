@@ -1,5 +1,5 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
-import { SingleImageField } from "@/components/admin/SingleImageField";
+import { ImagesEditor } from "@/components/admin/ImagesEditor";
 import { AutoTranslateButton } from "@/components/admin/AutoTranslateButton";
 
 const inputClasses =
@@ -22,9 +22,13 @@ type LubricantDefaults = {
   type?: string;
   packaging?: string | null;
   image?: string | null;
+  images?: { url: string }[];
   featured?: boolean;
+  published?: boolean;
   descriptionVi?: string;
   descriptionEn?: string;
+  detailVi?: string | null;
+  detailEn?: string | null;
 };
 
 export function LubricantForm({
@@ -130,19 +134,61 @@ export function LubricantForm({
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <SingleImageField name="image" label="Ảnh sản phẩm" defaultValue={defaultValues?.image} />
-        <div className="flex items-end pb-2.5">
-          <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
-            <input
-              type="checkbox"
-              name="featured"
-              defaultChecked={defaultValues?.featured}
-              className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
-            />
-            Hiển thị nổi bật trên trang chủ
-          </label>
+        <div>
+          <label htmlFor="detailVi" className={labelClasses}>Chi tiết sản phẩm (VI)</label>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">
+            Không bắt buộc. Hỗ trợ định dạng: <code>### Tiêu đề</code>, <code>**chữ**</code> in
+            đậm, danh sách &quot;-&quot;, và bảng <code>| Cột 1 | Cột 2 |</code>.
+          </p>
+          <textarea
+            id="detailVi"
+            name="detailVi"
+            rows={8}
+            defaultValue={defaultValues?.detailVi ?? ""}
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor="detailEn" className={labelClasses}>Chi tiết sản phẩm (EN)</label>
+            <AutoTranslateButton sourceId="detailVi" targetId="detailEn" />
+          </div>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">
+            Optional. Supports Markdown: headings, bold, lists, tables.
+          </p>
+          <textarea
+            id="detailEn"
+            name="detailEn"
+            rows={8}
+            defaultValue={defaultValues?.detailEn ?? ""}
+            className={inputClasses}
+          />
         </div>
       </div>
+
+      <ImagesEditor defaultValue={defaultValues?.images?.map((img) => img.url)} />
+
+      <div className="flex items-center gap-2">
+        <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
+          <input
+            type="checkbox"
+            name="featured"
+            defaultChecked={defaultValues?.featured}
+            className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
+          />
+          Hiển thị nổi bật trên trang chủ
+        </label>
+      </div>
+
+      <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
+        <input
+          type="checkbox"
+          name="published"
+          defaultChecked={defaultValues?.published ?? true}
+          className="h-5 w-5 rounded border-steel-300 text-red-500 focus:ring-red-500"
+        />
+        Hiển thị công khai trên website (bỏ chọn để ẩn tạm, chỉ admin thấy được)
+      </label>
 
       <button
         type="submit"

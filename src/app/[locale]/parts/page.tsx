@@ -91,6 +91,9 @@ async function PartsTabContent() {
 }
 
 async function LubricantsTabContent() {
-  const lubricants = await prisma.lubricant.findMany({ orderBy: { createdAt: "desc" } });
+  const lubricants = await prisma.lubricant.findMany({
+    where: { published: true },
+    orderBy: { createdAt: "desc" },
+  });
   return <LubricantsExplorer lubricants={lubricants} />;
 }

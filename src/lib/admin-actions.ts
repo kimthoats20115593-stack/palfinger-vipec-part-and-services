@@ -72,6 +72,7 @@ export async function createPart(formData: FormData) {
       status: nullableStr(formData, "status"),
       unit: nullableStr(formData, "unit"),
       stockQty: nullableInt(formData, "stockQty"),
+      inStock: bool(formData, "inStock"),
     },
   });
 
@@ -111,6 +112,7 @@ export async function updatePart(id: string, formData: FormData) {
       status: nullableStr(formData, "status"),
       unit: nullableStr(formData, "unit"),
       stockQty: nullableInt(formData, "stockQty"),
+      inStock: bool(formData, "inStock"),
     },
   });
 
@@ -264,7 +266,8 @@ export async function createLubricant(formData: FormData) {
   await requireAdmin();
 
   const nameVi = str(formData, "nameVi");
-  await prisma.lubricant.create({
+  const images = imagesFromForm(formData);
+  const lubricant = await prisma.lubricant.create({
     data: {
       slug: nullableStr(formData, "slug") || slugify(nameVi),
       nameVi,
@@ -272,12 +275,21 @@ export async function createLubricant(formData: FormData) {
       brand: nullableStr(formData, "brand"),
       type: (str(formData, "type") || "OTHER") as LubricantType,
       packaging: nullableStr(formData, "packaging"),
-      image: nullableStr(formData, "image"),
+      image: images[0] ?? null,
       featured: bool(formData, "featured"),
+      published: bool(formData, "published"),
       descriptionVi: str(formData, "descriptionVi"),
       descriptionEn: str(formData, "descriptionEn"),
+      detailVi: nullableStr(formData, "detailVi"),
+      detailEn: nullableStr(formData, "detailEn"),
     },
   });
+
+  if (images.length) {
+    await prisma.lubricantImage.createMany({
+      data: images.map((url, order) => ({ lubricantId: lubricant.id, url, order })),
+    });
+  }
 
   revalidatePath("/admin/lubricants");
   revalidatePath("/[locale]/parts", "page");
@@ -287,6 +299,7 @@ export async function updateLubricant(id: string, formData: FormData) {
   await requireAdmin();
 
   const nameVi = str(formData, "nameVi");
+  const images = imagesFromForm(formData);
   await prisma.lubricant.update({
     where: { id },
     data: {
@@ -296,12 +309,22 @@ export async function updateLubricant(id: string, formData: FormData) {
       brand: nullableStr(formData, "brand"),
       type: (str(formData, "type") || "OTHER") as LubricantType,
       packaging: nullableStr(formData, "packaging"),
-      image: nullableStr(formData, "image"),
+      image: images[0] ?? null,
       featured: bool(formData, "featured"),
+      published: bool(formData, "published"),
       descriptionVi: str(formData, "descriptionVi"),
       descriptionEn: str(formData, "descriptionEn"),
+      detailVi: nullableStr(formData, "detailVi"),
+      detailEn: nullableStr(formData, "detailEn"),
     },
   });
+
+  await prisma.lubricantImage.deleteMany({ where: { lubricantId: id } });
+  if (images.length) {
+    await prisma.lubricantImage.createMany({
+      data: images.map((url, order) => ({ lubricantId: id, url, order })),
+    });
+  }
 
   revalidatePath("/admin/lubricants");
   revalidatePath("/[locale]/parts", "page");
@@ -311,6 +334,13 @@ export async function deleteLubricant(id: string) {
   await requireAdmin();
   await prisma.inquiry.updateMany({ where: { lubricantId: id }, data: { lubricantId: null } });
   await prisma.lubricant.delete({ where: { id } });
+  revalidatePath("/admin/lubricants");
+  revalidatePath("/[locale]/parts", "page");
+}
+
+export async function toggleLubricantPublished(id: string, nextPublished: boolean) {
+  await requireAdmin();
+  await prisma.lubricant.update({ where: { id }, data: { published: nextPublished } });
   revalidatePath("/admin/lubricants");
   revalidatePath("/[locale]/parts", "page");
 }
