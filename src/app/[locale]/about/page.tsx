@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Target, Eye, Users2, CheckCircle2 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
@@ -83,6 +84,15 @@ export default async function AboutPage({
           <p className="max-w-2xl text-sm leading-relaxed text-steel-700 dark:text-steel-300">
             {t("teamDesc")}
           </p>
+          <div className="mt-4 w-full overflow-hidden rounded-2xl shadow-xl shadow-navy-900/10 dark:shadow-black/30">
+            <Image
+              src="/about-team.jpg"
+              alt={t("teamImageAlt")}
+              width={1800}
+              height={1013}
+              className="w-full"
+            />
+          </div>
         </Container>
       </section>
 
