@@ -77,10 +77,10 @@ export function InquiryForm({
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       {partLabel && (
-        <div className="rounded-md bg-steel-50 px-4 py-3 text-sm text-steel-700 dark:bg-navy-900 dark:text-steel-300">
-          <span className="font-semibold text-navy-900 dark:text-white">{t("formPart")}: </span>
+        <p className="text-xs text-steel-500 dark:text-steel-400">
+          <span className="font-semibold text-steel-700 dark:text-steel-300">{t("formPart")}: </span>
           {partLabel}
-        </div>
+        </p>
       )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">

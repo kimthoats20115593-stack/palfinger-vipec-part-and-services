@@ -45,10 +45,13 @@ model Part {
   sku           String      @unique
   nameVi        String
   nameEn        String
-  descriptionVi String
-  descriptionEn String
+  descriptionVi String      @db.Text
+  descriptionEn String      @db.Text
+  detailVi      String?     @db.Text
+  detailEn      String?     @db.Text
   image         String
   photoUrl      String?
+  images        PartImage[]
   specs         Json?
   price         Int?
   status        String?
@@ -64,6 +67,17 @@ model Part {
   inquiries     Inquiry[]
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
+}
+
+model PartImage {
+  id        String   @id @default(cuid())
+  part      Part     @relation(fields: [partId], references: [id], onDelete: Cascade)
+  partId    String
+  url       String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+
+  @@index([partId])
 }
 
 enum LubricantType {
@@ -86,8 +100,8 @@ model Lubricant {
   image         String?
   sourceUrl     String?
   featured      Boolean       @default(false)
-  descriptionVi String
-  descriptionEn String
+  descriptionVi String        @db.Text
+  descriptionEn String        @db.Text
   inquiries     Inquiry[]
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -98,10 +112,10 @@ model NewsPost {
   slug        String   @unique
   titleVi     String
   titleEn     String
-  excerptVi   String
-  excerptEn   String
-  contentVi   String
-  contentEn   String
+  excerptVi   String   @db.Text
+  excerptEn   String   @db.Text
+  contentVi   String   @db.Text
+  contentEn   String   @db.Text
   coverImage  String
   published   Boolean  @default(true)
   publishedAt DateTime @default(now())
@@ -127,7 +141,7 @@ model Inquiry {
   phone       String
   email       String
   company     String?
-  message     String
+  message     String        @db.Text
   status      InquiryStatus @default(NEW)
   part        Part?         @relation(fields: [partId], references: [id])
   partId      String?

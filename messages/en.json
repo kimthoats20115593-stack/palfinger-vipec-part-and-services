@@ -122,7 +122,13 @@
     "compareSpecColumn": "Specification",
     "compareNoSpecs": "No specification data available for the selected parts.",
     "inStock": "In stock",
-    "outOfStock": "Out of stock"
+    "outOfStock": "Out of stock",
+    "callToOrder": "Contact to order",
+    "zaloConsult": "Chat on Zalo",
+    "productDetail": "Product details",
+    "gallery": "Photo gallery",
+    "quoteFormTitle": "Or leave your details — we'll call you back",
+    "quoteFormSubtitle": "Prefer not to call right now? Fill in the form below and our technical team will follow up with a quote."
   },
   "lubricants": {
     "eyebrow": "Oils, Lubricants & Grease",

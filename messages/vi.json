@@ -122,7 +122,13 @@
     "compareSpecColumn": "Thông số",
     "compareNoSpecs": "Chưa có dữ liệu thông số cho các phụ tùng đã chọn.",
     "inStock": "Còn hàng",
-    "outOfStock": "Hết hàng"
+    "outOfStock": "Hết hàng",
+    "callToOrder": "Liên hệ đặt hàng",
+    "zaloConsult": "Tư vấn Zalo",
+    "productDetail": "Chi tiết sản phẩm",
+    "gallery": "Thư viện ảnh",
+    "quoteFormTitle": "Hoặc để lại thông tin — chúng tôi gọi lại",
+    "quoteFormSubtitle": "Không muốn gọi ngay? Điền thông tin bên dưới, đội kỹ thuật sẽ liên hệ tư vấn và báo giá."
   },
   "lubricants": {
     "eyebrow": "Dầu, nhớt, mỡ",

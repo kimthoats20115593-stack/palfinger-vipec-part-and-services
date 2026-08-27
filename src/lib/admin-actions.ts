@@ -37,12 +37,21 @@ function specsFromForm(formData: FormData): { label: string; value: string }[] |
   return specs.length ? specs : undefined;
 }
 
+function imagesFromForm(formData: FormData): string[] {
+  return formData
+    .getAll("imageUrl")
+    .map((v) => String(v).trim())
+    .filter(Boolean);
+}
+
 // ----- Parts -----
 
 export async function createPart(formData: FormData) {
   await requireAdmin();
 
-  await prisma.part.create({
+  const images = imagesFromForm(formData);
+
+  const part = await prisma.part.create({
     data: {
       sku: str(formData, "sku"),
       nameVi: str(formData, "nameVi"),
@@ -50,8 +59,10 @@ export async function createPart(formData: FormData) {
       craneModelId: nullableStr(formData, "craneModelId"),
       descriptionVi: str(formData, "descriptionVi"),
       descriptionEn: str(formData, "descriptionEn"),
+      detailVi: nullableStr(formData, "detailVi"),
+      detailEn: nullableStr(formData, "detailEn"),
       image: str(formData, "image") || "gear",
-      photoUrl: nullableStr(formData, "photoUrl"),
+      photoUrl: images[0] ?? null,
       featured: bool(formData, "featured"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData),
@@ -62,6 +73,12 @@ export async function createPart(formData: FormData) {
     },
   });
 
+  if (images.length) {
+    await prisma.partImage.createMany({
+      data: images.map((url, order) => ({ partId: part.id, url, order })),
+    });
+  }
+
   revalidatePath("/admin/parts");
   revalidatePath("/[locale]/parts", "page");
   redirect("/admin/parts");
@@ -69,6 +86,8 @@ export async function createPart(formData: FormData) {
 
 export async function updatePart(id: string, formData: FormData) {
   await requireAdmin();
+
+  const images = imagesFromForm(formData);
 
   await prisma.part.update({
     where: { id },
@@ -79,8 +98,10 @@ export async function updatePart(id: string, formData: FormData) {
       craneModelId: nullableStr(formData, "craneModelId"),
       descriptionVi: str(formData, "descriptionVi"),
       descriptionEn: str(formData, "descriptionEn"),
+      detailVi: nullableStr(formData, "detailVi"),
+      detailEn: nullableStr(formData, "detailEn"),
       image: str(formData, "image") || "gear",
-      photoUrl: nullableStr(formData, "photoUrl"),
+      photoUrl: images[0] ?? null,
       featured: bool(formData, "featured"),
       categoryId: str(formData, "categoryId"),
       specs: specsFromForm(formData) ?? [],
@@ -90,6 +111,13 @@ export async function updatePart(id: string, formData: FormData) {
       stockQty: nullableInt(formData, "stockQty"),
     },
   });
+
+  await prisma.partImage.deleteMany({ where: { partId: id } });
+  if (images.length) {
+    await prisma.partImage.createMany({
+      data: images.map((url, order) => ({ partId: id, url, order })),
+    });
+  }
 
   revalidatePath("/admin/parts");
   revalidatePath("/[locale]/parts", "page");

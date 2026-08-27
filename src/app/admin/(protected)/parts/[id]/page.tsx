@@ -12,7 +12,7 @@ export default async function EditPartPage({
 }) {
   const { id } = await params;
   const [part, categories, craneModels] = await Promise.all([
-    prisma.part.findUnique({ where: { id } }),
+    prisma.part.findUnique({ where: { id }, include: { images: { orderBy: { order: "asc" } } } }),
     prisma.category.findMany({ orderBy: { order: "asc" } }),
     prisma.craneModel.findMany({ orderBy: { order: "asc" } }),
   ]);

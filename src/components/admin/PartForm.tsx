@@ -1,4 +1,5 @@
 import { SpecsEditor } from "@/components/admin/SpecsEditor";
+import { ImagesEditor } from "@/components/admin/ImagesEditor";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -27,7 +28,7 @@ type PartDefaults = {
   descriptionVi?: string;
   descriptionEn?: string;
   image?: string;
-  photoUrl?: string | null;
+  images?: { url: string }[];
   featured?: boolean;
   categoryId?: string;
   specs?: Spec[] | null;
@@ -35,6 +36,8 @@ type PartDefaults = {
   status?: string | null;
   unit?: string | null;
   stockQty?: number | null;
+  detailVi?: string | null;
+  detailEn?: string | null;
 };
 
 export function PartForm({
@@ -100,7 +103,8 @@ export function PartForm({
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor="descriptionVi" className={labelClasses}>Mô tả (VI) *</label>
+          <label htmlFor="descriptionVi" className={labelClasses}>Mô tả ngắn (VI) *</label>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">Hiện ngay đầu trang chi tiết, 1–3 câu.</p>
           <textarea
             id="descriptionVi"
             name="descriptionVi"
@@ -111,13 +115,45 @@ export function PartForm({
           />
         </div>
         <div>
-          <label htmlFor="descriptionEn" className={labelClasses}>Mô tả (EN) *</label>
+          <label htmlFor="descriptionEn" className={labelClasses}>Mô tả ngắn (EN) *</label>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">Shown at the top of the detail page, 1–3 sentences.</p>
           <textarea
             id="descriptionEn"
             name="descriptionEn"
             required
             rows={4}
             defaultValue={defaultValues?.descriptionEn}
+            className={inputClasses}
+          />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="detailVi" className={labelClasses}>Chi tiết sản phẩm (VI)</label>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">
+            Không bắt buộc. Có thể viết nhiều đoạn, xuống dòng tự do, dùng dấu &quot;-&quot; đầu dòng
+            cho gạch đầu dòng — hiển thị đúng như bạn gõ.
+          </p>
+          <textarea
+            id="detailVi"
+            name="detailVi"
+            rows={10}
+            defaultValue={defaultValues?.detailVi ?? ""}
+            placeholder={"VD:\nValvoline Premium Blue 7800 (15W-40) – Dầu động cơ chuyên dụng cho Cummins\n\nĐiểm nổi bật:\n- Được ủy quyền bởi Cummins\n- Bảo vệ chống mài mòn tuyệt đối"}
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="detailEn" className={labelClasses}>Chi tiết sản phẩm (EN)</label>
+          <p className="mb-1.5 -mt-1 text-xs text-steel-500">
+            Optional. Multiple paragraphs and line breaks are shown exactly as typed.
+          </p>
+          <textarea
+            id="detailEn"
+            name="detailEn"
+            rows={10}
+            defaultValue={defaultValues?.detailEn ?? ""}
             className={inputClasses}
           />
         </div>
@@ -163,16 +199,7 @@ export function PartForm({
         </div>
       </div>
 
-      <div>
-        <label htmlFor="photoUrl" className={labelClasses}>Đường dẫn ảnh thật (URL)</label>
-        <input
-          id="photoUrl"
-          name="photoUrl"
-          defaultValue={defaultValues?.photoUrl ?? ""}
-          placeholder="https://... (để trống nếu chưa có ảnh thật, sẽ dùng biểu tượng minh họa)"
-          className={inputClasses}
-        />
-      </div>
+      <ImagesEditor defaultValue={defaultValues?.images?.map((img) => img.url)} />
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-4">
         <div>
