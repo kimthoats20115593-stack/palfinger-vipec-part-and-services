@@ -15,6 +15,7 @@ type Part = {
   nameVi: string;
   nameEn: string;
   image: string;
+  photoUrl: string | null;
   categoryId: string;
   craneModelId: string | null;
   craneModel: { nameVi: string; nameEn: string } | null;

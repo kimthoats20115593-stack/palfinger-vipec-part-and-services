@@ -27,6 +27,7 @@ type PartDefaults = {
   descriptionVi?: string;
   descriptionEn?: string;
   image?: string;
+  photoUrl?: string | null;
   featured?: boolean;
   categoryId?: string;
   specs?: Spec[] | null;
@@ -140,7 +141,7 @@ export function PartForm({
           </select>
         </div>
         <div>
-          <label htmlFor="image" className={labelClasses}>Biểu tượng minh họa</label>
+          <label htmlFor="image" className={labelClasses}>Biểu tượng minh họa (dự phòng)</label>
           <select id="image" name="image" defaultValue={defaultValues?.image || "gear"} className={inputClasses}>
             {iconOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -160,6 +161,17 @@ export function PartForm({
             Hiển thị nổi bật trên trang chủ
           </label>
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="photoUrl" className={labelClasses}>Đường dẫn ảnh thật (URL)</label>
+        <input
+          id="photoUrl"
+          name="photoUrl"
+          defaultValue={defaultValues?.photoUrl ?? ""}
+          placeholder="https://... (để trống nếu chưa có ảnh thật, sẽ dùng biểu tượng minh họa)"
+          className={inputClasses}
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-4">

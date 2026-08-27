@@ -5,6 +5,7 @@ import { localize } from "@/lib/localize";
 import { formatVnd } from "@/lib/format";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
 import { CompareCheckbox } from "@/components/parts/CompareCheckbox";
+import { ProductImage } from "@/components/ui/ProductImage";
 
 type PartCardData = {
   id: string;
@@ -12,6 +13,7 @@ type PartCardData = {
   nameVi: string;
   nameEn: string;
   image: string;
+  photoUrl?: string | null;
   craneModel?: { nameVi: string; nameEn: string } | null;
   category: { nameVi: string; nameEn: string };
   price?: number | null;
@@ -38,7 +40,16 @@ export function PartCard({ part }: { part: PartCardData }) {
       className="group flex flex-col overflow-hidden rounded-xl border border-steel-100 bg-white transition-shadow hover:shadow-lg hover:shadow-navy-900/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy-900 dark:focus-visible:outline-white dark:border-navy-800 dark:bg-navy-900"
     >
       <div className="flex aspect-[4/3] items-center justify-center bg-steel-50 dark:bg-navy-950">
-        <PartIcon variant={iconVariant} className="h-16 w-16 text-navy-800 dark:text-steel-300" />
+        <ProductImage
+          src={part.photoUrl}
+          alt={name}
+          width={400}
+          height={300}
+          imageClassName="h-full w-full object-contain p-4"
+          fallbackIcon={
+            <PartIcon variant={iconVariant} className="h-16 w-16 text-navy-800 dark:text-steel-300" />
+          }
+        />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-1 flex items-center justify-between gap-2">

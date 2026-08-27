@@ -48,6 +48,7 @@ model Part {
   descriptionVi String
   descriptionEn String
   image         String
+  photoUrl      String?
   specs         Json?
   price         Int?
   status        String?

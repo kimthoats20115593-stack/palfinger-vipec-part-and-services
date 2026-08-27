@@ -178,6 +178,48 @@ async function main() {
       descriptionEn:
         "Genuine slewing ring gear set, precision-machined for smooth and stable rotation.",
     },
+    {
+      // Real product — first live catalog item added by the client (photo, specs and
+      // description supplied directly), replacing the sample "PV-CT-5501" placeholder
+      // in the same category. That sample entry should be deleted from /admin/parts.
+      sku: "PV-RC-7701",
+      nameVi: "Điều khiển từ xa cẩu Palfinger (Remote Palfinger)",
+      nameEn: "Palfinger Crane Radio Remote Control",
+      categorySlug: "he-thong-dieu-khien",
+      image: "control",
+      photoUrl: "/parts/remote-control-palfinger.jpg",
+      featured: true,
+      descriptionVi:
+        "Bộ điều khiển từ xa (Radio Remote Control) chính hãng dành cho cẩu gập Palfinger. Thiết kế công thái học, phím bấm nhạy bén, giúp người vận hành kiểm soát chính xác và an toàn tuyệt đối tại các công trường khắc nghiệt.",
+      descriptionEn:
+        "Genuine radio remote control for Palfinger knuckle boom cranes. Ergonomic design with responsive buttons, giving the operator precise and safe control on demanding job sites.",
+      specs: [
+        { label: "Loại thiết bị", value: "Điều khiển vô tuyến cầm tay" },
+        {
+          label: "Cấu hình thao tác",
+          value:
+            "4 cần gạt tuyến tính (Linear Levers) điều khiển các ty thủy lực, 1 nút dừng khẩn cấp (Emergency Stop) màu đỏ, và cụm công tắc bật/tắt chức năng",
+        },
+        {
+          label: "Băng tần hoạt động",
+          value: "Hỗ trợ chống nhiễu tín hiệu tần số cao (433 MHz / 868 MHz hoặc 2.4 GHz)",
+        },
+        { label: "Phạm vi điều khiển", value: "Tối đa 100m trong điều kiện không vật cản" },
+        {
+          label: "Cấp độ bảo vệ",
+          value: "Chuẩn IP65 (Chống bụi bẩn hoàn toàn và chống nước phun áp lực thấp)",
+        },
+        {
+          label: "Vật liệu vỏ",
+          value: "Nhựa kỹ thuật cao cấp, tích hợp khung viền bảo vệ chống va đập, rơi rớt",
+        },
+        {
+          label: "Khả năng tương thích",
+          value:
+            "Tương thích hoàn hảo với hệ thống van thủy lực và bo mạch điện tử của các dòng cẩu Palfinger PK Series",
+        },
+      ],
+    },
   ];
 
   for (const part of partsData) {

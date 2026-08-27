@@ -10,6 +10,7 @@ import { Container } from "@/components/ui/Container";
 import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartIcon";
 import { PartCard } from "@/components/parts/PartCard";
 import { InquiryForm } from "@/components/forms/InquiryForm";
+import { ProductImage } from "@/components/ui/ProductImage";
 
 export const dynamic = "force-dynamic";
 
@@ -74,9 +75,18 @@ export default async function PartDetailPage({
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div className="flex aspect-square items-center justify-center rounded-2xl bg-steel-50 dark:bg-navy-900">
-            <PartIcon
-              variant={(part.image || "gear") as PartIconVariant}
-              className="h-40 w-40 text-navy-800 dark:text-steel-300"
+            <ProductImage
+              src={part.photoUrl}
+              alt={name}
+              width={500}
+              height={500}
+              imageClassName="h-full w-full object-contain p-8"
+              fallbackIcon={
+                <PartIcon
+                  variant={(part.image || "gear") as PartIconVariant}
+                  className="h-40 w-40 text-navy-800 dark:text-steel-300"
+                />
+              }
             />
           </div>
 
