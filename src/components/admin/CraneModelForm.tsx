@@ -1,4 +1,5 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
+import { SingleImageField } from "@/components/admin/SingleImageField";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -69,16 +70,7 @@ export function CraneModelForm({
         </div>
       </div>
 
-      <div>
-        <label htmlFor="image" className={labelClasses}>Đường dẫn ảnh (URL)</label>
-        <input
-          id="image"
-          name="image"
-          defaultValue={defaultValues?.image ?? ""}
-          placeholder="https://..."
-          className={inputClasses}
-        />
-      </div>
+      <SingleImageField name="image" label="Ảnh model cẩu" defaultValue={defaultValues?.image} />
 
       <button
         type="submit"

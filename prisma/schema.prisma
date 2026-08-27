@@ -123,6 +123,13 @@ model NewsPost {
   updatedAt   DateTime @updatedAt
 }
 
+model UploadedImage {
+  id        String   @id @default(cuid())
+  data      Bytes    @db.LongBlob
+  mimeType  String
+  createdAt DateTime @default(now())
+}
+
 enum InquiryType {
   QUOTE
   CONTACT

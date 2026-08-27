@@ -1,4 +1,5 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
+import { SingleImageField } from "@/components/admin/SingleImageField";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -122,16 +123,7 @@ export function LubricantForm({
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="image" className={labelClasses}>Đường dẫn ảnh (URL)</label>
-          <input
-            id="image"
-            name="image"
-            defaultValue={defaultValues?.image ?? ""}
-            placeholder="https://..."
-            className={inputClasses}
-          />
-        </div>
+        <SingleImageField name="image" label="Ảnh sản phẩm" defaultValue={defaultValues?.image} />
         <div className="flex items-end pb-2.5">
           <label className="flex items-center gap-2 text-sm font-semibold text-navy-900">
             <input

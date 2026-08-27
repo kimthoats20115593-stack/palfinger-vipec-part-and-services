@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, X, GripVertical } from "lucide-react";
+import { Plus, X, GripVertical, ImageOff } from "lucide-react";
+import { ImageUploadButton } from "@/components/admin/ImageUploadButton";
+import { ImageRotateControl } from "@/components/admin/ImageRotateControl";
 
 const inputClasses =
   "min-h-10 w-full rounded-md border border-steel-200 px-3 py-2 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -23,10 +25,20 @@ export function ImagesEditor({ defaultValue }: { defaultValue?: string[] }) {
     setRows((prev) => (prev.length > 1 ? prev.filter((_, i) => i !== index) : [""]));
   }
 
+  function addUploadedUrl(url: string) {
+    setRows((prev) => {
+      const firstEmpty = prev.findIndex((row) => row.trim() === "");
+      if (firstEmpty !== -1) {
+        return prev.map((row, i) => (i === firstEmpty ? url : row));
+      }
+      return [...prev, url];
+    });
+  }
+
   return (
     <div>
       <label className="mb-1.5 block text-sm font-semibold text-navy-900">
-        Ảnh sản phẩm (URL)
+        Ảnh sản phẩm
       </label>
       <p className="mb-3 text-xs text-steel-500">
         Nên có ít nhất 3–8 ảnh (không giới hạn số lượng). Ảnh đầu tiên sẽ dùng làm ảnh đại
@@ -56,6 +68,18 @@ export function ImagesEditor({ defaultValue }: { defaultValue?: string[] }) {
             <span className="flex h-10 w-7 shrink-0 items-center justify-center text-xs font-semibold text-steel-400">
               {i + 1}
             </span>
+            {row.trim() ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={row}
+                alt=""
+                className="h-10 w-10 shrink-0 rounded border border-steel-200 object-cover"
+              />
+            ) : (
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded border border-dashed border-steel-200 text-steel-300">
+                <ImageOff className="h-4 w-4" aria-hidden="true" />
+              </span>
+            )}
             <input
               name="imageUrl"
               value={row}
@@ -63,6 +87,7 @@ export function ImagesEditor({ defaultValue }: { defaultValue?: string[] }) {
               placeholder="https://..."
               className={inputClasses}
             />
+            <ImageRotateControl url={row} onRotated={(newUrl) => updateRow(i, newUrl)} />
             <button
               type="button"
               onClick={() => removeRow(i)}
@@ -74,14 +99,17 @@ export function ImagesEditor({ defaultValue }: { defaultValue?: string[] }) {
           </div>
         ))}
       </div>
-      <button
-        type="button"
-        onClick={addRow}
-        className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-red-600"
-      >
-        <Plus className="h-4 w-4" aria-hidden="true" />
-        Thêm ảnh
-      </button>
+      <div className="mt-3 flex flex-wrap items-start gap-4">
+        <ImageUploadButton onUploaded={addUploadedUrl} multiple label="Tải ảnh lên từ máy" />
+        <button
+          type="button"
+          onClick={addRow}
+          className="inline-flex h-10 items-center gap-1.5 text-sm font-semibold text-navy-900 hover:text-red-600"
+        >
+          <Plus className="h-4 w-4" aria-hidden="true" />
+          Hoặc dán link ảnh
+        </button>
+      </div>
     </div>
   );
 }
