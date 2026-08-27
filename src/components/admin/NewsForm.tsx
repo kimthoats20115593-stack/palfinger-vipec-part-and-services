@@ -1,4 +1,5 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
+import { AutoTranslateButton } from "@/components/admin/AutoTranslateButton";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -32,7 +33,10 @@ export function NewsForm({
           <input id="titleVi" name="titleVi" required defaultValue={defaultValues?.titleVi} className={inputClasses} />
         </div>
         <div>
-          <label htmlFor="titleEn" className={labelClasses}>Tiêu đề (EN) *</label>
+          <div className="mb-1.5 flex items-center justify-between gap-2">
+            <label htmlFor="titleEn" className="text-sm font-semibold text-navy-900">Tiêu đề (EN) *</label>
+            <AutoTranslateButton sourceId="titleVi" targetId="titleEn" />
+          </div>
           <input id="titleEn" name="titleEn" required defaultValue={defaultValues?.titleEn} className={inputClasses} />
         </div>
       </div>
@@ -63,7 +67,10 @@ export function NewsForm({
           />
         </div>
         <div>
-          <label htmlFor="excerptEn" className={labelClasses}>Tóm tắt (EN) *</label>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor="excerptEn" className={labelClasses}>Tóm tắt (EN) *</label>
+            <AutoTranslateButton sourceId="excerptVi" targetId="excerptEn" />
+          </div>
           <textarea
             id="excerptEn"
             name="excerptEn"
@@ -89,7 +96,10 @@ export function NewsForm({
           <p className="mt-1 text-xs text-steel-500">Dùng dòng trống để tách đoạn văn.</p>
         </div>
         <div>
-          <label htmlFor="contentEn" className={labelClasses}>Nội dung (EN) *</label>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor="contentEn" className={labelClasses}>Nội dung (EN) *</label>
+            <AutoTranslateButton sourceId="contentVi" targetId="contentEn" />
+          </div>
           <textarea
             id="contentEn"
             name="contentEn"

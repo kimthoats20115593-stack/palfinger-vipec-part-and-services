@@ -1,6 +1,7 @@
 import { SpecsEditor } from "@/components/admin/SpecsEditor";
 import { ImagesEditor } from "@/components/admin/ImagesEditor";
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
+import { AutoTranslateButton } from "@/components/admin/AutoTranslateButton";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -91,7 +92,10 @@ export function PartForm({
           />
         </div>
         <div>
-          <label htmlFor="nameEn" className={labelClasses}>Tên phụ tùng (EN) *</label>
+          <div className="mb-1.5 flex items-center justify-between gap-2">
+            <label htmlFor="nameEn" className="text-sm font-semibold text-navy-900">Tên phụ tùng (EN) *</label>
+            <AutoTranslateButton sourceId="nameVi" targetId="nameEn" />
+          </div>
           <input
             id="nameEn"
             name="nameEn"
@@ -116,7 +120,10 @@ export function PartForm({
           />
         </div>
         <div>
-          <label htmlFor="descriptionEn" className={labelClasses}>Mô tả ngắn (EN) *</label>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor="descriptionEn" className={labelClasses}>Mô tả ngắn (EN) *</label>
+            <AutoTranslateButton sourceId="descriptionVi" targetId="descriptionEn" />
+          </div>
           <p className="mb-1.5 -mt-1 text-xs text-steel-500">Shown at the top of the detail page, 1–3 sentences.</p>
           <textarea
             id="descriptionEn"
@@ -133,22 +140,28 @@ export function PartForm({
         <div>
           <label htmlFor="detailVi" className={labelClasses}>Chi tiết sản phẩm (VI)</label>
           <p className="mb-1.5 -mt-1 text-xs text-steel-500">
-            Không bắt buộc. Có thể viết nhiều đoạn, xuống dòng tự do, dùng dấu &quot;-&quot; đầu dòng
-            cho gạch đầu dòng — hiển thị đúng như bạn gõ.
+            Không bắt buộc. Hỗ trợ định dạng: <code>### Tiêu đề</code> cho tiêu đề,{" "}
+            <code>**chữ**</code> cho in đậm, dấu &quot;-&quot; hoặc &quot;*&quot; đầu dòng cho danh
+            sách, và bảng dạng <code>| Cột 1 | Cột 2 |</code> — trang chi tiết sẽ tự hiển thị đẹp,
+            không hiện ký hiệu thô.
           </p>
           <textarea
             id="detailVi"
             name="detailVi"
             rows={10}
             defaultValue={defaultValues?.detailVi ?? ""}
-            placeholder={"VD:\nValvoline Premium Blue 7800 (15W-40) – Dầu động cơ chuyên dụng cho Cummins\n\nĐiểm nổi bật:\n- Được ủy quyền bởi Cummins\n- Bảo vệ chống mài mòn tuyệt đối"}
+            placeholder={"VD:\n### Điểm nổi bật\n- Được ủy quyền bởi Cummins\n- Bảo vệ chống mài mòn tuyệt đối\n\n| Hạng mục | Thông tin |\n| --- | --- |\n| Thương hiệu | Cummins |"}
             className={inputClasses}
           />
         </div>
         <div>
-          <label htmlFor="detailEn" className={labelClasses}>Chi tiết sản phẩm (EN)</label>
+          <div className="flex items-center justify-between gap-2">
+            <label htmlFor="detailEn" className={labelClasses}>Chi tiết sản phẩm (EN)</label>
+            <AutoTranslateButton sourceId="detailVi" targetId="detailEn" />
+          </div>
           <p className="mb-1.5 -mt-1 text-xs text-steel-500">
-            Optional. Multiple paragraphs and line breaks are shown exactly as typed.
+            Optional. Supports Markdown: <code>### Heading</code>, <code>**bold**</code>,
+            &quot;-&quot; lists, and <code>| Col 1 | Col 2 |</code> tables.
           </p>
           <textarea
             id="detailEn"

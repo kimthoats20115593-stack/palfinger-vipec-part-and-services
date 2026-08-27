@@ -12,6 +12,7 @@ import { PartIcon, type PartIconVariant } from "@/components/illustrations/PartI
 import { PartCard } from "@/components/parts/PartCard";
 import { PartGallery } from "@/components/parts/PartGallery";
 import { PartContactActions } from "@/components/parts/PartContactActions";
+import { MarkdownContent } from "@/components/ui/MarkdownContent";
 
 export const dynamic = "force-dynamic";
 
@@ -101,6 +102,17 @@ export default async function PartDetailPage({
                   {part.status}
                 </span>
               )}
+              {part.stockQty !== null && (
+                <span
+                  className={
+                    part.stockQty > 0
+                      ? "rounded-md border-2 border-red-500 px-2.5 py-0.5 text-xs font-bold text-red-600 dark:border-red-400 dark:text-red-400"
+                      : "rounded-md border-2 border-steel-300 px-2.5 py-0.5 text-xs font-bold text-steel-500 dark:border-navy-700 dark:text-steel-400"
+                  }
+                >
+                  {part.stockQty > 0 ? t("inStock") : t("outOfStock")}
+                </span>
+              )}
             </div>
             <h1 className="mb-3 text-3xl font-bold text-navy-900 dark:text-white">{name}</h1>
 
@@ -174,9 +186,7 @@ export default async function PartDetailPage({
             <h2 className="mb-6 text-2xl font-bold uppercase tracking-wide text-navy-900 dark:text-white">
               {t("productDetail")}
             </h2>
-            <div className="max-w-3xl whitespace-pre-line text-sm leading-relaxed text-steel-700 dark:text-steel-300">
-              {detail}
-            </div>
+            <MarkdownContent content={detail} className="max-w-3xl" />
           </div>
         )}
 

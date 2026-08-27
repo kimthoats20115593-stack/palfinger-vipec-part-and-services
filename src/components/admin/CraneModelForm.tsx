@@ -1,5 +1,6 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
 import { SingleImageField } from "@/components/admin/SingleImageField";
+import { AutoTranslateButton } from "@/components/admin/AutoTranslateButton";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -36,7 +37,10 @@ export function CraneModelForm({
           />
         </div>
         <div>
-          <label htmlFor="nameEn" className={labelClasses}>Tên model (EN)</label>
+          <div className="mb-1.5 flex items-center justify-between gap-2">
+            <label htmlFor="nameEn" className="text-sm font-semibold text-navy-900">Tên model (EN)</label>
+            <AutoTranslateButton sourceId="nameVi" targetId="nameEn" />
+          </div>
           <input
             id="nameEn"
             name="nameEn"
