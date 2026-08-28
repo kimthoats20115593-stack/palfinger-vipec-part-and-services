@@ -7,6 +7,8 @@ import { localize } from "@/lib/localize";
 import { Link } from "@/i18n/navigation";
 import { Container } from "@/components/ui/Container";
 import { NewsCover } from "@/components/illustrations/NewsCover";
+import { ProductImage } from "@/components/ui/ProductImage";
+import { MarkdownContent } from "@/components/ui/MarkdownContent";
 
 export const dynamic = "force-dynamic";
 
@@ -46,8 +48,6 @@ export default async function NewsDetailPage({
     locale === "vi" ? "vi-VN" : "en-US",
     { year: "numeric", month: "long", day: "numeric" }
   );
-  const paragraphs = content.split(/\n{2,}/).filter(Boolean);
-
   return (
     <article className="py-12">
       <Container className="mx-auto max-w-3xl">
@@ -59,18 +59,23 @@ export default async function NewsDetailPage({
           {t("backToNews")}
         </Link>
 
-        <NewsCover seed={0} className="mb-8 aspect-[16/7] w-full rounded-xl" />
+        <div className="mb-8 aspect-[16/7] w-full overflow-hidden rounded-xl bg-steel-50 dark:bg-navy-950">
+          <ProductImage
+            src={post.coverImage && post.coverImage !== "default" ? post.coverImage : null}
+            alt={title}
+            width={1200}
+            height={525}
+            imageClassName="h-full w-full object-cover"
+            fallbackIcon={<NewsCover seed={0} className="h-full w-full" />}
+          />
+        </div>
 
         <p className="mb-2 text-sm font-semibold text-steel-500 dark:text-steel-400">
           {t("publishedOn")} {date}
         </p>
         <h1 className="mb-8 text-3xl font-bold text-navy-900 dark:text-white sm:text-4xl">{title}</h1>
 
-        <div className="space-y-5 text-base leading-relaxed text-steel-700 dark:text-steel-300">
-          {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
+        <MarkdownContent content={content} />
       </Container>
     </article>
   );

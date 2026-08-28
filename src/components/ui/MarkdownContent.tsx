@@ -20,6 +20,8 @@ export function MarkdownContent({ content, className }: { content: string; class
         "[&_ul]:list-disc [&_ul]:space-y-1.5 [&_ul]:pl-5 " +
         "[&_ol]:list-decimal [&_ol]:space-y-1.5 [&_ol]:pl-5 " +
         "[&_a]:font-semibold [&_a]:text-red-600 [&_a]:underline " +
+        "[&_img]:my-2 [&_img]:w-full [&_img]:rounded-lg [&_img]:border [&_img]:border-steel-100 " +
+        "dark:[&_img]:border-navy-800 " +
         "[&_table]:w-full [&_table]:border-collapse [&_table]:overflow-hidden [&_table]:rounded-lg [&_table]:border [&_table]:border-steel-100 " +
         "[&_th]:border-b [&_th]:border-steel-100 [&_th]:bg-steel-50 [&_th]:px-4 [&_th]:py-2.5 [&_th]:text-left [&_th]:font-bold [&_th]:text-navy-900 " +
         "[&_td]:border-b [&_td]:border-steel-100 [&_td]:px-4 [&_td]:py-2.5 [&_td]:align-top " +

@@ -157,7 +157,7 @@ export async function createNewsPost(formData: FormData) {
       excerptEn: str(formData, "excerptEn"),
       contentVi: str(formData, "contentVi"),
       contentEn: str(formData, "contentEn"),
-      coverImage: str(formData, "coverImage") || "default",
+      coverImage: nullableStr(formData, "coverImage") || "default",
       published: bool(formData, "published"),
     },
   });
@@ -179,7 +179,7 @@ export async function updateNewsPost(id: string, formData: FormData) {
       excerptEn: str(formData, "excerptEn"),
       contentVi: str(formData, "contentVi"),
       contentEn: str(formData, "contentEn"),
-      coverImage: str(formData, "coverImage") || "default",
+      coverImage: nullableStr(formData, "coverImage") || "default",
       published: bool(formData, "published"),
     },
   });

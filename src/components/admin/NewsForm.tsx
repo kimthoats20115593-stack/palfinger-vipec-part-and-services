@@ -1,5 +1,6 @@
 import { AdminFormShell } from "@/components/admin/AdminFormShell";
 import { AutoTranslateButton } from "@/components/admin/AutoTranslateButton";
+import { SingleImageField } from "@/components/admin/SingleImageField";
 
 const inputClasses =
   "min-h-11 w-full rounded-md border border-steel-200 px-4 py-2.5 text-sm focus:border-navy-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy-900";
@@ -13,6 +14,7 @@ type NewsDefaults = {
   excerptEn?: string;
   contentVi?: string;
   contentEn?: string;
+  coverImage?: string | null;
   published?: boolean;
 };
 
@@ -54,6 +56,12 @@ export function NewsForm({
         />
       </div>
 
+      <SingleImageField
+        name="coverImage"
+        label="Ảnh bìa (không bắt buộc — để trống sẽ dùng ảnh minh họa mặc định)"
+        defaultValue={defaultValues?.coverImage === "default" ? "" : defaultValues?.coverImage}
+      />
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="excerptVi" className={labelClasses}>Tóm tắt (VI) *</label>
@@ -93,7 +101,11 @@ export function NewsForm({
             defaultValue={defaultValues?.contentVi}
             className={inputClasses}
           />
-          <p className="mt-1 text-xs text-steel-500">Dùng dòng trống để tách đoạn văn.</p>
+          <p className="mt-1 text-xs text-steel-500">
+            Dùng dòng trống để tách đoạn văn. Hỗ trợ Markdown: <code>### Tiêu đề</code>,{" "}
+            <code>**đậm**</code>, danh sách &quot;-&quot;, và chèn ảnh bằng{" "}
+            <code>![mô tả](URL ảnh)</code>.
+          </p>
         </div>
         <div>
           <div className="flex items-center justify-between gap-2">
