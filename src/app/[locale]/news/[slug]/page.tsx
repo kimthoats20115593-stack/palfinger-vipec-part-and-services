@@ -75,7 +75,7 @@ export default async function NewsDetailPage({
         </p>
         <h1 className="mb-8 text-3xl font-bold text-navy-900 dark:text-white sm:text-4xl">{title}</h1>
 
-        <MarkdownContent content={content} />
+        <MarkdownContent content={content} size="article" />
       </Container>
     </article>
   );
