@@ -8,6 +8,7 @@ export function ProductContactActions({
   partId,
   lubricantId,
   productLabel,
+  inquiryType = "QUOTE",
   callLabel,
   zaloLabel,
   zaloHref,
@@ -16,7 +17,10 @@ export function ProductContactActions({
 }: {
   partId?: string;
   lubricantId?: string;
-  productLabel: string;
+  productLabel?: string;
+  /** "CONTACT" for a general enquiry not tied to a specific part/lubricant
+   * (e.g. the "book an inspection" CTA at the end of a News article). */
+  inquiryType?: "QUOTE" | "CONTACT";
   callLabel: string;
   zaloLabel: string;
   zaloHref: string;
@@ -92,7 +96,7 @@ export function ProductContactActions({
               </button>
             </div>
             <InquiryForm
-              type="QUOTE"
+              type={inquiryType}
               partId={partId}
               lubricantId={lubricantId}
               partLabel={productLabel}

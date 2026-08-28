@@ -9,8 +9,12 @@ import { Container } from "@/components/ui/Container";
 import { NewsCover } from "@/components/illustrations/NewsCover";
 import { ProductImage } from "@/components/ui/ProductImage";
 import { MarkdownContent } from "@/components/ui/MarkdownContent";
+import { ProductContactActions } from "@/components/products/ProductContactActions";
+import { siteConfig } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
+
+const zaloHref = `https://zalo.me/${siteConfig.hotlineHref.replace("+", "")}`;
 
 async function getPost(slug: string) {
   return prisma.newsPost.findUnique({ where: { slug } });
@@ -76,6 +80,23 @@ export default async function NewsDetailPage({
         <h1 className="mb-8 text-3xl font-bold text-navy-900 dark:text-white sm:text-4xl">{title}</h1>
 
         <MarkdownContent content={content} size="article" />
+
+        <div className="mt-12 rounded-2xl border border-steel-100 bg-steel-50 p-6 dark:border-navy-800 dark:bg-navy-900 sm:p-8">
+          <h2 className="mb-1.5 text-lg font-bold text-navy-900 dark:text-white">
+            {t("ctaTitle")}
+          </h2>
+          <p className="mb-5 text-sm leading-relaxed text-steel-600 dark:text-steel-300">
+            {t("ctaSubtitle")}
+          </p>
+          <ProductContactActions
+            inquiryType="CONTACT"
+            callLabel={t("ctaBook")}
+            zaloLabel={t("ctaZalo")}
+            zaloHref={zaloHref}
+            modalTitle={t("ctaModalTitle")}
+            modalSubtitle={t("ctaModalSubtitle")}
+          />
+        </div>
       </Container>
     </article>
   );

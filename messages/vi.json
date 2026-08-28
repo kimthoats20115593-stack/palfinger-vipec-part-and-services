@@ -159,7 +159,13 @@
     "subtitle": "Kiến thức bảo dưỡng, cập nhật sản phẩm và tin tức từ PALFINGER VIPEC.",
     "readMore": "Đọc tiếp",
     "backToNews": "Quay lại tin tức",
-    "publishedOn": "Đăng ngày"
+    "publishedOn": "Đăng ngày",
+    "ctaTitle": "Cần kiểm tra hoặc bảo dưỡng cẩu của bạn?",
+    "ctaSubtitle": "Đội kỹ thuật PALFINGER VIPEC sẵn sàng khảo sát và lên lịch bảo dưỡng, kiểm định phù hợp với dòng cẩu bạn đang sử dụng.",
+    "ctaBook": "Đặt lịch kiểm tra",
+    "ctaZalo": "Tư vấn Zalo",
+    "ctaModalTitle": "Đặt lịch kiểm tra / bảo dưỡng",
+    "ctaModalSubtitle": "Để lại thông tin, đội kỹ thuật sẽ liên hệ sắp xếp lịch khảo sát phù hợp."
   },
   "contact": {
     "eyebrow": "Liên hệ",

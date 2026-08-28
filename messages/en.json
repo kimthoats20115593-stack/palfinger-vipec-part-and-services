@@ -159,7 +159,13 @@
     "subtitle": "Maintenance know-how, product updates and news from PALFINGER VIPEC.",
     "readMore": "Read more",
     "backToNews": "Back to news",
-    "publishedOn": "Published on"
+    "publishedOn": "Published on",
+    "ctaTitle": "Need your crane inspected or serviced?",
+    "ctaSubtitle": "PALFINGER VIPEC's technical team is ready to survey your equipment and schedule the right maintenance or inspection for your crane model.",
+    "ctaBook": "Book an Inspection",
+    "ctaZalo": "Zalo Consultation",
+    "ctaModalTitle": "Book an Inspection / Maintenance Visit",
+    "ctaModalSubtitle": "Leave your details and our technical team will reach out to schedule a suitable visit."
   },
   "contact": {
     "eyebrow": "Contact",
