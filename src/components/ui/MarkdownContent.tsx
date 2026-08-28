@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { EditableMarkdownImage } from "@/components/admin/EditableMarkdownImage";
 
 /**
  * Renders admin-entered long-form text (Part.detailVi/En, etc.) as Markdown:
@@ -15,10 +16,18 @@ export function MarkdownContent({
   content,
   className,
   size = "sm",
+  imageControls,
 }: {
   content: string;
   className?: string;
   size?: "sm" | "article";
+  /** Admin-only: renders each image with delete/replace controls instead of
+   * a plain <img>. Used by the News content live-preview editor so an admin
+   * can fix an image without hunting through the raw Markdown. */
+  imageControls?: {
+    onDelete: (src: string) => void;
+    onReplace: (oldSrc: string, newSrc: string) => void;
+  };
 }) {
   const sizeClasses =
     size === "article"
@@ -64,6 +73,21 @@ export function MarkdownContent({
               <table>{children}</table>
             </div>
           ),
+          img: ({ src, alt }) => {
+            const url = typeof src === "string" ? src : "";
+            if (imageControls) {
+              return (
+                <EditableMarkdownImage
+                  src={url}
+                  alt={alt}
+                  onDelete={imageControls.onDelete}
+                  onReplace={imageControls.onReplace}
+                />
+              );
+            }
+            // eslint-disable-next-line @next/next/no-img-element
+            return <img src={url} alt={alt ?? ""} />;
+          },
           // A link to a video file (uploaded via the admin's video button, or
           // any direct .mp4/.webm URL) renders as a real inline player
           // instead of a plain "click to open" link.
