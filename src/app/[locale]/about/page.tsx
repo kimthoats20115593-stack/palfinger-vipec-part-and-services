@@ -38,14 +38,14 @@ export default async function AboutPage({
             <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900 dark:text-white">
               {t("missionTitle")}
             </h2>
-            <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t("missionDesc")}</p>
+            <p className="text-base leading-relaxed text-steel-700 dark:text-steel-300">{t("missionDesc")}</p>
           </div>
           <div className="rounded-xl border border-steel-100 p-8 dark:border-navy-800">
             <Eye className="h-8 w-8 text-red-600 dark:text-red-400" aria-hidden="true" />
             <h2 className="mb-3 mt-4 text-xl font-bold text-navy-900 dark:text-white">
               {t("visionTitle")}
             </h2>
-            <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t("visionDesc")}</p>
+            <p className="text-base leading-relaxed text-steel-700 dark:text-steel-300">{t("visionDesc")}</p>
           </div>
         </Container>
       </section>
@@ -63,7 +63,7 @@ export default async function AboutPage({
                     className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400"
                     aria-hidden="true"
                   />
-                  <span className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{cap}</span>
+                  <span className="text-base leading-relaxed text-steel-700 dark:text-steel-300">{cap}</span>
                 </li>
               ))}
             </ul>
@@ -81,7 +81,7 @@ export default async function AboutPage({
         <Container className="flex flex-col items-center gap-6 text-center">
           <Users2 className="h-10 w-10 text-red-600 dark:text-red-400" aria-hidden="true" />
           <h2 className="text-2xl font-bold text-navy-900 dark:text-white">{t("teamTitle")}</h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-steel-700 dark:text-steel-300">
+          <p className="max-w-2xl text-base leading-relaxed text-steel-700 dark:text-steel-300">
             {t("teamDesc")}
           </p>
           <div className="mt-4 w-full overflow-hidden rounded-2xl shadow-xl shadow-navy-900/10 dark:shadow-black/30">

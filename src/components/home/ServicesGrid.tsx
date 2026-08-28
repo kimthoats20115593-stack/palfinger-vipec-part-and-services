@@ -17,7 +17,7 @@ export function ServiceCard({
         <Icon className="h-6 w-6" aria-hidden="true" />
       </div>
       <h3 className="mb-2 text-lg font-bold text-navy-900 dark:text-white">{t(service.titleKey)}</h3>
-      <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">{t(service.descKey)}</p>
+      <p className="text-base leading-relaxed text-steel-700 dark:text-steel-300">{t(service.descKey)}</p>
     </div>
   );
 }

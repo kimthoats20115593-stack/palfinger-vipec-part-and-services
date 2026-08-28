@@ -76,8 +76,8 @@ export default async function ServicesPage({
                 <span className="mb-3 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 font-display text-sm font-bold text-white">
                   {i + 1}
                 </span>
-                <p className="mb-1.5 text-sm font-semibold text-white">{step.title}</p>
-                <p className="text-xs leading-relaxed text-steel-300">{step.desc}</p>
+                <p className="mb-1.5 text-base font-semibold text-white">{step.title}</p>
+                <p className="text-sm leading-relaxed text-steel-300">{step.desc}</p>
               </div>
             ))}
           </div>

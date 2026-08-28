@@ -28,7 +28,7 @@ export function WhyUs() {
                 <h3 className="mb-2 text-base font-bold text-navy-900 dark:text-white">
                   {t(item.titleKey)}
                 </h3>
-                <p className="text-sm leading-relaxed text-steel-700 dark:text-steel-300">
+                <p className="text-base leading-relaxed text-steel-700 dark:text-steel-300">
                   {t(item.descKey)}
                 </p>
               </div>
