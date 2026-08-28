@@ -40,6 +40,27 @@ export function MarkdownContent({ content, className }: { content: string; class
               <table>{children}</table>
             </div>
           ),
+          // A link to a video file (uploaded via the admin's video button, or
+          // any direct .mp4/.webm URL) renders as a real inline player
+          // instead of a plain "click to open" link.
+          a: ({ href, children }) => {
+            if (href && /(\.(mp4|webm|mov|m4v)(\?|$))|([?&]type=video)/i.test(href)) {
+              return (
+                <video
+                  controls
+                  className="w-full rounded-lg border border-steel-100 dark:border-navy-800"
+                  src={href}
+                >
+                  {children}
+                </video>
+              );
+            }
+            return (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            );
+          },
         }}
       >
         {content}
